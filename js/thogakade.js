@@ -227,7 +227,6 @@ $('ul').on("click", 'span', function () {
 
 
 // -------------------------- The start - table loading --------------------------
-
 function loadTable() {
 
     $("#customer-tbl-tbody").empty();
@@ -244,10 +243,10 @@ function loadTable() {
         </tr>`;
 
         $("#customer-tbl-tbody").append(record);
+        $("#customer-tbl-tbody").css("font-weight", 600);
 
     });
 }
-
 // -------------------------- The end - table loading --------------------------
 
 
@@ -282,10 +281,13 @@ $("#customer-save").on('click', () => {
     loadTable();
 
     // clean the inputs values
-    $("#customer-clear").click();
+    // $("#customer-clear").click();
+    $("#customerId").val("");
+    $("#customerName").val("");
+    $("#customerAddress").val("");
+    $("#customerPhone").val("");
 
 });
-
 // -------------------------- The end - when click customer save button --------------------------
 
 
@@ -314,14 +316,18 @@ $("#customer-update").on('click', () => {
     loadTable();
 
     // clean the inputs values
-    $("#customer-clear").click();
+    // $("#customer-clear").click();
+
+    $("#customerId").val("");
+    $("#customerName").val("");
+    $("#customerAddress").val("");
+    $("#customerPhone").val("");
 
 
     // ********** special **********
     // the clicked table's row index must equal to the customer object's index of array
 
 });
-
 // -------------------------- The end - when click customer update button --------------------------
 
 
@@ -335,10 +341,14 @@ $("#customer-delete").on('click', () => {
     loadTable();
 
     // clean the inputs values
-    $("#customer-clear").click();
+    // $("#customer-clear").click();
+
+    $("#customerId").val("");
+    $("#customerName").val("");
+    $("#customerAddress").val("");
+    $("#customerPhone").val("");
 
 });
-
 // -------------------------- The end - when click customer delete button --------------------------
 
 
@@ -347,10 +357,12 @@ $("#customer-delete").on('click', () => {
 $("#customer-clear").on('click', () => {
 
     // clean the inputs values
-    $("#customer-clear").click();
+    $("#customerId").val("");
+    $("#customerName").val("");
+    $("#customerAddress").val("");
+    $("#customerPhone").val("");
 
 });
-
 // -------------------------- The end - when click customer clear button --------------------------
 
 
@@ -374,8 +386,19 @@ $("#customer-tbl-tbody").on( 'click', 'tr', function () {
     $("#customerPhone").val(phone);
 
 });
-
 // -------------------------- The end - when click a table row --------------------------
+
+
+
+// -------------------------- The start - when click view all customers button --------------------------
+$("#viewAllCus").on('click', function () {
+
+    customers.map((item) => {
+        console.log(item);
+    });
+
+});
+// -------------------------- The end - when click view all customers button --------------------------
 
 
 
