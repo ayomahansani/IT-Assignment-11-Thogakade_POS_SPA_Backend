@@ -1,3 +1,6 @@
+// create an array
+var customers = [];
+
 // -------------------------- The start - when click navbar and some buttons --------------------------
 
 $('#customer-section').css({display: 'none'});
@@ -222,7 +225,19 @@ $('ul').on("click", 'span', function () {
 
 // -------------------------- The start - when click customer save button --------------------------
 
+$("#customer-save").on('click', () => {
 
+    var idOfCustomer = $("#customerId").val();
+    var nameOfCustomer = $("#customerName").val();
+    var addressOfCustomer = $("#customerAddress").val();
+    var phoneOfCustomer = $("#customerPhone").val();
+
+    // create an object - Object Literal
+
+
+
+
+});
 
 
 // -------------------------- The end - when click customer save button --------------------------
