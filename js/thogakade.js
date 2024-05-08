@@ -314,7 +314,7 @@ $("#customer-update").on('click', () => {
     loadTable();
 
     // clean the inputs values
-    $('#customer-clear').click();
+    $("#customer-clear").click();
 
 
     // ********** special **********
@@ -329,7 +329,13 @@ $("#customer-update").on('click', () => {
 // -------------------------- The start - when click customer delete button --------------------------
 $("#customer-delete").on('click', () => {
 
+    customers.splice(recordIndex, 1);
 
+    // load the table
+    loadTable();
+
+    // clean the inputs values
+    $("#customer-clear").click();
 
 });
 
@@ -337,8 +343,19 @@ $("#customer-delete").on('click', () => {
 
 
 
-// -------------------------- The start - when click a table row --------------------------
+// -------------------------- The start - when click customer clear button --------------------------
+$("#customer-clear").on('click', () => {
 
+    // clean the inputs values
+    $("#customer-clear").click();
+
+});
+
+// -------------------------- The end - when click customer clear button --------------------------
+
+
+
+// -------------------------- The start - when click a table row --------------------------
 $("#customer-tbl-tbody").on( 'click', 'tr', function () {
 
     let index = $(this).index();
@@ -357,7 +374,6 @@ $("#customer-tbl-tbody").on( 'click', 'tr', function () {
     $("#customerPhone").val(phone);
 
 });
-
 
 // -------------------------- The end - when click a table row --------------------------
 
