@@ -270,10 +270,20 @@ $("#customer-save").on('click', () => {
     console.log("phone: " , phoneOfCustomer);
 
     // create an object - Object Literal
+    let customer = {
+        id: idOfCustomer,
+        name: nameOfCustomer,
+        address: addressOfCustomer,
+        phone: phoneOfCustomer
+    }
 
+    // push to the array
+    customers.push(customer);
 
+    loadTable();
 
-
+    // clean the inputs values
+    $("#customer-clear").click();
 
 });
 
