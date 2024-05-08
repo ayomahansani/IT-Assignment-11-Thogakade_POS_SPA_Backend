@@ -1,0 +1,1081 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Single Page Application</title>
+
+  <!--  Linked stylesheets -->
+  <link rel="stylesheet" href="assets/normalize-css.css">
+  <link rel="stylesheet" href="style/home_page.css">
+  <link rel="stylesheet" href="style/customer_page.css">
+  <link rel="stylesheet" href="style/item_page.css">
+  <link rel="stylesheet" href="style/order_page.css">
+  <link rel="stylesheet" href="style/login_page.css">
+  <link rel="stylesheet" href="style/register_page.css">
+  <link rel="stylesheet" href="style/logout_page.css">
+
+  <!-- Bootstrap CSS-->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <!-- Bootstrap Icon-->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+</head>
+<body>
+
+  <!------------------------ Navbar ------------------------>
+
+  <nav id="navbar-section" class="navbar navbar-expand-lg fixed-top">
+
+  <div class="container-fluid">
+
+    <img class="logo" src="assets/icon/icons8-grocery-64.png" alt="">
+
+    <a class="navbar-brand me-auto" href="#">FOOD CORNER</a>
+
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">FOOD CORNER</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+
+      <div class="offcanvas-body">
+        <ul class="navbar-nav justify-content-center flex-grow-1 pe-3">
+
+          <li class="nav-item">
+            <span class="nav-link mx-lg-2 active" id="nav-home">Home</span>
+          </li>
+          <li class="nav-item">
+            <span class="nav-link mx-lg-2" id="nav-customers">Customers</span>
+          </li>
+          <li class="nav-item">
+            <span class="nav-link mx-lg-2" id="nav-items">Items</span>
+          </li>
+          <li class="nav-item">
+            <span class="nav-link mx-lg-2" id="nav-orders">Orders</span>
+          </li>
+
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Buttons -->
+    <span id="btn-login" class="login-button">
+      Sign In
+      <span class="buttons"><i class="bi bi-person-bounding-box"></i></span>
+    </span>
+    <span id="btn-register" class="login-button">
+      Sign Up
+      <span class="buttons"><i class="bi bi-person-plus-fill"></i></span>
+    </span>
+    <span id="btn-logout" class="login-button">
+      Log Out
+      <span class="buttons"><i class="bi bi-fast-forward-circle-fill"></i></span>
+    </span>
+    <!-- End Buttons -->
+
+    <!-- Navbar Toggler -->
+    <button class="navbar-toggler " type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <!-- End Navbar Toggler -->
+
+  </div>
+
+</nav>
+
+  <!------------------------ End Navbar ------------------------>
+
+
+  <!------------------------ Sections ------------------------>
+
+  <!-- Home Section -->
+  <section id="home-section">
+
+  <!-- Background Image -->
+  <img class="home-image" src="assets/img/2149565242.jpg" alt="home page image">
+  <!-- End Background Image -->
+
+  <!-- Card Section -->
+  <div class="container text-center card-set">
+
+    <div class="row">
+
+      <!-- Customer Card -->
+      <div class="col-12 col-sm-12 col-md-4 col-lg-4 pb-4">
+        <div class="card border-0">
+          <div class="card-body pb-4">
+            <img src="assets/icon/icons8-customers-96.png" class="card-img-top" alt="...">
+            <p class="card-title mt-3 mb-3">Customers</p>
+            <h4 class="mb-5">30</h4>
+            <span id="go-customer-page" class="btn btn-warning my-btn mb-3">
+              More
+              <span><i class="bi bi-three-dots-vertical"></i></span>
+            </span>
+          </div>
+        </div>
+      </div>
+      <!-- End Customer Card -->
+
+      <!-- Item Card -->
+      <div class="col-12 col-sm-12 col-md-4 col-lg-4 pb-4">
+        <div class="card border-0">
+          <div class="card-body pb-4">
+            <img src="assets/icon/icons8-grocery-bag-64.png" class="card-img-top" alt="...">
+            <p class="card-title mt-3 mb-3">Items</p>
+            <h4 class="mb-5">46</h4>
+            <span id="go-item-page" class="btn btn-warning my-btn mb-3">
+              More
+              <span><i class="bi bi-three-dots-vertical"></i></span>
+            </span>
+          </div>
+        </div>
+      </div>
+      <!-- End Item Card -->
+
+      <!-- Orders Card -->
+      <div class="col-12 col-sm-12 col-md-4 col-lg-4 pb-4">
+        <div class="card border-0">
+          <div class="card-body pb-4">
+            <img src="assets/icon/icons8-add-to-basket-100.png" class="card-img-top" alt="...">
+            <p class="card-title mt-3 mb-3">Orders</p>
+            <h4 class="mb-5">11</h4>
+            <span id="go-orders-page" class="btn btn-warning my-btn mb-3">
+              More
+              <span><i class="bi bi-three-dots-vertical"></i></span>
+            </span>
+          </div>
+        </div>
+      </div>
+      <!-- End Orders Card -->
+
+    </div>
+
+  </div>
+  <!-- End Card Section -->
+
+  </section>
+  <!-- End Home Section -->
+
+
+  <!-- Customer Management Section -->
+  <section id="customer-section" class="hero-section">
+
+  <!-- Background Image -->
+  <img class="home-image " src="assets/img/2149565242.jpg" alt="">
+  <!-- End Background Image -->
+
+  <!-- Title Section -->
+  <div class="main-title me-auto">
+    <img class="customerImg" src="assets/icon/icons8-customers.png" alt="">
+    <h6 class="title">Customers</h6>
+  </div>
+  <!-- End Title Section -->
+
+  <!-- Main Section -->
+  <div class="main-section">
+
+    <!-- up section -->
+    <div class="search-customer">
+
+      <form class="row">
+
+        <!-- customer search -->
+        <div class="col-8 col-sm-6 col-md-4 col-lg-4 pb-4">
+          <label for="searchCustomer" class="form-label fw-semibold">
+            Search Customer
+          </label>
+          <input type="search" class="form-control search-input" id="searchCustomer" placeholder="Input NIC / Name Here">
+        </div>
+        <div class="col-4 col-sm-6 col-md-3 col-lg-3 pb-4">
+          <button type="submit" class="btn btn-warning search-btn">
+            Search
+            <span class="search"><i class="bi bi-search"></i></span>
+          </button>
+        </div>
+        <!-- end customer search -->
+
+        <!-- buttons -->
+        <div class="col-6 col-sm-4 col-md-2 col-lg-2 pb-1">
+          <a href="" id="newCusBtn" role="button" class="btn" data-bs-toggle="modal" data-bs-target="#newCustomerModal">
+            <span class="add-to-cart"><i class="bi bi-plus-circle-fill"></i></span>
+            New Customer
+          </a>
+        </div>
+        <div class="col-6 col-sm-4 col-md-2 col-lg-2 pb-1">
+          <a href="" id="viewAllCus" role="button" class="btn" data-bs-toggle="modal" data-bs-target="#viewAllCustomerModal">
+            <span class="view"><i class="bi bi-eye-fill"></i></span>
+            View All Customers
+          </a>
+        </div>
+        <!-- end buttons -->
+
+        <!-- right image -->
+        <div class="col-12 col-sm-4 col-md-1 col-lg-1 pb-1">
+          <img src="assets/icon/icons8-customers-48.png" class="customer-page-photo" alt="customers photo">
+        </div>
+        <!-- end right image -->
+
+      </form>
+
+    </div>
+    <!-- end up section -->
+
+    <!-- customer table -->
+    <div class="customer-table">
+
+      <table class="table table-warning table-striped table-bordered border-dark table-hover table-sm">
+        <thead class="table-dark">
+        <tr>
+          <th scope="col">NIC</th>
+          <th scope="col">Name</th>
+          <th scope="col">Address</th>
+          <th scope="col">Contact</th>
+        </tr>
+        </thead>
+
+        <tbody class="table-group-divider">
+        <tr>
+          <th scope="row">200178453425V</th>
+          <th>Oshan Vishwajith</th>
+          <th>Kadawatha</th>
+          <th>0772087926</th>
+        </tr>
+        <tr>
+          <th scope="row">200451906783V</th>
+          <th>Akithma Subandi</th>
+          <th>Delgoda</th>
+          <th>0783456120</th>
+        </tr>
+        <tr>
+          <th scope="row">199756092365V</th>
+          <th>Maheshi Kodagoda</th>
+          <th>Colombo</th>
+          <th>0720438745</th>
+        </tr>
+        <tr>
+          <th scope="row">199909459879V</th>
+          <th>Nirmal Pathum</th>
+          <th>Galle</th>
+          <th>0761250923</th>
+        </tr>
+        <tr>
+          <th scope="row">200061547786V</th>
+          <th>Senali Nuhansa</th>
+          <th>Panadura</th>
+          <th>0750332345</th>
+        </tr>
+        </tbody>
+
+      </table>
+
+    </div>
+    <!-- end customer table -->
+
+  </div>
+  <!-- End Main Section -->
+
+  </section>
+  <!-- End Customer Management Section -->
+
+
+  <!-- Item Management Section -->
+  <section id="item-section" class="hero-section">
+
+  <!-- Background Image -->
+  <img class="home-image " src="assets/img/2149565242.jpg" alt="background-image">
+  <!-- End Background Image -->
+
+  <!-- Title Section -->
+  <div class="main-title me-auto">
+    <img id="itemImg" src="assets/icon/icons8-ingredients-26.png" alt="item-image">
+    <h6 class="title">Items</h6>
+  </div>
+  <!-- End Title Section -->
+
+  <!-- Main Section -->
+  <div class="main-section">
+
+    <!-- up section -->
+    <div class="search-item">
+
+      <form class="row">
+
+        <!-- item search -->
+        <div class="col-8 col-sm-6 col-md-4 col-lg-4 pb-4">
+          <label for="searchItem" class="form-label fw-semibold">
+            Search Item
+          </label>
+          <input type="search" class="form-control search-input" id="searchItem" placeholder="Input Code / Name Here">
+        </div>
+        <div class="col-4 col-sm-6 col-md-3 col-lg-3 pb-4">
+          <button type="submit" class="btn btn-warning search-btn">
+            Search
+            <span class="search"><i class="bi bi-search"></i></span>
+          </button>
+        </div>
+        <!-- End item search -->
+
+        <!-- buttons -->
+        <div class="col-6 col-sm-4 col-md-2 col-lg-2 pb-1">
+          <a href="" id="newItemBtn" role="button" class="btn" data-bs-toggle="modal" data-bs-target="#newItemModal">
+            <span class="add-to-cart mr-3"><i class="bi bi-plus-circle-fill"></i></span>
+            New Item
+          </a>
+        </div>
+        <div class="col-6 col-sm-4 col-md-2 col-lg-2 pb-1">
+          <a href="" id="viewAllItem" role="button" class="btn" data-bs-toggle="modal" data-bs-target="#viewAllItemsModal">
+            <span class="view"><i class="bi bi-eye-fill"></i></span>
+            View All Items
+          </a>
+        </div>
+        <!-- end buttons -->
+
+        <!-- right image -->
+        <div class="col-12 col-sm-4 col-md-1 col-lg-1 pb-1">
+          <img src="assets/icon/icons8-paper-bag-64.png" class="item-page-photo" alt="item-bag-image">
+        </div>
+        <!-- end right image -->
+
+      </form>
+
+    </div>
+    <!-- end up section -->
+
+    <!-- item table -->
+    <div class="item-table">
+
+      <table class="table table-warning table-striped table-bordered border-dark table-hover table-sm">
+        <thead class="table-dark">
+        <tr>
+          <th scope="col">Code</th>
+          <th scope="col">Name</th>
+          <th scope="col">Price</th>
+          <th scope="col">Quantity</th>
+        </tr>
+        </thead>
+
+        <tbody class="table-group-divider">
+        <tr>
+          <th scope="row">I001</th>
+          <th>Maliban Chocolate Biscuit</th>
+          <th>Rs: 150.00</th>
+          <th>30</th>
+        </tr>
+        <tr>
+          <th scope="row">I002</th>
+          <th>Kirisamba 5kg</th>
+          <th>Rs: 1200.25</th>
+          <th>11</th>
+        </tr>
+        <tr>
+          <th scope="row">I003</th>
+          <th>Sunlight 120g</th>
+          <th>Rs: 130.00</th>
+          <th>24</th>
+        </tr>
+        <tr>
+          <th scope="row">I004</th>
+          <th>White Sugar 500g</th>
+          <th>Rs: 345.75</th>
+          <th>23</th>
+        </tr>
+        <tr>
+          <th scope="row">I005</th>
+          <th>Coca Cola 2l</th>
+          <th>Rs :560.00</th>
+          <th>50</th>
+        </tr>
+        </tbody>
+
+      </table>
+
+    </div>
+    <!-- end item table -->
+
+  </div>
+  <!-- End Main Section -->
+
+  </section>
+  <!-- End Item Management Section -->
+
+
+  <!-- Order Management Section -->
+  <section id="order-section" class="hero-section">
+
+  <!-- Background Image -->
+  <img class="home-image" src="assets/img/2149565242.jpg" alt="background-image">
+  <!-- End Background Image -->
+
+  <!-- Title Section -->
+  <div class="main-title me-auto">
+    <img id="orderImg" src="assets/icon/icons8-order-48.png" alt="order-image">
+    <h6 id="title">Place Order</h6>
+  </div>
+  <!-- End Title Section -->
+
+  <!-- Main Section -->
+  <div class="main-section">
+
+    <!-- Form Set -->
+    <section id="forms">
+
+      <!-- Invoice Details Form -->
+      <div class="form_div">
+
+        <!-- Title -->
+        <h5 class="div_head">
+          Invoice Details
+          <span class="invoice"><i class="bi bi-file-earmark-text-fill"></i></span>
+        </h5>
+        <!-- End Title -->
+
+        <!-- Form Body -->
+        <form class="form">
+
+          <div>
+            <div class="up_div">
+              <div class="form1_set1">
+
+                <label for="orderId" class="form-label fw-semibold">Order Id :</label>
+                <input type="text" class="form-control search-input" id="orderId" placeholder="O001">
+
+              </div>
+
+              <div class="form1_set2">
+
+                <label for="orderDate" class="form-label fw-semibold">Order Date :</label>
+                <input type="date" class="form-control search-input" id="orderDate">
+
+              </div>
+            </div>
+
+            <div id="mid_div">
+              <label for="customers" class="form-label fw-semibold">Select Customer :</label>
+              <select class="form-select search-input" aria-label="Default select example" id="customers">
+                <option selected>choose customer NIC</option>
+                <option value="1">200451906783V</option>
+                <option value="2">199909459879V</option>
+                <option value="3">200178453425V</option>
+                <option value="4">200061547786V</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="down_div">
+            <div class="form1_set1">
+
+              <label for="cusId" class="form-label fw-semibold">ID :</label>
+              <input type="text" class="form-control search-input" id="cusId" placeholder="200451906783V">
+
+              <label for="cusAddress" class="form-label fw-semibold">Address :</label>
+              <input type="text" class="form-control search-input" id="cusAddress" placeholder="Panadura">
+
+            </div>
+
+            <div class="form1_set2">
+
+              <label for="cusName" class="form-label fw-semibold">Name :</label>
+              <input type="text" class="form-control search-input" id="cusName" placeholder="Oshan Vishwajith">
+
+              <label for="cusPhone" class="form-label fw-semibold">Contact :</label>
+              <input type="text" class="form-control search-input" id="cusPhone" placeholder="0776287698">
+
+            </div>
+          </div>
+
+        </form>
+        <!-- End Form Body -->
+
+      </div>
+      <!-- End Invoice Details Form -->
+
+      <!-- Select Item Form -->
+      <div class="form_div">
+
+        <!-- Title -->
+        <h5 class="div_head">
+          Select Item
+          <span class="selectItem"><i class="bi bi-bookmark-check-fill"></i></span>
+        </h5>
+        <!-- End Title -->
+
+        <!-- Form Body -->
+        <form class="form">
+
+          <div class="up_div">
+
+            <div>
+              <label for="selectItem" class="form-label fw-semibold">Select Item :</label>
+              <select class="form-select search-input" aria-label="Default select example" id="selectItem">
+                <option selected>choose item code &nbsp;&nbsp;&nbsp;&nbsp;</option>
+                <option value="1">I001</option>
+                <option value="2">I002</option>
+                <option value="3">I003</option>
+                <option value="4">I004</option>
+              </select>
+            </div>
+
+          </div>
+
+          <div class="mid_div">
+
+            <div class="form2_set1">
+
+              <label for="itemCode" class="form-label fw-semibold">Code :</label>
+              <input type="text" class="form-control search-input" id="itemCode" placeholder="I002">
+
+              <label for="itemPrice" class="form-label fw-semibold">Unit Price :</label>
+              <input type="text" class="form-control search-input" id="itemPrice" placeholder="Rs: 1200.25">
+
+            </div>
+
+            <div class="form2_set2">
+
+              <label for="itemName" class="form-label fw-semibold">Name :</label>
+              <input type="text" class="form-control search-input" id="itemName" placeholder="Kirisamba 5kg">
+
+              <label for="itemQtyOnH" class="form-label fw-semibold">Qty On Hand :</label>
+              <input type="text" class="form-control search-input" id="itemQtyOnH" placeholder="11">
+
+            </div>
+          </div>
+
+          <div class="down_div">
+
+            <div>
+              <label for="quantity" class="form-label fw-semibold">Order Quantity :</label>
+              <input type="text" class="form-control search-input" id="quantity" placeholder="2">
+            </div>
+
+
+            <button type="button" class="btn btn-warning" id="addBtn" >
+              <span class="add-to-cart mr-3"><i class="bi bi-plus-circle-fill"></i></span>
+              Add To Cart
+            </button>
+
+          </div>
+
+        </form>
+        <!-- End Form Body -->
+
+      </div>
+      <!-- End Select Item Form -->
+
+      <!-- Total Form -->
+      <div class="form_div total-form">
+
+        <!-- Title -->
+        <h5 class="div_head">
+          Amount
+          <span class="calculator"><i class="bi bi-calculator-fill icon-lg"></i></span>
+        </h5>
+        <!-- End Title -->
+
+        <!-- Form Body -->
+        <form class="form">
+
+          <div class="up_div">
+
+            <div>
+              <label for="total" class="form-label fw-semibold">Total :</label>
+              <input type="text" class="form-control search-input" id="total" placeholder="Rs: 2400.5">
+            </div>
+
+            <div>
+              <label for="cash" class="form-label fw-semibold">Cash :</label>
+              <input type="text" class="form-control search-input" id="cash" placeholder="Rs: 5000.00">
+            </div>
+
+          </div>
+
+          <div class="mid_div">
+
+            <div class="form2_set1">
+
+              <label for="discount" class="form-label fw-semibold">Select Discount :</label>
+              <select class="form-select search-input" aria-label="Default select example" id="discount">
+                <option selected>10%</option>
+                <option value="1">0%</option>
+                <option value="1">5%</option>
+                <option value="2">10%</option>
+                <option value="3">15%</option>
+                <option value="4">20%</option>
+              </select>
+
+              <label for="subTotal" class="form-label fw-semibold">Sub Total :</label>
+              <input type="text" class="form-control search-input" id="subTotal" placeholder="Rs: 2160.45">
+
+            </div>
+
+            <div class="form2_set2">
+              <label for="balance" class="form-label fw-semibold">Balance :</label>
+              <input type="text" class="form-control search-input" id="balance" placeholder="Rs: 2839.55">
+            </div>
+
+          </div>
+
+          <div class="down_div">
+
+            <button type="submit" class="btn btn-warning" id="purchaseBtn" >
+              <span class="purchase"><i class="bi bi-cart-check-fill"></i></span>
+              Purchase
+            </button>
+
+            <a href="" id="viewBtn" role="button" class="btn" data-bs-toggle="modal" data-bs-target="#viewOrderDetailsModal">
+              <span class="view"><i class="bi bi-eye-fill"></i></span>
+              View Order Details
+            </a>
+
+          </div>
+
+        </form>
+        <!-- End Form Body -->
+
+      </div>
+      <!-- End Total Form -->
+
+    </section>
+    <!-- End Form Set -->
+
+  </div>
+  <!-- End Main Section -->
+
+  </section>
+  <!-- End Order Management Section -->
+
+
+  <!-- Login Form Section -->
+  <section id="login-section">
+
+    <div class="login-background">
+
+      <div class="container">
+
+        <form class="form-group">
+
+          <div class="bg p-5 rounded">
+
+            <h2 class="text-center">Login</h2>
+
+            <label for="email" class="form-label mt-5 fw-semibold">Username</label>
+            <input type="email" class="form-control" id="email" placeholder="Enter your email">
+
+            <label for="pw" class="form-label mt-3 fw-semibold">Password</label>
+            <input type="password" class="form-control" id="pw" placeholder="Enter your password">
+            <p class="mb-5">Forgot password ?</p>
+
+            <span id="go-home-page" class="form-control btn btn-warning mb-4">Login</span>
+
+            <div class="form-down">Don't have an account ? <span id="go-register-page">Sign Up</span></div>
+
+          </div>
+
+        </form>
+
+      </div>
+
+    </div>
+
+  </section>
+  <!-- End Login Form Section -->
+
+
+  <!-- Register Form Section -->
+  <section id="register-section">
+
+    <div class="register-background">
+
+      <div class="container">
+
+        <form class="form-group">
+
+          <div class="mb-3 bg p-5 rounded">
+
+            <h2 class="text-center">Sign Up</h2>
+
+            <div class="row">
+              <div class="col-6">
+                <label for="fn" class="form-label mt-5 fw-semibold">First Name</label>
+                <input type="text" class="form-control" id="fn" placeholder="First Name">
+              </div>
+              <div class="col-6">
+                <label for="ln" class="form-label mt-5 fw-semibold">Last Name</label>
+                <input type="text" class="form-control" id="ln" placeholder="Last Name">
+              </div>
+            </div>
+
+            <label for="email1" class="form-label mt-3 fw-semibold">Username</label>
+            <input type="email" class="form-control" id="email1" placeholder="Enter your email">
+
+            <label for="pw1" class="form-label mt-3 fw-semibold">Password</label>
+            <input type="password" class="form-control" id="pw1" placeholder="Enter your password">
+            <p class="mb-5">Must have at least 4 characters</p>
+
+            <span id="go-home-page-2" class="form-control btn btn-warning mb-4">Register</span>
+
+            <div class="form-down">Already have an account ? <span id="go-login-page">Sign In</span></div>
+
+          </div>
+
+        </form>
+
+      </div>
+
+    </div>
+
+  </section>
+  <!-- End Register Form Section -->
+
+
+  <!-- Logout Page Section -->
+  <section id="logout-section">
+
+    <div class="logout">
+      <div>
+        <h2>Thank you for joining us...<br>Have a nice day !</h2>
+      </div>
+    </div>
+
+  </section>
+  <!-- End Logout Page Section -->
+
+  <!------------------------ Sections ------------------------>
+
+
+  <!------------------------- Modals -------------------------->
+
+  <!-- Add New Customer Modal -->
+  <div class="modal fade" id="newCustomerModal" tabindex="-1" aria-labelledby="newCustomerModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+
+        <div class="modal-header">
+          <h1 class="modal-title fs-5 text-center" id="newCustomerModalLabel">
+            New Customer
+            <span class="new-customer"><i class="bi bi-person-plus-fill"></i></span>
+          </h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <div class="modal-body">
+
+          <form>
+
+            <div class="mb-3">
+              <label for="customerId" class="form-label fw-semibold">Customer Id</label>
+              <input type="text" class="form-control search-input" id="customerId">
+            </div>
+
+            <div class="mb-3">
+              <label for="customerName" class="form-label fw-semibold">Customer Name</label>
+              <input type="text" class="form-control search-input" id="customerName">
+            </div>
+
+            <div class="mb-3">
+              <label for="customerAddress" class="form-label fw-semibold">Customer Address</label>
+              <input type="text" class="form-control search-input" id="customerAddress">
+            </div>
+
+            <div class="mb-3">
+              <label for="customerPhone" class="form-label fw-semibold">Customer Contact</label>
+              <input type="text" class="form-control search-input" id="customerPhone">
+            </div>
+
+          </form>
+
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-warning">
+            Save
+            <span><i class="bi bi-save"></i></span>
+          </button>
+          <button type="button" class="btn btn-warning">
+            Update
+            <span><i class="bi bi-pencil-square"></i></span>
+          </button>
+          <button type="button" class="btn btn-warning">
+            Delete
+            <span><i class="bi bi-trash3"></i></span>
+          </button>
+          <button type="button" class="btn btn-warning">
+            Clear
+            <span><i class="bi bi-backspace-reverse"></i></span>
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <!-- End Add New Customer Modal -->
+
+
+  <!-- View All Customer Modal -->
+  <div class="modal fade" id="viewAllCustomerModal" tabindex="-1" aria-labelledby="viewAllCustomerModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+
+        <div class="modal-header text-center">
+          <h1 class="modal-title fs-5" id="viewAllCustomerModalLabel">
+            All Customers
+            <span class="all-customers"><i class="bi bi-people-fill"></i></span>
+          </h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <div class="modal-body text-center">
+
+          <h6>Oshan Vishwajith</h6>
+          <h6>Akithma Subandi</h6>
+          <h6>Maheshi Kodagoda</h6>
+          <h6>Nirmal Pathum</h6>
+          <h6>Senali Nuhansa</h6>
+          <h6>Lahiru Godage</h6>
+          <h6>Sithum Abishek</h6>
+          <h6>Kalyana Shenon</h6>
+          <h6>Shanara Disnayake</h6>
+          <h6>Amanda Nadini</h6>
+          <h6>Vihaga Kalum</h6>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <!-- End View All Customer Modal -->
+
+
+  <!-- Add New Item Modal -->
+  <div class="modal fade" id="newItemModal" tabindex="-1" aria-labelledby="newItemModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+
+        <div class="modal-header">
+          <h1 class="modal-title fs-5 text-center" id="newItemModalLabel">
+            New Item
+            <span class="new-item"><i class="bi bi-bag-plus-fill"></i></span>
+          </h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <div class="modal-body">
+
+          <form>
+
+            <div class="mb-3">
+              <label for="codeItem" class="form-label fw-semibold">Item Code</label>
+              <input type="text" class="form-control search-input" id="codeItem">
+            </div>
+
+            <div class="mb-3">
+              <label for="nameItem" class="form-label fw-semibold">Item Name</label>
+              <input type="text" class="form-control search-input" id="nameItem">
+            </div>
+
+            <div class="mb-3">
+              <label for="priceItem" class="form-label fw-semibold">Item Price</label>
+              <input type="text" class="form-control search-input" id="priceItem">
+            </div>
+
+            <div class="mb-3">
+              <label for="qtyItem" class="form-label fw-semibold">Item Quantity</label>
+              <input type="text" class="form-control search-input" id="qtyItem">
+            </div>
+
+          </form>
+
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-warning">
+            Save
+            <span><i class="bi bi-save"></i></span>
+          </button>
+          <button type="button" class="btn btn-warning">
+            Update
+            <span><i class="bi bi-pencil-square"></i></span>
+          </button>
+          <button type="button" class="btn btn-warning">
+            Delete
+            <span><i class="bi bi-trash3"></i></span>
+          </button>
+          <button type="button" class="btn btn-warning">
+            Clear
+            <span><i class="bi bi-backspace-reverse"></i></span>
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <!-- End Add New Item Modal -->
+
+
+  <!-- View All Items Modal -->
+  <div class="modal fade" id="viewAllItemsModal" tabindex="-1" aria-labelledby="viewAllItemsModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+
+        <div class="modal-header text-center">
+          <h1 class="modal-title fs-5" id="viewAllItemsModalLabel">
+            All Items
+            <span class="all-items"><i class="bi bi-box-seam-fill"></i></span>
+            <span><i class="bi bi-box-seam-fill"></i></span>
+          </h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <div class="modal-body text-center">
+
+          <h6>Maliban Chocolate Biscuit</h6>
+          <h6>Kirisamba 5kg</h6>
+          <h6>Sunlight 120g</h6>
+          <h6>White Sugar 500g</h6>
+          <h6>Prima Noodle 250g</h6>
+          <h6>Soya Sourse 500ml</h6>
+          <h6>Penadol</h6>
+          <h6>Kohomba Baby Shampoo</h6>
+          <h6>Basmathi 10kg</h6>
+          <h6>Tuna Saman 200g</h6>
+          <h6>Cream Cracker Buddy</h6>
+          <h6>Coca Cola 2l</h6>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <!-- End View All Items Modal -->
+
+
+  <!-- View Order Details Modal -->
+  <div class="modal fade" id="viewOrderDetailsModal" tabindex="-1" aria-labelledby="viewOrderDetailsModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
+      <div class="modal-content">
+
+        <div class="modal-header">
+          <h1 class="modal-title fs-5 text-center" id="viewOrderDetailsModalLabel">
+            Order Details
+            <span class="detailsOfOrders"><i class="bi bi-cart4"></i></span>
+          </h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <div class="modal-body">
+
+          <!-- Order Details Table -->
+          <div class="order-table">
+
+            <table class="table table-warning table-striped table-bordered border-dark table-hover">
+              <thead class="table-dark">
+              <tr>
+                <th scope="col">Order Id</th>
+                <th scope="col">Customer</th>
+                <th scope="col">Item Code</th>
+                <th scope="col">Item Name</th>
+                <th scope="col">Unit Price</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Total</th>
+                <th scope="col">Discount</th>
+                <th scope="col">Sub Total</th>
+              </tr>
+              </thead>
+
+              <tbody class="table-group-divider">
+              <tr>
+                <th>O001</th>
+                <th>Oshan Vishwajith</th>
+                <th>I002</th>
+                <th>Kirisamba 5kg</th>
+                <th>Rs: 1200.25</th>
+                <th>2</th>
+                <th>Rs: 2400.5</th>
+                <th>10%</th>
+                <th>Rs: 2160.45</th>
+              </tr>
+              <tr>
+                <th>O002</th>
+                <th>Nirmal Pathum</th>
+                <th>I005</th>
+                <th>Coca Cola 2l</th>
+                <th>Rs: 560.00</th>
+                <th>1</th>
+                <th>Rs: 560.00</th>
+                <th>5%</th>
+                <th>Rs: 532.00</th>
+              </tr>
+              <tr>
+                <th>O003</th>
+                <th>Maheshi Kodagoda</th>
+                <th>I001</th>
+                <th>Maliban Chocolate Biscuit</th>
+                <th>Rs: 150.00</th>
+                <th>3</th>
+                <th>Rs: 450.00</th>
+                <th>0%</th>
+                <th>Rs: 450.00</th>
+              </tr>
+              <tr>
+                <th>O004</th>
+                <th>Senali Nuhansa</th>
+                <th>I003</th>
+                <th>Sunlight 120g</th>
+                <th>Rs: 130.00</th>
+                <th>10</th>
+                <th>Rs: 1300.00</th>
+                <th>5%</th>
+                <th>Rs: 1235.00</th>
+              </tr>
+              <tr>
+                <th>O005</th>
+                <th>Akithma Subandi</th>
+                <th>I004</th>
+                <th>White Sugar 500g</th>
+                <th>Rs: 345.75</th>
+                <th>4</th>
+                <th>Rs: 1383.00</th>
+                <th>5%</th>
+                <th>Rs: 1313.85</th>
+              </tr>
+              <tr>
+                <th>O006</th>
+                <th>Senali Nuhansa</th>
+                <th>I001</th>
+                <th>Maliban Chocolate Biscuit</th>
+                <th>Rs: 150.00</th>
+                <th>1</th>
+                <th>Rs: 150.00</th>
+                <th>0%</th>
+                <th>Rs: 150.00</th>
+              </tr>
+              </tbody>
+
+            </table>
+
+          </div>
+          <!-- End Order Details Table -->
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <!-- End View Order Details Modal -->
+
+  <!------------------------- End Modals -------------------------->
+
+
+
+<!-- import jquery -->
+<script src="assets/lib/jquery-3.7.1.min.js"></script>
+
+<!-- Bootstrap JS-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+<!-- plug the js file -->
+<script src="js/thogakade.js"></script>
+
+</body>
+</html>
