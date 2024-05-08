@@ -794,12 +794,12 @@
             <span><i class="bi bi-save"></i></span>
           </button>
 
-          <button type="button" id="customer-update" class="btn btn-warning" data-bs-dismiss="modal">
+          <button type="button" id="customer-update" class="btn btn-warning" data-bs-dismiss="modal" data-bs-target="#updateAlert" data-bs-toggle="modal">
             Update
             <span><i class="bi bi-pencil-square"></i></span>
           </button>
 
-          <button type="button" id="customer-delete" class="btn btn-warning" data-bs-dismiss="modal">
+          <button type="button" id="customer-delete" class="btn btn-warning" data-bs-dismiss="modal" data-bs-target="#deleteAlert" data-bs-toggle="modal">
             Delete
             <span><i class="bi bi-trash3"></i></span>
           </button>
@@ -834,6 +834,45 @@
     </div>
   </div>
   <!-- End Show Customer Saved Modal -->
+
+
+  <!-- Show Customer Updated Modal -->
+  <div class="modal fade" id="updateAlert" aria-hidden="true" aria-labelledby="exampleModalToggleLabel1" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalToggleLabel1">Alert</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="alert alert-warning" role="alert">
+            Customer updated successfully!
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End Show Customer Updated Modal -->
+
+
+  <!-- Show Customer Deleted Modal -->
+  <div class="modal fade" id="deleteAlert" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalToggleLabel2">Alert</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="alert alert-warning" role="alert">
+            Customer deleted successfully!
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End Show Customer Deleted Modal -->
+
 
   <!-- View All Customer Modal -->
   <div class="modal fade" id="viewAllCustomerModal" tabindex="-1" aria-labelledby="viewAllCustomerModalLabel" aria-hidden="true">
