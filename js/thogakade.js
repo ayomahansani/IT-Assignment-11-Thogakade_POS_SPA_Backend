@@ -293,6 +293,14 @@ $("#customer-delete").on('click', () => {
 
 
 
+// -------------------------- The start - when click a table row --------------------------
+
+$("#customer-tbl-tbody").on( 'click', 'tr', function () {
+
+    let index = $(this).index();
+});
+
+
 // -------------------------- The end - when click a table row --------------------------
 
 
