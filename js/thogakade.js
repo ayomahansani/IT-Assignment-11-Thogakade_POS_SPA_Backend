@@ -1,6 +1,8 @@
 // create an array
 var customers = [];
 
+var recordIndex;
+
 // -------------------------- The start - when click navbar and some buttons --------------------------
 
 $('#customer-section').css({display: 'none'});
@@ -227,20 +229,55 @@ $('ul').on("click", 'span', function () {
 
 $("#customer-save").on('click', () => {
 
-    var idOfCustomer = $("#customerId").val();
-    var nameOfCustomer = $("#customerName").val();
-    var addressOfCustomer = $("#customerAddress").val();
-    var phoneOfCustomer = $("#customerPhone").val();
+    // get values from inputs
+
+    var idOfCustomer = $("#customerId").val();      // customer id value
+    var nameOfCustomer = $("#customerName").val();      // customer name value
+    var addressOfCustomer = $("#customerAddress").val();        // customer address value
+    var phoneOfCustomer = $("#customerPhone").val();        // customer phone value
+
+    // check whether print those values
+
+    console.log("id: " , idOfCustomer);
+    console.log("name: " , nameOfCustomer);
+    console.log("address: " , addressOfCustomer);
+    console.log("phone: " , phoneOfCustomer);
 
     // create an object - Object Literal
 
 
 
 
+
 });
 
-
 // -------------------------- The end - when click customer save button --------------------------
+
+
+// -------------------------- The start - when click customer update button --------------------------
+
+$("#customer-update").on('click', () => {
+
+    // get values from inputs
+
+    var idOfCustomer = $("#customerId").val();      // customer id value
+    var nameOfCustomer = $("#customerName").val();      // customer name value
+    var addressOfCustomer = $("#customerAddress").val();        // customer address value
+    var phoneOfCustomer = $("#customerPhone").val();        // customer phone value
+
+
+    // get current customer object relevant to clicked row, using recordIndex
+
+
+    // assign new values to relevant object's values
+
+
+
+
+
+});
+
+// -------------------------- The end - when click customer update button --------------------------
 
 
 
