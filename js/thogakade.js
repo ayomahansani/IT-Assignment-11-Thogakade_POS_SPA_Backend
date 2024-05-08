@@ -225,8 +225,8 @@ $('ul').on("click", 'span', function () {
 // -------------------------- The end - when click navbar and some buttons --------------------------
 
 
-// -------------------------- The start - when click customer save button --------------------------
 
+// -------------------------- The start - when click customer save button --------------------------
 $("#customer-save").on('click', () => {
 
     // get values from inputs
@@ -254,8 +254,8 @@ $("#customer-save").on('click', () => {
 // -------------------------- The end - when click customer save button --------------------------
 
 
-// -------------------------- The start - when click customer update button --------------------------
 
+// -------------------------- The start - when click customer update button --------------------------
 $("#customer-update").on('click', () => {
 
     // get values from inputs
@@ -269,15 +269,31 @@ $("#customer-update").on('click', () => {
     // get current customer object relevant to clicked row, using recordIndex
 
 
-    // assign new values to relevant object's values
+    // assign new values to relevant customer object's values
 
 
+
+    // ********** special **********
+    // the clicked table's row index must equal to the customer object's index of array
+
+});
+
+// -------------------------- The end - when click customer update button --------------------------
+
+
+
+// -------------------------- The start - when click customer delete button --------------------------
+$("#customer-delete").on('click', () => {
 
 
 
 });
 
-// -------------------------- The end - when click customer update button --------------------------
+// -------------------------- The end - when click customer delete button --------------------------
+
+
+
+// -------------------------- The end - when click a table row --------------------------
 
 
 
