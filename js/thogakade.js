@@ -226,6 +226,32 @@ $('ul').on("click", 'span', function () {
 
 
 
+// -------------------------- The start - table loading --------------------------
+
+function loadTable() {
+
+    $("#customer-tbl-tbody").empty();
+
+    customers.map((item, index) => {
+
+        // want to wrap => use ` mark
+
+        let record = `<tr>
+            <td class="customer-id-value">${item.id}</td>    <!-- <td> = table data -->
+            <td class="customer-name-value">${item.name}</td>
+            <td class="customer-address-value">${item.address}</td>
+            <td class="customer-phone-value">${item.phone}</td>
+        </tr>`;
+
+        $("#customer-tbl-tbody").append(record);
+
+    });
+}
+
+// -------------------------- The end - table loading --------------------------
+
+
+
 // -------------------------- The start - when click customer save button --------------------------
 $("#customer-save").on('click', () => {
 
@@ -298,6 +324,20 @@ $("#customer-delete").on('click', () => {
 $("#customer-tbl-tbody").on( 'click', 'tr', function () {
 
     let index = $(this).index();
+    recordIndex = index;    // assign current row index to recordIndex variable
+
+    console.log("index" + index);
+
+    let id = $(this).find(".customer-id-value").text();
+    let name = $(this).find(".customer-name-value").text();
+    let address = $(this).find(".customer-address-value").text();
+    let phone = $(this).find(".customer-phone-value").text();
+
+    $("#customerId").val(id);
+    $("#customerName").val(name);
+    $("#customerAddress").val(address);
+    $("#customerPhone").val(phone);
+
 });
 
 
