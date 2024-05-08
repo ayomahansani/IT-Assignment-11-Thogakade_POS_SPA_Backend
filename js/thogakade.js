@@ -1,4 +1,4 @@
-// when click navbar
+// -------------------------- The start - when click navbar and some buttons --------------------------
 
 $('#customer-section').css({display: 'none'});
 $('#item-section').css({display: 'none'});
@@ -216,6 +216,16 @@ $('ul').on("click", 'span', function () {
     $(this).addClass('active');
 });
 /* end adding active class on click */
+
+// -------------------------- The end - when click navbar and some buttons --------------------------
+
+
+// -------------------------- The start - when click customer save button --------------------------
+
+
+
+
+// -------------------------- The end - when click customer save button --------------------------
 
 
 
