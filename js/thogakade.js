@@ -256,14 +256,12 @@ function loadTable() {
 $("#customer-save").on('click', () => {
 
     // get values from inputs
-
     var idOfCustomer = $("#customerId").val();      // customer id value
     var nameOfCustomer = $("#customerName").val();      // customer name value
     var addressOfCustomer = $("#customerAddress").val();        // customer address value
     var phoneOfCustomer = $("#customerPhone").val();        // customer phone value
 
     // check whether print those values
-
     console.log("id: " , idOfCustomer);
     console.log("name: " , nameOfCustomer);
     console.log("address: " , addressOfCustomer);
@@ -280,6 +278,7 @@ $("#customer-save").on('click', () => {
     // push to the array
     customers.push(customer);
 
+    // load the table
     loadTable();
 
     // clean the inputs values
@@ -303,10 +302,19 @@ $("#customer-update").on('click', () => {
 
 
     // get current customer object relevant to clicked row, using recordIndex
-
+    let customerObj = customers[recordIndex];
 
     // assign new values to relevant customer object's values
+    customerObj.id = idOfCustomer;
+    customerObj.name = nameOfCustomer;
+    customerObj.address = addressOfCustomer;
+    customerObj.phone = phoneOfCustomer;
 
+    // load the table
+    loadTable();
+
+    // clean the inputs values
+    $('#customer-clear').click();
 
 
     // ********** special **********
