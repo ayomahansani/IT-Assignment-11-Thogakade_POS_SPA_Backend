@@ -280,12 +280,7 @@ $("#customer-save").on('click', () => {
     // load the table
     loadTable();
 
-    // clean the inputs values
-    // $("#customer-clear").click();
-    $("#customerId").val("");
-    $("#customerName").val("");
-    $("#customerAddress").val("");
-    $("#customerPhone").val("");
+
 
 });
 // -------------------------- The end - when click customer save button --------------------------
@@ -315,14 +310,6 @@ $("#customer-update").on('click', () => {
     // load the table
     loadTable();
 
-    // clean the inputs values
-    // $("#customer-clear").click();
-
-    $("#customerId").val("");
-    $("#customerName").val("");
-    $("#customerAddress").val("");
-    $("#customerPhone").val("");
-
 
     // ********** special **********
     // the clicked table's row index must equal to the customer object's index of array
@@ -339,14 +326,6 @@ $("#customer-delete").on('click', () => {
 
     // load the table
     loadTable();
-
-    // clean the inputs values
-    // $("#customer-clear").click();
-
-    $("#customerId").val("");
-    $("#customerName").val("");
-    $("#customerAddress").val("");
-    $("#customerPhone").val("");
 
 });
 // -------------------------- The end - when click customer delete button --------------------------
