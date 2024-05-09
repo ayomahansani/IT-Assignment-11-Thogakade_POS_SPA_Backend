@@ -509,10 +509,10 @@ $("#item-update").on('click', () => {
     loadItemTable();
 
     // clean the inputs values
-    $("#customerId").val("");
-    $("#customerName").val("");
-    $("#customerAddress").val("");
-    $("#customerPhone").val("");
+    $("#codeItem").val("");
+    $("#nameItem").val("");
+    $("#priceItem").val("");
+    $("#qtyItem").val("");
 
 
     // ********** special **********
@@ -532,10 +532,10 @@ $("#item-delete").on('click', () => {
     loadItemTable();
 
     // clean the inputs values
-    $("#customerId").val("");
-    $("#customerName").val("");
-    $("#customerAddress").val("");
-    $("#customerPhone").val("");
+    $("#codeItem").val("");
+    $("#nameItem").val("");
+    $("#priceItem").val("");
+    $("#qtyItem").val("");
 
 });
 // -------------------------- The end - when click item delete button --------------------------
@@ -543,13 +543,13 @@ $("#item-delete").on('click', () => {
 
 
 // -------------------------- The start - when click item clear button --------------------------
-$("#customer-clear").on('click', () => {
+$("#item-clear").on('click', () => {
 
     // clean the inputs values
-    $("#customerId").val("");
-    $("#customerName").val("");
-    $("#customerAddress").val("");
-    $("#customerPhone").val("");
+    $("#codeItem").val("");
+    $("#nameItem").val("");
+    $("#priceItem").val("");
+    $("#qtyItem").val("");
 
 });
 // -------------------------- The end - when click item clear button --------------------------
