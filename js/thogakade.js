@@ -253,6 +253,8 @@ function loadCustomerTable() {
         $("#customer-tbl-tbody").append(record);
         $("#customer-tbl-tbody").css("font-weight", 600);
 
+
+
     });
 }
 // -------------------------- The end - customer table loading --------------------------
