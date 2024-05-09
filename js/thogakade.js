@@ -416,6 +416,13 @@ $("#viewAllCus").on('click', function () {
 });
 // -------------------------- The end - when click view all customers button --------------------------
 
+// -------------------------- The start - when click customer search button --------------------------
+$("#customer-search-btn").on('click', function () {
+
+
+});
+// -------------------------- The end - when click customer search button --------------------------
+
 
 
 /* =================================================================================================== */
