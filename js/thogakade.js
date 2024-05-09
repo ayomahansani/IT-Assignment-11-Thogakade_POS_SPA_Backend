@@ -310,7 +310,7 @@ $("#customer-update").on('click', () => {
     var phoneOfCustomer = $("#customerPhone").val();        // customer phone value
 
 
-    // get current customer object relevant to clicked row, using recordIndex
+    // get current customer object relevant to clicked row, using customerRecordIndex
     let customerObj = customers[customerRecordIndex];
 
     // assign new values to relevant customer object's values
@@ -487,27 +487,26 @@ $("#item-save").on('click', () => {
 
 
 // -------------------------- The start - when click item update button --------------------------
-$("#customer-update").on('click', () => {
+$("#item-update").on('click', () => {
 
     // get values from inputs
+    var codeOfItem = $("#codeItem").val();      // item code value
+    var nameOfItem = $("#nameItem").val();      // item name value
+    var priceOfItem = $("#priceItem").val();        // item price value
+    var qtyOfItem = $("#qtyItem").val();        // item qty value
 
-    var idOfCustomer = $("#customerId").val();      // customer id value
-    var nameOfCustomer = $("#customerName").val();      // customer name value
-    var addressOfCustomer = $("#customerAddress").val();        // customer address value
-    var phoneOfCustomer = $("#customerPhone").val();        // customer phone value
 
+    // get current item object relevant to clicked row, using itemRecordIndex
+    let itemObj = items[itemRecordIndex];
 
-    // get current customer object relevant to clicked row, using recordIndex
-    let customerObj = customers[customerRecordIndex];
-
-    // assign new values to relevant customer object's values
-    customerObj.id = idOfCustomer;
-    customerObj.name = nameOfCustomer;
-    customerObj.address = addressOfCustomer;
-    customerObj.phone = phoneOfCustomer;
+    // assign new values to relevant item object's values
+    itemObj.code = codeOfItem;
+    itemObj.name = nameOfItem;
+    itemObj.price = priceOfItem;
+    itemObj.qty = qtyOfItem;
 
     // load the table
-    loadCustomerTable();
+    loadItemTable();
 
     // clean the inputs values
     $("#customerId").val("");
@@ -525,12 +524,12 @@ $("#customer-update").on('click', () => {
 
 
 // -------------------------- The start - when click item delete button --------------------------
-$("#customer-delete").on('click', () => {
+$("#item-delete").on('click', () => {
 
-    customers.splice(customerRecordIndex, 1);
+    items.splice(itemRecordIndex, 1);
 
     // load the table
-    loadCustomerTable();
+    loadItemTable();
 
     // clean the inputs values
     $("#customerId").val("");
