@@ -1,5 +1,6 @@
-// create an array
+// create arrays
 var customers = [];
+var items = [];
 
 var recordIndex;
 
