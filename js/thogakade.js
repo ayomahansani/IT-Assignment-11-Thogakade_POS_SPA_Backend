@@ -388,8 +388,20 @@ $("#customer-tbl-tbody").on( 'click', 'tr', function () {
 // -------------------------- The start - when click view all customers button --------------------------
 $("#viewAllCus").on('click', function () {
 
-    customers.map((item) => {
-        $(".viewAllCustomerModalBody").val(item);
+    $("#all-customers-tbl-tbody").empty();
+
+    customers.map((item, index) => {
+
+        // want to wrap => use ` mark
+
+        let record = `<tr>
+            <td>${item.name}</td>  <!-- <td> = table data -->
+        </tr>`;
+
+        $("#all-customers-tbl-tbody").append(record);
+        $("#all-customers-tbl-tbody").css("font-weight", 600);
+        $("#all-customers-tbl-tbody").css("color", "#176e17");
+
     });
 
 });

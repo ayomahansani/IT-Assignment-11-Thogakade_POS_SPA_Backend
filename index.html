@@ -356,8 +356,8 @@
         </tr>
         </thead>
 
-        <tbody class="table-group-divider">
-        <tr>
+        <tbody id="item-tbl-tbody" class="table-group-divider">
+        <!--<tr>
           <th scope="row">I001</th>
           <th>Maliban Chocolate Biscuit</th>
           <th>Rs: 150.00</th>
@@ -386,7 +386,7 @@
           <th>Coca Cola 2l</th>
           <th>Rs :560.00</th>
           <th>50</th>
-        </tr>
+        </tr>-->
         </tbody>
 
       </table>
@@ -889,13 +889,18 @@
 
         <div class="modal-body text-center">
 
-          <h6 class="viewAllCustomerModalBody" ></h6>
-          <h6 class="viewAllCustomerModalBody" ></h6>
-          <h6 class="viewAllCustomerModalBody" ></h6>
-          <h6 class="viewAllCustomerModalBody" ></h6>
-          <h6 class="viewAllCustomerModalBody" ></h6>
-          <h6 class="viewAllCustomerModalBody" ></h6>
-          <h6 class="viewAllCustomerModalBody" ></h6>
+          <table class="table table-warning table-hover table-sm">
+
+            <tbody id="all-customers-tbl-tbody">
+
+            </tbody>
+
+          </table>
+
+
+
+<!--          <input type="text" class="form-control text-center" id="viewAllCustomerModalBody">-->
+
 
           <!--<h6>Oshan Vishwajith</h6>
           <h6>Akithma Subandi</h6>
@@ -959,28 +964,90 @@
         </div>
 
         <div class="modal-footer">
-          <button type="button" class="btn btn-warning">
+
+          <button type="button" id="item-save" class="btn btn-warning" data-bs-dismiss="modal" data-bs-target="#saveAlertItem" data-bs-toggle="modal">
             Save
             <span><i class="bi bi-save"></i></span>
           </button>
-          <button type="button" class="btn btn-warning">
+
+          <button type="button" id="item-update" class="btn btn-warning" data-bs-dismiss="modal" data-bs-target="#updateAlertItem" data-bs-toggle="modal">
             Update
             <span><i class="bi bi-pencil-square"></i></span>
           </button>
-          <button type="button" class="btn btn-warning">
+
+          <button type="button" id="item-delete" class="btn btn-warning" data-bs-dismiss="modal" data-bs-target="#deleteAlertItem" data-bs-toggle="modal">
             Delete
             <span><i class="bi bi-trash3"></i></span>
           </button>
-          <button type="button" class="btn btn-warning">
+
+          <button type="button" id="item-clear" class="btn btn-warning" data-bs-dismiss="modal">
             Clear
             <span><i class="bi bi-backspace-reverse"></i></span>
           </button>
+
         </div>
 
       </div>
     </div>
   </div>
   <!-- End Add New Item Modal -->
+
+
+  <!-- Show Item Saved Modal -->
+  <div class="modal fade" id="saveAlertItem" aria-hidden="true" aria-labelledby="exampleModalToggleLabelSave" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalToggleLabelSave">Alert</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="alert alert-warning" role="alert">
+            Item saved successfully!
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End Show Item Saved Modal -->
+
+
+  <!-- Show Item Updated Modal -->
+  <div class="modal fade" id="updateAlertItem" aria-hidden="true" aria-labelledby="exampleModalToggleLabelUpdate" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalToggleLabelUpdate">Alert</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="alert alert-warning" role="alert">
+            Item updated successfully!
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End Show Item Updated Modal -->
+
+
+  <!-- Show Item Deleted Modal -->
+  <div class="modal fade" id="deleteAlertItem" aria-hidden="true" aria-labelledby="exampleModalToggleLabelDelete" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalToggleLabelDelete">Alert</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="alert alert-warning" role="alert">
+            Item deleted successfully!
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End Show Item Deleted Modal -->
 
 
   <!-- View All Items Modal -->
