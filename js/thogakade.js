@@ -442,6 +442,8 @@ function loadItemTable() {
         $("#item-tbl-tbody").append(record);
         $("#item-tbl-tbody").css("font-weight", 600);
 
+        $("#item-count").html(items.length);
+
     });
 }
 // -------------------------- The end - item table loading --------------------------
