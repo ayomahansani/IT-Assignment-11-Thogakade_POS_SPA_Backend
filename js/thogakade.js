@@ -2,7 +2,9 @@
 var customers = [];
 var items = [];
 
-var recordIndex;
+var customerRecordIndex;
+var itemRecordIndex;
+
 
 // -------------------------- The start - when click navbar and some buttons --------------------------
 
@@ -227,8 +229,13 @@ $('ul').on("click", 'span', function () {
 
 
 
-// -------------------------- The start - table loading --------------------------
-function loadTable() {
+/* =================================================================================================== */
+/* ========================================== CUSTOMER PAGE ========================================== */
+/* =================================================================================================== */
+
+
+// -------------------------- The start - customer table loading --------------------------
+function loadCustomerTable() {
 
     $("#customer-tbl-tbody").empty();
 
@@ -248,7 +255,7 @@ function loadTable() {
 
     });
 }
-// -------------------------- The end - table loading --------------------------
+// -------------------------- The end - customer table loading --------------------------
 
 
 
@@ -279,7 +286,7 @@ $("#customer-save").on('click', () => {
     customers.push(customer);
 
     // load the table
-    loadTable();
+    loadCustomerTable();
 
     // clean the inputs values
     $("#customerId").val("");
@@ -304,7 +311,7 @@ $("#customer-update").on('click', () => {
 
 
     // get current customer object relevant to clicked row, using recordIndex
-    let customerObj = customers[recordIndex];
+    let customerObj = customers[customerRecordIndex];
 
     // assign new values to relevant customer object's values
     customerObj.id = idOfCustomer;
@@ -313,7 +320,7 @@ $("#customer-update").on('click', () => {
     customerObj.phone = phoneOfCustomer;
 
     // load the table
-    loadTable();
+    loadCustomerTable();
 
     // clean the inputs values
     $("#customerId").val("");
@@ -333,10 +340,10 @@ $("#customer-update").on('click', () => {
 // -------------------------- The start - when click customer delete button --------------------------
 $("#customer-delete").on('click', () => {
 
-    customers.splice(recordIndex, 1);
+    customers.splice(customerRecordIndex, 1);
 
     // load the table
-    loadTable();
+    loadCustomerTable();
 
     // clean the inputs values
     $("#customerId").val("");
@@ -363,11 +370,11 @@ $("#customer-clear").on('click', () => {
 
 
 
-// -------------------------- The start - when click a table row --------------------------
+// -------------------------- The start - when click a customer table row --------------------------
 $("#customer-tbl-tbody").on( 'click', 'tr', function () {
 
     let index = $(this).index();
-    recordIndex = index;    // assign current row index to recordIndex variable
+    customerRecordIndex = index;    // assign current row index to recordIndex variable
 
     console.log("index" + index);
 
@@ -382,7 +389,7 @@ $("#customer-tbl-tbody").on( 'click', 'tr', function () {
     $("#customerPhone").val(phone);
 
 });
-// -------------------------- The end - when click a table row --------------------------
+// -------------------------- The end - when click a customer table row --------------------------
 
 
 
@@ -401,12 +408,198 @@ $("#viewAllCus").on('click', function () {
 
         $("#all-customers-tbl-tbody").append(record);
         $("#all-customers-tbl-tbody").css("font-weight", 600);
-        $("#all-customers-tbl-tbody").css("color", "#176e17");
 
     });
 
 });
 // -------------------------- The end - when click view all customers button --------------------------
+
+
+
+/* =================================================================================================== */
+/* ========================================== ITEM PAGE ========================================== */
+/* =================================================================================================== */
+
+
+// -------------------------- The start - item table loading --------------------------
+function loadCustomerTable() {
+
+    $("#item-tbl-tbody").empty();
+
+    items.map((item, index) => {
+
+        // want to wrap => use ` mark
+
+        let record = `<tr>
+            <td class="item-code-value">${item.code}</td>    <!-- <td> = table data -->
+            <td class="item-name-value">${item.name}</td>
+            <td class="item-price-value">${item.price}</td>
+            <td class="item-qty-value">${item.qty}</td>
+        </tr>`;
+
+        $("#item-tbl-tbody").append(record);
+        $("#item-tbl-tbody").css("font-weight", 600);
+
+    });
+}
+// -------------------------- The end - item table loading --------------------------
+
+
+
+// -------------------------- The start - when click item save button --------------------------
+$("#customer-save").on('click', () => {
+
+    // get values from inputs
+    var idOfCustomer = $("#customerId").val();      // customer id value
+    var nameOfCustomer = $("#customerName").val();      // customer name value
+    var addressOfCustomer = $("#customerAddress").val();        // customer address value
+    var phoneOfCustomer = $("#customerPhone").val();        // customer phone value
+
+    // check whether print those values
+    console.log("id: " , idOfCustomer);
+    console.log("name: " , nameOfCustomer);
+    console.log("address: " , addressOfCustomer);
+    console.log("phone: " , phoneOfCustomer);
+
+    // create an object - Object Literal
+    let customer = {
+        id: idOfCustomer,
+        name: nameOfCustomer,
+        address: addressOfCustomer,
+        phone: phoneOfCustomer
+    }
+
+    // push to the array
+    customers.push(customer);
+
+    // load the table
+    loadCustomerTable();
+
+    // clean the inputs values
+    $("#customerId").val("");
+    $("#customerName").val("");
+    $("#customerAddress").val("");
+    $("#customerPhone").val("");
+
+});
+// -------------------------- The end - when click item save button --------------------------
+
+
+
+// -------------------------- The start - when click item update button --------------------------
+$("#customer-update").on('click', () => {
+
+    // get values from inputs
+
+    var idOfCustomer = $("#customerId").val();      // customer id value
+    var nameOfCustomer = $("#customerName").val();      // customer name value
+    var addressOfCustomer = $("#customerAddress").val();        // customer address value
+    var phoneOfCustomer = $("#customerPhone").val();        // customer phone value
+
+
+    // get current customer object relevant to clicked row, using recordIndex
+    let customerObj = customers[customerRecordIndex];
+
+    // assign new values to relevant customer object's values
+    customerObj.id = idOfCustomer;
+    customerObj.name = nameOfCustomer;
+    customerObj.address = addressOfCustomer;
+    customerObj.phone = phoneOfCustomer;
+
+    // load the table
+    loadCustomerTable();
+
+    // clean the inputs values
+    $("#customerId").val("");
+    $("#customerName").val("");
+    $("#customerAddress").val("");
+    $("#customerPhone").val("");
+
+
+    // ********** special **********
+    // the clicked table's row index must equal to the customer object's index of array
+
+});
+// -------------------------- The end - when click item update button --------------------------
+
+
+
+// -------------------------- The start - when click item delete button --------------------------
+$("#customer-delete").on('click', () => {
+
+    customers.splice(customerRecordIndex, 1);
+
+    // load the table
+    loadCustomerTable();
+
+    // clean the inputs values
+    $("#customerId").val("");
+    $("#customerName").val("");
+    $("#customerAddress").val("");
+    $("#customerPhone").val("");
+
+});
+// -------------------------- The end - when click item delete button --------------------------
+
+
+
+// -------------------------- The start - when click item clear button --------------------------
+$("#customer-clear").on('click', () => {
+
+    // clean the inputs values
+    $("#customerId").val("");
+    $("#customerName").val("");
+    $("#customerAddress").val("");
+    $("#customerPhone").val("");
+
+});
+// -------------------------- The end - when click item clear button --------------------------
+
+
+
+// -------------------------- The start - when click a item table row --------------------------
+$("#item-tbl-tbody").on( 'click', 'tr', function () {
+
+    let index = $(this).index();
+    itemRecordIndex = index;    // assign current row index to recordIndex variable
+
+    console.log("index" + index);
+
+    let id = $(this).find(".customer-id-value").text();
+    let name = $(this).find(".customer-name-value").text();
+    let address = $(this).find(".customer-address-value").text();
+    let phone = $(this).find(".customer-phone-value").text();
+
+    $("#customerId").val(id);
+    $("#customerName").val(name);
+    $("#customerAddress").val(address);
+    $("#customerPhone").val(phone);
+
+});
+// -------------------------- The end - when click a item table row --------------------------
+
+
+
+// -------------------------- The start - when click view all item button --------------------------
+$("#viewAllCus").on('click', function () {
+
+    $("#all-customers-tbl-tbody").empty();
+
+    customers.map((item, index) => {
+
+        // want to wrap => use ` mark
+
+        let record = `<tr>
+            <td>${item.name}</td>  <!-- <td> = table data -->
+        </tr>`;
+
+        $("#all-customers-tbl-tbody").append(record);
+        $("#all-customers-tbl-tbody").css("font-weight", 600);
+
+    });
+
+});
+// -------------------------- The end - when click view all item button --------------------------
 
 
 
