@@ -447,39 +447,39 @@ function loadItemTable() {
 
 
 // -------------------------- The start - when click item save button --------------------------
-$("#customer-save").on('click', () => {
+$("#item-save").on('click', () => {
 
     // get values from inputs
-    var idOfCustomer = $("#customerId").val();      // customer id value
-    var nameOfCustomer = $("#customerName").val();      // customer name value
-    var addressOfCustomer = $("#customerAddress").val();        // customer address value
-    var phoneOfCustomer = $("#customerPhone").val();        // customer phone value
+    var codeOfItem = $("#codeItem").val();      // item code value
+    var nameOfItem = $("#nameItem").val();      // item name value
+    var priceOfItem = $("#priceItem").val();        // item price value
+    var qtyOfItem = $("#qtyItem").val();        // item qty value
 
     // check whether print those values
-    console.log("id: " , idOfCustomer);
-    console.log("name: " , nameOfCustomer);
-    console.log("address: " , addressOfCustomer);
-    console.log("phone: " , phoneOfCustomer);
+    console.log("code: " , codeOfItem);
+    console.log("name: " , nameOfItem);
+    console.log("price: " , priceOfItem);
+    console.log("qty: " , qtyOfItem);
 
     // create an object - Object Literal
-    let customer = {
-        id: idOfCustomer,
-        name: nameOfCustomer,
-        address: addressOfCustomer,
-        phone: phoneOfCustomer
+    let item = {
+        code: codeOfItem,
+        name: nameOfItem,
+        price: priceOfItem,
+        qty: qtyOfItem
     }
 
     // push to the array
-    customers.push(customer);
+    items.push(item);
 
     // load the table
-    loadCustomerTable();
+    loadItemTable();
 
     // clean the inputs values
-    $("#customerId").val("");
-    $("#customerName").val("");
-    $("#customerAddress").val("");
-    $("#customerPhone").val("");
+    $("#codeItem").val("");
+    $("#nameItem").val("");
+    $("#priceItem").val("");
+    $("#qtyItem").val("");
 
 });
 // -------------------------- The end - when click item save button --------------------------
