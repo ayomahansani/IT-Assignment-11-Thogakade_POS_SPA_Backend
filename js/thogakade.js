@@ -422,7 +422,7 @@ $("#viewAllCus").on('click', function () {
 
 
 // -------------------------- The start - item table loading --------------------------
-function loadCustomerTable() {
+function loadItemTable() {
 
     $("#item-tbl-tbody").empty();
 
@@ -565,15 +565,15 @@ $("#item-tbl-tbody").on( 'click', 'tr', function () {
 
     console.log("index" + index);
 
-    let id = $(this).find(".customer-id-value").text();
-    let name = $(this).find(".customer-name-value").text();
-    let address = $(this).find(".customer-address-value").text();
-    let phone = $(this).find(".customer-phone-value").text();
+    let code = $(this).find(".item-code-value").text();
+    let name = $(this).find(".item-name-value").text();
+    let price = $(this).find(".item-price-value").text();
+    let qty = $(this).find(".item-qty-value").text();
 
-    $("#customerId").val(id);
-    $("#customerName").val(name);
-    $("#customerAddress").val(address);
-    $("#customerPhone").val(phone);
+    $("#codeItem").val(code);
+    $("#nameItem").val(name);
+    $("#priceItem").val(price);
+    $("#qtyItem").val(qty);
 
 });
 // -------------------------- The end - when click a item table row --------------------------
