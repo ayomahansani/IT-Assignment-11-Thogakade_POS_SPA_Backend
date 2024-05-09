@@ -580,11 +580,11 @@ $("#item-tbl-tbody").on( 'click', 'tr', function () {
 
 
 // -------------------------- The start - when click view all item button --------------------------
-$("#viewAllCus").on('click', function () {
+$("#viewAllItem").on('click', function () {
 
-    $("#all-customers-tbl-tbody").empty();
+    $("#all-items-tbl-tbody").empty();
 
-    customers.map((item, index) => {
+    items.map((item, index) => {
 
         // want to wrap => use ` mark
 
@@ -592,8 +592,8 @@ $("#viewAllCus").on('click', function () {
             <td>${item.name}</td>  <!-- <td> = table data -->
         </tr>`;
 
-        $("#all-customers-tbl-tbody").append(record);
-        $("#all-customers-tbl-tbody").css("font-weight", 600);
+        $("#all-items-tbl-tbody").append(record);
+        $("#all-items-tbl-tbody").css("font-weight", 600);
 
     });
 
