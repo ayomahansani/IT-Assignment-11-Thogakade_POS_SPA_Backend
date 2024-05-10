@@ -421,7 +421,17 @@ $("#customer-search-btn").on('click', function () {
 
     var customerDetail = $("#searchCustomer").val();
 
-    customers.map((item, index) => {
+    for (let i=0; i<customers.length; i++) {
+
+        if(item.id === customerDetail || item.name === customerDetail){
+            $("#searchedCustomerId").val(item.id);
+            $("#searchedCustomerName").val(item.name);
+            $("#searchedCustomerAddress").val(item.address);
+            $("#searchedCustomerPhone").val(item.phone);
+        }
+    }
+
+    /*customers.map((item, index) => {
 
         if(item.id === customerDetail || item.name === customerDetail){
             $("#searchedCustomerId").val(item.id);
@@ -430,7 +440,7 @@ $("#customer-search-btn").on('click', function () {
             $("#searchedCustomerPhone").val(item.phone);
         }
 
-    });
+    });*/
 
 });
 // -------------------------- The end - when click customer search button --------------------------
