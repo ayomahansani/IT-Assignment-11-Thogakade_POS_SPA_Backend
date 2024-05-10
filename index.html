@@ -189,7 +189,7 @@
           <input type="search" class="form-control search-input" id="searchCustomer" placeholder="Input ID / Name Here">
         </div>
         <div class="col-4 col-sm-6 col-md-3 col-lg-3 pb-4">
-          <button type="button" class="btn btn-warning search-btn" id="customer-search-btn">
+          <button type="button" class="btn btn-warning search-btn" id="customer-search-btn" data-bs-toggle="modal" data-bs-target="#customerDetailsModal">
             Search
             <span class="search"><i class="bi bi-search"></i></span>
           </button>
@@ -310,7 +310,7 @@
           <input type="search" class="form-control search-input" id="searchItem" placeholder="Input Code / Name Here">
         </div>
         <div class="col-4 col-sm-6 col-md-3 col-lg-3 pb-4">
-          <button type="submit" class="btn btn-warning search-btn">
+          <button type="submit" class="btn btn-warning search-btn" id="item-search-btn" data-bs-toggle="modal" data-bs-target="#itemDetailsModal">
             Search
             <span class="search"><i class="bi bi-search"></i></span>
           </button>
@@ -746,6 +746,48 @@
 
   <!------------------------- Modals -------------------------->
 
+  <!-- Search Item Modal -->
+  <div class="modal fade" id="itemDetailsModal" tabindex="-1" aria-labelledby="itemDetailsModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-sm">
+      <div class="modal-content">
+
+        <div class="modal-header">
+          <h1 class="modal-title fs-5 text-center" id="itemDetailsModalLabel">
+
+          </h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <div id="item-search-modal-body" class="modal-body">
+
+          <form>
+
+            <div class="mb-3">
+              <input type="text" class="form-control search-input text-center" id="searchedItemId">
+            </div>
+
+            <div class="mb-3">
+              <input type="text" class="form-control search-input text-center" id="searchedItemName">
+            </div>
+
+            <div class="mb-3">
+              <input type="text" class="form-control search-input text-center" id="searchedItemAddress">
+            </div>
+
+            <div class="mb-3">
+              <input type="text" class="form-control search-input text-center" id="searchedItemPhone">
+            </div>
+
+          </form>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <!-- End Search Item Modal -->
+
+
   <!-- Add New Customer Modal -->
   <div class="modal fade" id="newCustomerModal" tabindex="-1" aria-labelledby="newCustomerModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
@@ -903,6 +945,48 @@
     </div>
   </div>
   <!-- End View All Customer Modal -->
+
+
+  <!-- Search Customer Modal -->
+  <div class="modal fade" id="customerDetailsModal" tabindex="-1" aria-labelledby="customerDetailsModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-sm">
+      <div class="modal-content">
+
+        <div class="modal-header">
+          <h1 class="modal-title fs-5 text-center" id="customerDetailsModalLabel">
+
+          </h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <div id="customer-search-modal-body" class="modal-body">
+
+          <form>
+
+            <div class="mb-3">
+              <input type="text" class="form-control search-input text-center" id="searchedCustomerId">
+            </div>
+
+            <div class="mb-3">
+              <input type="text" class="form-control search-input text-center" id="searchedCustomerName">
+            </div>
+
+            <div class="mb-3">
+              <input type="text" class="form-control search-input text-center" id="searchedCustomerAddress">
+            </div>
+
+            <div class="mb-3">
+              <input type="text" class="form-control search-input text-center" id="searchedCustomerPhone">
+            </div>
+
+          </form>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <!-- End Search Customer Modal -->
 
 
   <!-- Add New Item Modal -->
