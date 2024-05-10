@@ -432,7 +432,6 @@ $("#customer-search-btn").on('click', function () {
 
     });
 
-
 });
 // -------------------------- The end - when click customer search button --------------------------
 
@@ -625,4 +624,22 @@ $("#viewAllItem").on('click', function () {
 // -------------------------- The end - when click view all item button --------------------------
 
 
+// -------------------------- The start - when click item search button --------------------------
+$("#item-search-btn").on('click', function () {
+
+    var itemDetail = $("#searchItem").val();
+
+    items.map((item, index) => {
+
+        if(item.code === itemDetail || item.name === itemDetail){
+            $("#searchedItemCode").val(item.code);
+            $("#searchedItemName").val(item.name);
+            $("#searchedItemPrice").val(item.price);
+            $("#searchedItemQty").val(item.qty);
+        }
+
+    });
+
+});
+// -------------------------- The end - when click item search button --------------------------
 
