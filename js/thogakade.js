@@ -423,12 +423,27 @@ $("#customer-search-btn").on('click', function () {
 
     for (let i=0; i<customers.length; i++) {
 
-        if(item.id === customerDetail || item.name === customerDetail){
-            $("#searchedCustomerId").val(item.id);
-            $("#searchedCustomerName").val(item.name);
-            $("#searchedCustomerAddress").val(item.address);
-            $("#searchedCustomerPhone").val(item.phone);
+        if(customers[i].id === customerDetail || customers[i].name === customerDetail){
+            $("#searchedCustomerId").val(customers[i].id);
+            $("#searchedCustomerName").val(customers[i].name);
+            $("#searchedCustomerAddress").val(customers[i].address);
+            $("#searchedCustomerPhone").val(customers[i].phone);
+
+            $("#customerDetailsModalLabel").html("Customer Details");
+
+            return;
         }
+
+        else {
+
+            $("#customerDetailsModalLabel").html("Can't find customer! Try again...");
+
+            $("#searchedCustomerId").val("No Customer");
+            $("#searchedCustomerName").val("No Customer");
+            $("#searchedCustomerAddress").val("No Customer");
+            $("#searchedCustomerPhone").val("No customer");
+        }
+
     }
 
     /*customers.map((item, index) => {
@@ -639,7 +654,32 @@ $("#item-search-btn").on('click', function () {
 
     var itemDetail = $("#searchItem").val();
 
-    items.map((item, index) => {
+    for (let i=0; i<items.length; i++) {
+
+        if(items[i].code === itemDetail || items[i].name === itemDetail){
+            $("#searchedItemCode").val(items[i].code);
+            $("#searchedItemName").val(items[i].name);
+            $("#searchedItemPrice").val(items[i].price);
+            $("#searchedItemQty").val(items[i].qty);
+
+            $("#itemDetailsModalLabel").html("Item Details");
+
+            return;
+        }
+
+        else {
+
+            $("#itemDetailsModalLabel").html("Can't find item! Try again...");
+
+            $("#searchedItemCode").val("No Item");
+            $("#searchedItemName").val("No Item");
+            $("#searchedItemPrice").val("No Item");
+            $("#searchedItemQty").val("No Item");
+        }
+
+    }
+
+    /*items.map((item, index) => {
 
         if(item.code === itemDetail || item.name === itemDetail){
             $("#searchedItemCode").val(item.code);
@@ -648,7 +688,7 @@ $("#item-search-btn").on('click', function () {
             $("#searchedItemQty").val(item.qty);
         }
 
-    });
+    });*/
 
 });
 // -------------------------- The end - when click item search button --------------------------
