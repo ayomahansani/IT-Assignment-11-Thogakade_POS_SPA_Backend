@@ -699,10 +699,12 @@ $("#item-search-btn").on('click', function () {
 /* =================================================================================================== */
 
 
+// -------------------------- The start - when click order nav link want to load customer IDs --------------------------
 $("#nav-orders").on('click', function () {
     loadCustomerComboBoxValues(customers, "#customersIdComboBox");
     loadItemComboBoxValues(items, "#itemsIdComboBox");
 });
+// -------------------------- The end - when click order nav link want to load customer IDs --------------------------
 
 function loadCustomerComboBoxValues(customerArray, customerComboBoxId) {
 
