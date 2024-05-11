@@ -706,8 +706,11 @@ $("#item-search-modal-close").on('click', function () {
 $("#nav-orders").on('click', function () {
     loadCustomerComboBoxValues(customers, "#customersIdComboBox");
     loadItemComboBoxValues(items, "#itemsIdComboBox");
+    autoFillCurrentDate();
+    autoGenerateOrderId();
 });
 // -------------------------- The end - when click order nav link want to load customer IDs --------------------------
+
 
 
 // -------------------------- The start - load customer IDs to customer combo box --------------------------
@@ -733,6 +736,7 @@ function loadCustomerComboBoxValues(customerArray, customerComboBoxId) {
 // -------------------------- The end - load customer IDs to customer combo box --------------------------
 
 
+
 // -------------------------- The start - load item IDs to item combo box --------------------------
 function loadItemComboBoxValues(itemArray, itemComboBoxId) {
 
@@ -754,3 +758,30 @@ function loadItemComboBoxValues(itemArray, itemComboBoxId) {
 
 }
 // -------------------------- The end - load item IDs to item combo box --------------------------
+
+
+
+// -------------------------- The start - fill current date --------------------------
+function autoFillCurrentDate() {
+
+    var d = new Date();
+
+    var year = d.getFullYear();
+    var month = d.getMonth() + 1;
+
+    if(month < 10){
+        month = '0' + month;
+    }
+
+    var date = d.getDate();
+
+    if(date < 10){
+        date = '0' + date;
+    }
+
+    var current_date = year + "-" + month + "-" + date;
+
+    $("#orderDate").val(current_date);
+
+}
+// -------------------------- The end - fill current date --------------------------
