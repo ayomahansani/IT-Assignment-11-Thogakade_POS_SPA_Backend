@@ -700,25 +700,45 @@ $("#item-search-btn").on('click', function () {
 
 
 $("#nav-orders").on('click', function () {
-    loadComboBoxValues(customers, "#customersIdComboBox");
-    loadComboBoxValues(items, "#itemsIdComboBox");
+    loadCustomerComboBoxValues(customers, "#customersIdComboBox");
+    loadItemComboBoxValues(items, "#itemsIdComboBox");
 });
 
-function loadComboBoxValues(array, comboBoxId) {
+function loadCustomerComboBoxValues(customerArray, customerComboBoxId) {
 
-    $(comboBoxId).empty();
+    $(customerComboBoxId).empty();
 
-    $(comboBoxId).append($(`<option>`, {
+    $(customerComboBoxId).append($(`<option>`, {
         text: "choose customer ID"
     }));
 
-    for (let i = 0; i < array.length; i++) {
+    for (let i = 0; i < customerArray.length; i++) {
 
-        var id = array[i].id;
+        var cusId = customerArray[i].id;
 
-        $(comboBoxId).append($(`<option>`, {
-            value: id,
-            text: id
+        $(customerComboBoxId).append($(`<option>`, {
+            value: cusId,
+            text: cusId
+        }));
+    }
+
+}
+
+function loadItemComboBoxValues(itemArray, itemComboBoxId) {
+
+    $(itemComboBoxId).empty();
+
+    $(itemComboBoxId).append($(`<option>`, {
+        text: "choose item code"
+    }));
+
+    for (let i = 0; i < itemArray.length; i++) {
+
+        var itemCode = itemArray[i].code;
+
+        $(itemComboBoxId).append($(`<option>`, {
+            value: itemCode,
+            text: itemCode
         }));
     }
 
