@@ -708,6 +708,10 @@ function loadComboBoxValues(array, comboBoxId) {
 
     $(comboBoxId).empty();
 
+    $(comboBoxId).append($(`<option>`, {
+        text: "choose customer ID"
+    }));
+
     for (let i = 0; i < array.length; i++) {
 
         var id = array[i].id;
