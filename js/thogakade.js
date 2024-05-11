@@ -693,3 +693,29 @@ $("#item-search-btn").on('click', function () {
 });
 // -------------------------- The end - when click item search button --------------------------
 
+
+/* =================================================================================================== */
+/* ========================================== ORDERS PAGE ========================================== */
+/* =================================================================================================== */
+
+
+$("#nav-orders").on('click', function () {
+    loadComboBoxValues(customers, "#customersIdComboBox");
+    loadComboBoxValues(items, "#itemsIdComboBox");
+});
+
+function loadComboBoxValues(array, comboBoxId) {
+
+    $(comboBoxId).empty();
+
+    for (let i = 0; i < array.length; i++) {
+
+        var id = array[i].id;
+
+        $(comboBoxId).append($(`<option>`, {
+            value: id,
+            text: id
+        }));
+    }
+
+}
