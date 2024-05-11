@@ -229,6 +229,7 @@ $('ul').on("click", 'span', function () {
 
 
 
+
 /* =================================================================================================== */
 /* ========================================== CUSTOMER PAGE ========================================== */
 /* =================================================================================================== */
@@ -446,19 +447,9 @@ $("#customer-search-btn").on('click', function () {
 
     }
 
-    /*customers.map((item, index) => {
-
-        if(item.id === customerDetail || item.name === customerDetail){
-            $("#searchedCustomerId").val(item.id);
-            $("#searchedCustomerName").val(item.name);
-            $("#searchedCustomerAddress").val(item.address);
-            $("#searchedCustomerPhone").val(item.phone);
-        }
-
-    });*/
-
 });
 // -------------------------- The end - when click customer search button --------------------------
+
 
 
 
@@ -679,19 +670,10 @@ $("#item-search-btn").on('click', function () {
 
     }
 
-    /*items.map((item, index) => {
-
-        if(item.code === itemDetail || item.name === itemDetail){
-            $("#searchedItemCode").val(item.code);
-            $("#searchedItemName").val(item.name);
-            $("#searchedItemPrice").val(item.price);
-            $("#searchedItemQty").val(item.qty);
-        }
-
-    });*/
-
 });
 // -------------------------- The end - when click item search button --------------------------
+
+
 
 
 /* =================================================================================================== */
@@ -706,6 +688,8 @@ $("#nav-orders").on('click', function () {
 });
 // -------------------------- The end - when click order nav link want to load customer IDs --------------------------
 
+
+// -------------------------- The start - load customer IDs to customer combo box --------------------------
 function loadCustomerComboBoxValues(customerArray, customerComboBoxId) {
 
     $(customerComboBoxId).empty();
@@ -725,7 +709,10 @@ function loadCustomerComboBoxValues(customerArray, customerComboBoxId) {
     }
 
 }
+// -------------------------- The end - load customer IDs to customer combo box --------------------------
 
+
+// -------------------------- The start - load item IDs to item combo box --------------------------
 function loadItemComboBoxValues(itemArray, itemComboBoxId) {
 
     $(itemComboBoxId).empty();
@@ -745,3 +732,4 @@ function loadItemComboBoxValues(itemArray, itemComboBoxId) {
     }
 
 }
+// -------------------------- The end - load item IDs to item combo box --------------------------
