@@ -417,6 +417,8 @@ $("#viewAllCus").on('click', function () {
 });
 // -------------------------- The end - when click view all customers button --------------------------
 
+
+
 // -------------------------- The start - when click customer search button --------------------------
 $("#customer-search-btn").on('click', function () {
 
@@ -449,6 +451,16 @@ $("#customer-search-btn").on('click', function () {
 
 });
 // -------------------------- The end - when click customer search button --------------------------
+
+
+
+// -------------------------- The start - clear the customer search bar's value --------------------------
+$("#customer-search-modal-close").on('click', function () {
+
+    $("#searchCustomer").val("");
+
+});
+// -------------------------- The end - clear the customer search bar's value --------------------------
 
 
 
