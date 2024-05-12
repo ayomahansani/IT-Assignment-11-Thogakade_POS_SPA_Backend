@@ -930,16 +930,68 @@ $("#itemsIdComboBox").change(function () {
 
 
 
+// -------------------------- The start - add-to-cart table loading --------------------------
+function loadAddToCartTable() {
+
+    $("#add-to-cart-tbl-tbody").empty();
+
+    orders.map((item, index) => {
+
+        // want to wrap => use ` mark
+
+        let record = `<tr>
+            <td>${item.code}</td>    <!-- <td> = table data -->
+            <td>${item.name}</td>
+            <td>${item.price}</td>
+            <td>${item.qty}</td>
+            <td>${item.total}</td>
+            <td> <button type="button" class="btn btn-danger" id="item-remove-btn" onclick="removeItem(${item.code})">Remove</button> </td>
+        </tr>`;
+
+        $("#add-to-cart-tbl-tbody").append(record);
+        $("#add-to-cart-tbl-tbody").css("font-weight", 600);
+        $("#item-remove-btn").css("font-weight", 600);
+
+    });
+}
+// -------------------------- The end - add-to-cart table loading --------------------------
+
+
+
 // -------------------------- The start - when click add to cart button --------------------------
 $("#addBtn").on('click', function () {
 
-    var itemCode = $("#itemCode").val();
-    var itemName = $("#itemName").val();
-    var ItemPrice = $("#itemPrice").val();
-    var itemQtyOnH = $("#itemQtyOnH").val();
+    var codeOfItem = $("#itemCode").val();
+    var nameOfItem = $("#itemName").val();
+    var priceOfItem = $("#itemPrice").val();
+    var qtyOnHOfItem = $("#itemQtyOnH").val();
 
-    var itemQtyPurchased = $("#quantity").val();
+    var qtyOfItem = $("#quantity").val();
+
+    // create an object - Object Literal
+    let order = {
+        code: codeOfItem,
+        name: nameOfItem,
+        price: priceOfItem,
+        qty: qtyOfItem,
+        total: priceOfItem * qtyOfItem
+    }
+
+    // push to the array
+    orders.push(order);
+
+    // load the table
+    loadAddToCartTable();
 
 });
 
 // -------------------------- The start - when click add to cart button --------------------------
+
+
+
+// -------------------------- The start - when click add to cart button --------------------------
+function removeItem() {
+
+}
+
+
