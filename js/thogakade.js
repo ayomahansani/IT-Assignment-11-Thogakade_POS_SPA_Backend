@@ -927,3 +927,19 @@ $("#itemsIdComboBox").change(function () {
 
 });
 // -------------------------- The end - when select a customer dropdown value , autofilled other inputs --------------------------
+
+
+
+// -------------------------- The start - when click add to cart button --------------------------
+$("#addBtn").on('click', function () {
+
+    var itemCode = $("#itemCode").val();
+    var itemName = $("#itemName").val();
+    var ItemPrice = $("#itemPrice").val();
+    var itemQtyOnH = $("#itemQtyOnH").val();
+
+    var itemQtyPurchased = $("#quantity").val();
+
+});
+
+// -------------------------- The start - when click add to cart button --------------------------

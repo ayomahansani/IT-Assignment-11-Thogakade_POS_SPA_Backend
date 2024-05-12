@@ -9,6 +9,8 @@
 }
 
 #order-section::before {
+    width: 100vw;
+    height: 165vh;
     background-color: rgba(0,0,0,0.6);
     content: "";
     position: absolute;
@@ -16,6 +18,11 @@
     bottom: 0;
     right: 0;
     left: 0;
+}
+
+#order-section .home-image {
+    width: 110%;
+    height: 165%;
 }
 
 #order-section .main-title {
@@ -59,7 +66,7 @@
     position: absolute;
 
     width: 97.2%;
-    height: 73%;
+    height:135%;
     top: 21%;
 }
 
@@ -242,6 +249,19 @@
 
 #viewOrderDetailsModal .detailsOfOrders {
     margin-left: 1rem;
+}
+
+#order-section .add-to-cart-table {
+    position: absolute;
+    height: 52%;
+    width: 96.5%;
+    border-radius: 15px;
+    margin: 1vw;
+    margin-top: 2vw;
+    padding: 2em 2em 2em 2em ;
+    box-shadow: 3px 3px 8px black;
+    background-color: burlywood;
+    opacity: 0.7;
 }
 
 
