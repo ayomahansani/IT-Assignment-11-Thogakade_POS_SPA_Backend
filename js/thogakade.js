@@ -937,6 +937,8 @@ function loadAddToCartTable() {
 
     orders.map((item, index) => {
 
+        var currentIndex = index;
+
         // want to wrap => use ` mark
 
         let record = `<tr>
@@ -945,7 +947,7 @@ function loadAddToCartTable() {
             <td>${item.price}</td>
             <td>${item.qty}</td>
             <td>${item.total}</td>
-            <td> <button type="button" class="btn btn-danger" id="item-remove-btn" onclick="removeItem(${item.code})">Remove</button> </td>
+            <td> <button type="button" class="btn btn-danger" id="item-remove-btn" onclick='removeItem("${item.code}")'>Remove</button> </td>
         </tr>`;
 
         $("#add-to-cart-tbl-tbody").append(record);
@@ -990,8 +992,8 @@ $("#addBtn").on('click', function () {
 
 
 // -------------------------- The start - when click add to cart button --------------------------
-function removeItem() {
-
+function removeItem(orderRecord) {
+    console.log(orderRecord);
 }
 
 
