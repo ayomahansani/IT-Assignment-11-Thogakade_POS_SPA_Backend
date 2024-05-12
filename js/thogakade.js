@@ -968,6 +968,44 @@ $("#addBtn").on('click', function () {
 
     var qtyOfItem = $("#quantity").val();
 
+    if(orders.length !== 0 ){
+
+        orders.map((item, index) => {
+
+            if(item.code !== codeOfItem) {
+
+                // create an object - Object Literal
+                let order = {
+                    code: codeOfItem,
+                    name: nameOfItem,
+                    price: priceOfItem,
+                    qty: qtyOfItem,
+                    total: priceOfItem * qtyOfItem
+                }
+
+                // push to the array
+                orders.push(order);
+
+                // load the table
+                loadAddToCartTable();
+
+            } else {
+
+                qtyOfItem = parseInt(qtyOfItem) + parseInt(item.qty);
+                console.log(qtyOfItem);
+
+                // update the array
+
+
+                // load the table
+                loadAddToCartTable();
+
+            }
+
+        });
+
+    } else {
+
     // create an object - Object Literal
     let order = {
         code: codeOfItem,
@@ -983,24 +1021,28 @@ $("#addBtn").on('click', function () {
     // load the table
     loadAddToCartTable();
 
+    }
+
 });
 
 // -------------------------- The start - when click add to cart button --------------------------
 
 
 
-// -------------------------- The start - when click add to cart button --------------------------
+// -------------------------- The start - when click remove button of add-to-cart table --------------------------
 function removeItem(orderRecord) {
     console.log(orderRecord);
 
-    var filt = orders.filter((a,i) => {
-        if(orderRecord === a.code) {
-            orders.splice(i,1);
+    var filt = orders.filter((item,index) => {
+
+        if(orderRecord === item.code) {
+            orders.splice(index,1);
 
             // load the table
             loadAddToCartTable();
         }
     });
 }
+// -------------------------- The start - when click remove button of add-to-cart table --------------------------
 
 
