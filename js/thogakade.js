@@ -5,6 +5,7 @@ var orders = [];
 
 var customerRecordIndex;
 var itemRecordIndex;
+var orderIndex;
 
 
 // -------------------------- The start - when click navbar and some buttons --------------------------
@@ -759,60 +760,12 @@ $("#item-search-modal-close").on('click', function () {
 
 // -------------------------- The start - when click order nav link want to load customer IDs --------------------------
 $("#nav-orders").on('click', function () {
-    loadCustomerComboBoxValues(customers, "#customersIdComboBox");
-    loadItemComboBoxValues(items, "#itemsIdComboBox");
     autoFillCurrentDate();
     autoGenerateOrderId();
+    loadCustomerComboBoxValues(customers, "#customersIdComboBox");
+    loadItemComboBoxValues(items, "#itemsIdComboBox");
 });
 // -------------------------- The end - when click order nav link want to load customer IDs --------------------------
-
-
-
-// -------------------------- The start - load customer IDs to customer combo box --------------------------
-function loadCustomerComboBoxValues(customerArray, customerComboBoxId) {
-
-    $(customerComboBoxId).empty();
-
-    $(customerComboBoxId).append($(`<option>`, {
-        text: "choose customer ID"
-    }));
-
-    for (let i = 0; i < customerArray.length; i++) {
-
-        var cusId = customerArray[i].id;
-
-        $(customerComboBoxId).append($(`<option>`, {
-            value: cusId,
-            text: cusId
-        }));
-    }
-
-}
-// -------------------------- The end - load customer IDs to customer combo box --------------------------
-
-
-
-// -------------------------- The start - load item IDs to item combo box --------------------------
-function loadItemComboBoxValues(itemArray, itemComboBoxId) {
-
-    $(itemComboBoxId).empty();
-
-    $(itemComboBoxId).append($(`<option>`, {
-        text: "choose item code"
-    }));
-
-    for (let i = 0; i < itemArray.length; i++) {
-
-        var itemCode = itemArray[i].code;
-
-        $(itemComboBoxId).append($(`<option>`, {
-            value: itemCode,
-            text: itemCode
-        }));
-    }
-
-}
-// -------------------------- The end - load item IDs to item combo box --------------------------
 
 
 
@@ -864,3 +817,82 @@ function autoGenerateOrderId() {
 
 }
 // -------------------------- The end - generate order id automatically --------------------------
+
+
+
+// -------------------------- The start - load customer IDs to customer combo box --------------------------
+function loadCustomerComboBoxValues(customerArray, customerComboBoxId) {
+
+    $(customerComboBoxId).empty();
+
+    $(customerComboBoxId).append($(`<option>`, {
+        text: "choose customer ID"
+    }));
+
+    for (let i = 0; i < customerArray.length; i++) {
+
+        var cusId = customerArray[i].id;
+
+        $(customerComboBoxId).append($(`<option>`, {
+            value: cusId,
+            text: cusId
+        }));
+    }
+
+}
+// -------------------------- The end - load customer IDs to customer combo box --------------------------
+
+
+
+// -------------------------- The start - load item IDs to item combo box --------------------------
+function loadItemComboBoxValues(itemArray, itemComboBoxId) {
+
+    $(itemComboBoxId).empty();
+
+    $(itemComboBoxId).append($(`<option>`, {
+        text: "choose item code"
+    }));
+
+    for (let i = 0; i < itemArray.length; i++) {
+
+        var itemCode = itemArray[i].code;
+
+        $(itemComboBoxId).append($(`<option>`, {
+            value: itemCode,
+            text: itemCode
+        }));
+    }
+
+}
+// -------------------------- The end - load item IDs to item combo box --------------------------
+
+
+
+// -------------------------- The start - when select a customer dropdown value , autofilled other inputs --------------------------
+$("#customersIdComboBox").change(function () {
+
+    var currentSelectionCustomerId = $(this).val();
+
+    for (let i = 0; i < customers.length; i++) {
+
+        if(customers[i].id === currentSelectionCustomerId) {
+            $("#cusId").val(customers[i].id);
+            $("#cusName").val(customers[i].name);
+            $("#cusAddress").val(customers[i].address);
+            $("#cusPhone").val(customers[i].phone);
+
+            return;
+
+        } else {
+
+            $("#cusId").val("");
+            $("#cusName").val("");
+            $("#cusAddress").val("");
+            $("#cusPhone").val("");
+
+        }
+
+    }
+
+});
+// -------------------------- The end - when select a customer dropdown value , autofilled other inputs --------------------------
