@@ -396,12 +396,13 @@ $("#customer-tbl-tbody").on( 'click', 'tr', function () {
 
 
 
-// -------------------------- The start - when click add new customers button auto generated customer id --------------------------
+// -------------------------- The start - auto generate customer id --------------------------
 $("#newCusBtn").on('click', function () {
 
     var customerLength = customers.length;
 
     if(customerLength !== 0 ) {
+
         var currentCustomerId = customers[customers.length-1].id;
         var split = [];
         split = currentCustomerId.split("C0");
@@ -412,12 +413,13 @@ $("#newCusBtn").on('click', function () {
         }else{
             $("#customerId").val("C0" + id);
         }
+
     } else {
         $("#customerId").val("C001");
     }
 
 });
-// -------------------------- The end - when click add new customers button auto generated customer id --------------------------
+// -------------------------- The end - auto generate customer id --------------------------
 
 
 
@@ -652,6 +654,33 @@ $("#item-tbl-tbody").on( 'click', 'tr', function () {
 
 });
 // -------------------------- The end - when click a item table row --------------------------
+
+
+
+// -------------------------- The start - auto generate item id --------------------------
+$("#newItemBtn").on('click', function () {
+
+    var itemLength = items.length;
+
+    if(itemLength !== 0 ) {
+
+        var currentItemCode = items[items.length-1].code;
+        var split = [];
+        split = currentItemCode.split("I0");
+        var id = parseInt(split[1]);
+        id++;
+        if(id < 10) {
+            $("#codeItem").val("I00" + id);
+        }else{
+            $("#codeItem").val("I0" + id);
+        }
+
+    } else {
+        $("#codeItem").val("I001");
+    }
+
+});
+// -------------------------- The end - auto generate item id --------------------------
 
 
 
