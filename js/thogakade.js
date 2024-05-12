@@ -1,6 +1,7 @@
 // create arrays
 var customers = [];
 var items = [];
+var orders = [];
 
 var customerRecordIndex;
 var itemRecordIndex;
@@ -363,7 +364,6 @@ $("#customer-delete").on('click', () => {
 $("#customer-clear").on('click', () => {
 
     // clean the inputs values
-    $("#customerId").val("");
     $("#customerName").val("");
     $("#customerAddress").val("");
     $("#customerPhone").val("");
@@ -624,7 +624,6 @@ $("#item-delete").on('click', () => {
 $("#item-clear").on('click', () => {
 
     // clean the inputs values
-    $("#codeItem").val("");
     $("#nameItem").val("");
     $("#priceItem").val("");
     $("#qtyItem").val("");
@@ -678,6 +677,8 @@ $("#newItemBtn").on('click', function () {
     } else {
         $("#codeItem").val("I001");
     }
+
+    // $("#priceItem").val("Rs: ");
 
 });
 // -------------------------- The end - auto generate item id --------------------------
