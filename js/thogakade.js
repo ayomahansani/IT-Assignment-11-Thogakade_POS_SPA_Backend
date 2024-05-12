@@ -396,6 +396,31 @@ $("#customer-tbl-tbody").on( 'click', 'tr', function () {
 
 
 
+// -------------------------- The start - when click add new customers button auto generated customer id --------------------------
+$("#newCusBtn").on('click', function () {
+
+    var customerLength = customers.length;
+
+    if(customerLength !== 0 ) {
+        var currentCustomerId = customers[customers.length-1].id;
+        var split = [];
+        split = currentCustomerId.split("C0");
+        var id = parseInt(split[1]);
+        id++;
+        if(id < 10) {
+            $("#customerId").val("C00" + id);
+        }else{
+            $("#customerId").val("C0" + id);
+        }
+    } else {
+        $("#customerId").val("C001");
+    }
+
+});
+// -------------------------- The end - when click add new customers button auto generated customer id --------------------------
+
+
+
 // -------------------------- The start - when click view all customers button --------------------------
 $("#viewAllCus").on('click', function () {
 
