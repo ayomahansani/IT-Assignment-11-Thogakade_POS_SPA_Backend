@@ -785,3 +785,27 @@ function autoFillCurrentDate() {
 
 }
 // -------------------------- The end - fill current date --------------------------
+
+
+
+// -------------------------- The start - generate order id automatically --------------------------
+function autoGenerateOrderId() {
+
+    var currentOrderId = $("#orderId").val();
+
+    if(currentOrderId !== "") {
+        var split = [];
+        split = currentOrderId.split("O0");
+        var id = parseInt(split[1]);
+        id++;
+        if(id < 10) {
+            $("#orderId").val("O00" + id);
+        }else{
+            $("#orderId").val("O0" + id);
+        }
+    } else {
+        $("#orderId").val("O001");
+    }
+
+}
+// -------------------------- The end - generate order id automatically --------------------------
