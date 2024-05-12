@@ -896,3 +896,34 @@ $("#customersIdComboBox").change(function () {
 
 });
 // -------------------------- The end - when select a customer dropdown value , autofilled other inputs --------------------------
+
+
+
+// -------------------------- The start - when select a customer dropdown value , autofilled other inputs --------------------------
+$("#itemsIdComboBox").change(function () {
+
+    var currentSelectionItemCode = $(this).val();
+
+    for (let i = 0; i < items.length; i++) {
+
+        if(items[i].code === currentSelectionItemCode) {
+            $("#itemCode").val(items[i].code);
+            $("#itemName").val(items[i].name);
+            $("#itemPrice").val(items[i].price);
+            $("#itemQtyOnH").val(items[i].qty);
+
+            return;
+
+        } else {
+
+            $("#itemCode").val("");
+            $("#itemName").val("");
+            $("#itemPrice").val("");
+            $("#itemQtyOnH").val("");
+
+        }
+
+    }
+
+});
+// -------------------------- The end - when select a customer dropdown value , autofilled other inputs --------------------------
