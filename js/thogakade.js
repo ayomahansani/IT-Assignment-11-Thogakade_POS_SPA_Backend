@@ -995,16 +995,13 @@ $("#addBtn").on('click', function () {
                 console.log(qtyOfItem);
 
                 // update the array
-
-
-                // load the table
-                loadAddToCartTable();
-
+                item.qty = qtyOfItem;
+                item.total = priceOfItem * qtyOfItem
             }
 
         });
 
-    } else {
+    } else if (orders.length === 0) {
 
     // create an object - Object Literal
     let order = {
