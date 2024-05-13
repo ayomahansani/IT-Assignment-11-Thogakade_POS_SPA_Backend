@@ -1286,8 +1286,34 @@ function showErrorAlert(message){
 /* =================================================================================================== */
 
 
+// -------------------------- The start - order history table loading --------------------------
+function loadOrderHistoryTable() {
+
+    $("#order-history-tbl-tbody").empty();
+
+    orders.map((item, index) => {
+
+        // want to wrap => use ` mark
+
+        let record = `<tr>
+            <td> ${item.code} </td>    <!-- <td> = table data -->
+            <td> ${item.name} </td>
+            <td> ${item.price} </td>
+            <td> ${item.qty} </td>
+        </tr>`;
+
+        $("#order-history-tbl-tbody").append(record);
+        $("#order-history-tbl-tbody").css("font-weight", 600);
+
+    });
+
+}
+// -------------------------- The end - order history table loading --------------------------
+
+
+
 // -------------------------- The start - when click view order history button --------------------------
 $("#viewBtn").on('click', function () {
-
+    loadOrderHistoryTable();
 });
 // -------------------------- The end - when click view order history button --------------------------
