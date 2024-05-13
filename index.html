@@ -439,7 +439,7 @@
               <div class="form1_set1">
 
                 <label for="orderId" class="form-label fw-semibold">Order Id :</label>
-                <input type="text" class="form-control search-input" id="orderId" disabled>
+                <input type="text" class="form-control disabled-input" id="orderId" disabled>
               </div>
 
               <div class="form1_set2">
@@ -466,20 +466,20 @@
             <div class="form1_set1">
 
               <label for="cusId" class="form-label fw-semibold">ID :</label>
-              <input type="text" class="form-control search-input" id="cusId" disabled>
+              <input type="text" class="form-control disabled-input" id="cusId" disabled>
 
               <label for="cusAddress" class="form-label fw-semibold">Address :</label>
-              <input type="text" class="form-control search-input" id="cusAddress" disabled>
+              <input type="text" class="form-control disabled-input" id="cusAddress" disabled>
 
             </div>
 
             <div class="form1_set2">
 
               <label for="cusName" class="form-label fw-semibold">Name :</label>
-              <input type="text" class="form-control search-input" id="cusName" disabled>
+              <input type="text" class="form-control disabled-input" id="cusName" disabled>
 
               <label for="cusPhone" class="form-label fw-semibold">Contact :</label>
-              <input type="text" class="form-control search-input" id="cusPhone" disabled>
+              <input type="text" class="form-control disabled-input" id="cusPhone" disabled>
 
             </div>
           </div>
@@ -523,20 +523,20 @@
             <div class="form2_set1">
 
               <label for="itemCode" class="form-label fw-semibold">Code :</label>
-              <input type="text" class="form-control search-input" id="itemCode" disabled>
+              <input type="text" class="form-control disabled-input" id="itemCode" disabled>
 
               <label for="itemPrice" class="form-label fw-semibold">Unit Price :</label>
-              <input type="text" class="form-control search-input" id="itemPrice" disabled>
+              <input type="text" class="form-control disabled-input" id="itemPrice" disabled>
 
             </div>
 
             <div class="form2_set2">
 
               <label for="itemName" class="form-label fw-semibold">Name :</label>
-              <input type="text" class="form-control search-input" id="itemName" disabled>
+              <input type="text" class="form-control disabled-input" id="itemName" disabled>
 
               <label for="itemQtyOnH" class="form-label fw-semibold">Qty On Hand :</label>
-              <input type="text" class="form-control search-input" id="itemQtyOnH" disabled>
+              <input type="text" class="form-control disabled-input" id="itemQtyOnH" disabled>
 
             </div>
           </div>
@@ -579,12 +579,12 @@
 
             <div>
               <label for="total" class="form-label fw-semibold">Total :</label>
-              <input type="text" class="form-control search-input" id="total" >
+              <input type="text" class="form-control total-input" id="total" disabled>
             </div>
 
             <div>
               <label for="cash" class="form-label fw-semibold">Cash :</label>
-              <input type="text" class="form-control search-input" id="cash">
+              <input type="text" class="form-control search-input" id="cash" placeholder="Rs: " min="0">
             </div>
 
           </div>
@@ -593,22 +593,17 @@
 
             <div class="form2_set1">
 
-              <label for="discount" class="form-label fw-semibold">Select Discount :</label>
-              <select class="form-select search-input" aria-label="Default select example" id="discount">
-                <option selected>choose</option>
-                <option value="1">0%</option>
-                <option value="2">5%</option>
-                <option value="3">10%</option>
-              </select>
+              <label for="discount" class="form-label fw-semibold">Discount (%) :</label>
+              <input type="text" class="form-control search-input" id="discount" placeholder="00%" max="100" min="0">
 
               <label for="subTotal" class="form-label fw-semibold">Sub Total :</label>
-              <input type="text" class="form-control search-input" id="subTotal">
+              <input type="text" class="form-control sub-total-input" id="subTotal" disabled>
 
             </div>
 
             <div class="form2_set2">
               <label for="balance" class="form-label fw-semibold">Balance :</label>
-              <input type="text" class="form-control search-input" id="balance">
+              <input type="text" class="form-control disabled-input" id="balance" disabled>
             </div>
 
           </div>

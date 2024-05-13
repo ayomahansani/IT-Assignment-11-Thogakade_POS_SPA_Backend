@@ -251,6 +251,24 @@
     margin-left: 1rem;
 }
 
+#order-section .disabled-input {
+    margin-bottom: 1.2em;
+    border: none;
+    background-color: #ffdebe;
+}
+
+#order-section .total-input {
+    margin-bottom: 1.2em;
+    border: none;
+    background-color: #6e8f6e;
+}
+
+#order-section .sub-total-input {
+    margin-bottom: 1.2em;
+    border: none;
+    background-color: #92be92;
+}
+
 #order-section .add-to-cart-table {
     position: absolute;
     height: 30%;

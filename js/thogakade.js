@@ -968,7 +968,9 @@ $("#addBtn").on('click', function () {
 
     var qtyOfItem = $("#quantity").val();
 
-    if(orders.length !== 0 ){
+
+
+    /*if(orders.length !== 0 ){
 
         orders.map((item, index) => {
 
@@ -1018,7 +1020,7 @@ $("#addBtn").on('click', function () {
     // load the table
     loadAddToCartTable();
 
-    }
+    }*/
 
 });
 
