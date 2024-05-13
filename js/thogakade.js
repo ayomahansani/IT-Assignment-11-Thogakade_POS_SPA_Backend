@@ -805,6 +805,13 @@ autoGenerateOrderId("");
 
 
 
+// ---------------- The start - when first time order page is loaded, want to fill total inputs ----------------
+$("#subTotal").val("Rs.000.00");
+$("#total").val("Rs.000.00");
+// ---------------- The end - when first time order page is loaded, want to fill total inputs ----------------
+
+
+
 // -------------------------- The start - generate order id automatically --------------------------
 function autoGenerateOrderId(orderId) {
 
@@ -1020,58 +1027,6 @@ $("#addBtn").on('click', function () {
 
     $("#total").val(`Rs. ${sum}`);
 
-    /*if(orders.length !== 0 ){
-
-        orders.map((item, index) => {
-
-            if(item.code !== codeOfItem) {
-
-                // create an object - Object Literal
-                let order = {
-                    code: codeOfItem,
-                    name: nameOfItem,
-                    price: priceOfItem,
-                    qty: qtyOfItem,
-                    total: priceOfItem * qtyOfItem
-                }
-
-                // push to the array
-                orders.push(order);
-
-                // load the table
-                loadAddToCartTable();
-
-            } else {
-
-                qtyOfItem = parseInt(qtyOfItem) + parseInt(item.qty);
-                console.log(qtyOfItem);
-
-                // update the array
-                item.qty = qtyOfItem;
-                item.total = priceOfItem * qtyOfItem
-            }
-
-        });
-
-    } else if (orders.length === 0) {
-
-    // create an object - Object Literal
-    let order = {
-        code: codeOfItem,
-        name: nameOfItem,
-        price: priceOfItem,
-        qty: qtyOfItem,
-        total: priceOfItem * qtyOfItem
-    }
-
-    // push to the array
-    orders.push(order);
-
-    // load the table
-    loadAddToCartTable();
-
-    }*/
-
 });
 // -------------------------- The end - when click add to cart button --------------------------
 
@@ -1228,12 +1183,41 @@ $("#purchaseBtn").on('click', function () {
                 loadItemComboBoxValues(items, "#itemsIdComboBox");
                 loadCustomerComboBoxValues(customers, "#customersIdComboBox");
 
+
+                // want to update item table's item qty
+
+                addedItems.map((item, index) => {
+
+                    var itemCode = item.code;
+                    var itemQty = item.qty;
+
+                    items.filter((item, index) => {
+
+                        if(item.code === itemCode){
+                            item.qty = item.qty - itemQty;
+                        }
+
+                    });
+
+                });
+
+                // load the item table again
+                loadItemTable();
+
+
                 // want to empty the addedItems[] array because order has done
                 addedItems = [];
 
                 // want to remove all items from cart
                 loadAddToCartTable()
 
+                // want to fill current date
+                autoFillCurrentDate();
+
+                // want to generate next order id
+                autoGenerateOrderId(orderId);
+
+                // order save pop up
                 if(!orderDiscount) {
                     Swal.fire(
                         `Rs: ${orderTotal}`,
@@ -1248,19 +1232,12 @@ $("#purchaseBtn").on('click', function () {
                     )
                 }
 
+                // finally want to fill total inputs like follow
                 $("#subTotal").val("Rs.000.00");
                 $("#total").val("Rs.000.00");
 
-                // want to fill current date
-                autoFillCurrentDate();
-
-                // want to generate next order id
-                autoGenerateOrderId(orderId);
-
-            } else {
-
-                $("#total").val("Rs. " +  orderTotal);
-                $("#subTotal").val("Rs. " +  orderTotal);
+                // update the home page's order card
+                $("#orders-count").html(orders.length);
 
             }
         });
