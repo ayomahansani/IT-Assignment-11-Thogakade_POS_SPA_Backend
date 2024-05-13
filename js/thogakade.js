@@ -1150,8 +1150,8 @@ $("#purchaseBtn").on('click', function () {
             text: "You won't be able to revert this!",
             icon: 'warning',
             showCancelButton: true,
-            confirmButtonColor: '#2d852d',
-            cancelButtonColor: '#c09647',
+            confirmButtonColor: '#1a791a',
+            cancelButtonColor: '#FFD700FF',
             confirmButtonText: 'Yes, Place Order!'
 
         }).then((result) => {

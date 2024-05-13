@@ -73,7 +73,7 @@
 #order-section form .search-input {
     margin-bottom: 1.2em;
     border: none;
-    background-color: #eed8c7;
+    background-color: #fff0e1;
 }
 
 #order-section input {
@@ -254,14 +254,14 @@
 #order-section .disabled-input {
     margin-bottom: 1.2em;
     border: none;
-    background-color: #ffdebe;
+    background-color: #ffdfc8;
 }
 
 #order-section .total-input {
     font-weight: 900;
     margin-bottom: 1.2em;
     border: none;
-    background-color: #6e8f6e;
+    background-color: #e59035;
 }
 
 #order-section .sub-total-input {
