@@ -884,7 +884,7 @@ function loadItemComboBoxValues(itemArray, itemComboBoxId) {
 
 
 
-// -------------------------- The start - when select a customer dropdown value , autofilled other inputs --------------------------
+// ---------------- The start - when select a customer dropdown value , autofilled other inputs ----------------
 $("#customersIdComboBox").change(function () {
 
     var currentSelectionCustomerId = $(this).val();
@@ -911,11 +911,11 @@ $("#customersIdComboBox").change(function () {
     }
 
 });
-// -------------------------- The end - when select a customer dropdown value , autofilled other inputs --------------------------
+// ---------------- The end - when select a customer dropdown value , autofilled other inputs ----------------
 
 
 
-// -------------------------- The start - when select a customer dropdown value , autofilled other inputs --------------------------
+// ---------------- The start - when select a customer dropdown value , autofilled other inputs ----------------
 $("#itemsIdComboBox").change(function () {
 
     var currentSelectionItemCode = $(this).val();
@@ -942,7 +942,7 @@ $("#itemsIdComboBox").change(function () {
     }
 
 });
-// -------------------------- The end - when select a customer dropdown value , autofilled other inputs --------------------------
+// ---------------- The end - when select a customer dropdown value , autofilled other inputs ----------------
 
 
 
@@ -1279,23 +1279,15 @@ function showErrorAlert(message){
 
 
 
+
+
+/* =================================================================================================== */
+/* ========================================== ORDERS HISTORY ========================================== */
+/* =================================================================================================== */
+
+
 // -------------------------- The start - when click view order history button --------------------------
 $("#viewBtn").on('click', function () {
-
-    $("#all-items-tbl-tbody").empty();
-
-    items.map((item, index) => {
-
-        // want to wrap => use ` mark
-
-        let record = `<tr>
-            <td>${item.name}</td>  <!-- <td> = table data -->
-        </tr>`;
-
-        $("#all-items-tbl-tbody").append(record);
-        $("#all-items-tbl-tbody").css("font-weight", 600);
-
-    });
 
 });
 // -------------------------- The end - when click view order history button --------------------------

@@ -236,36 +236,7 @@
         </thead>
 
         <tbody id="customer-tbl-tbody" class="table-group-divider">
-        <!--<tr>
-          <th scope="row">200178453425V</th>
-          <th>Oshan Vishwajith</th>
-          <th>Kadawatha</th>
-          <th>0772087926</th>
-        </tr>
-        <tr>
-          <th scope="row">200451906783V</th>
-          <th>Akithma Subandi</th>
-          <th>Delgoda</th>
-          <th>0783456120</th>
-        </tr>
-        <tr>
-          <th scope="row">199756092365V</th>
-          <th>Maheshi Kodagoda</th>
-          <th>Colombo</th>
-          <th>0720438745</th>
-        </tr>
-        <tr>
-          <th scope="row">199909459879V</th>
-          <th>Nirmal Pathum</th>
-          <th>Galle</th>
-          <th>0761250923</th>
-        </tr>
-        <tr>
-          <th scope="row">200061547786V</th>
-          <th>Senali Nuhansa</th>
-          <th>Panadura</th>
-          <th>0750332345</th>
-        </tr>-->
+
         </tbody>
 
       </table>
@@ -1180,7 +1151,7 @@
 
         <div class="modal-header">
           <h1 class="modal-title fs-5 text-center" id="viewOrderDetailsModalLabel">
-            Order Details
+            Order History
             <span class="detailsOfOrders"><i class="bi bi-cart4"></i></span>
           </h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -1191,88 +1162,21 @@
           <!-- Order Details Table -->
           <div class="order-table">
 
-            <table class="table table-warning table-striped table-bordered border-dark table-hover">
+            <table class="table table-warning table-striped table-bordered border-dark table-hover table-sm">
               <thead class="table-dark">
               <tr>
-                <th scope="col">Order Id</th>
-                <th scope="col">Customer</th>
-                <th scope="col">Item Code</th>
-                <th scope="col">Item Name</th>
-                <th scope="col">Unit Price</th>
-                <th scope="col">Quantity</th>
+                <th scope="col">Order ID</th>
+                <th scope="col">Date</th>
+                <th scope="col">Customer ID</th>
+                <th scope="col">Items</th>
                 <th scope="col">Total</th>
                 <th scope="col">Discount</th>
                 <th scope="col">Sub Total</th>
               </tr>
               </thead>
 
-              <tbody class="table-group-divider">
-              <tr>
-                <th>O001</th>
-                <th>Oshan Vishwajith</th>
-                <th>I002</th>
-                <th>Kirisamba 5kg</th>
-                <th>Rs: 1200.25</th>
-                <th>2</th>
-                <th>Rs: 2400.5</th>
-                <th>10%</th>
-                <th>Rs: 2160.45</th>
-              </tr>
-              <tr>
-                <th>O002</th>
-                <th>Nirmal Pathum</th>
-                <th>I005</th>
-                <th>Coca Cola 2l</th>
-                <th>Rs: 560.00</th>
-                <th>1</th>
-                <th>Rs: 560.00</th>
-                <th>5%</th>
-                <th>Rs: 532.00</th>
-              </tr>
-              <tr>
-                <th>O003</th>
-                <th>Maheshi Kodagoda</th>
-                <th>I001</th>
-                <th>Maliban Chocolate Biscuit</th>
-                <th>Rs: 150.00</th>
-                <th>3</th>
-                <th>Rs: 450.00</th>
-                <th>0%</th>
-                <th>Rs: 450.00</th>
-              </tr>
-              <tr>
-                <th>O004</th>
-                <th>Senali Nuhansa</th>
-                <th>I003</th>
-                <th>Sunlight 120g</th>
-                <th>Rs: 130.00</th>
-                <th>10</th>
-                <th>Rs: 1300.00</th>
-                <th>5%</th>
-                <th>Rs: 1235.00</th>
-              </tr>
-              <tr>
-                <th>O005</th>
-                <th>Akithma Subandi</th>
-                <th>I004</th>
-                <th>White Sugar 500g</th>
-                <th>Rs: 345.75</th>
-                <th>4</th>
-                <th>Rs: 1383.00</th>
-                <th>5%</th>
-                <th>Rs: 1313.85</th>
-              </tr>
-              <tr>
-                <th>O006</th>
-                <th>Senali Nuhansa</th>
-                <th>I001</th>
-                <th>Maliban Chocolate Biscuit</th>
-                <th>Rs: 150.00</th>
-                <th>1</th>
-                <th>Rs: 150.00</th>
-                <th>0%</th>
-                <th>Rs: 150.00</th>
-              </tr>
+              <tbody id="order-history-tbl-tbody" class="table-group-divider">
+
               </tbody>
 
             </table>
