@@ -821,7 +821,7 @@ function autoGenerateOrderId() {
 }
 // -------------------------- The end - generate order id automatically --------------------------
 
-
+autoGenerateOrderId();
 
 // -------------------------- The start - load customer IDs to customer combo box --------------------------
 function loadCustomerComboBoxValues(customerArray, customerComboBoxId) {
@@ -1215,19 +1215,24 @@ $("#purchaseBtn").on('click', function () {
 
                 console.log(order);
 
-
+                // want to reset the forms
                 $("#order-section form").trigger('reset');
 
+                // want to load combobox again
                 loadItemComboBoxValues(items, "#itemsIdComboBox");
                 loadCustomerComboBoxValues(customers, "#customersIdComboBox");
 
-                loadIdDate();
+                // want to generate next order id
+                autoGenerateOrderId();
 
+                // want to empty the addedItems[] array because order has done
                 addedItems = [];
-                loadAddItemData();
+
+                // want to update item table's item qty
+                loadAddToCartTable()
 
                 Swal.fire(
-                    `Rs: ${total}`,
+                    `Rs: ${orderSubTotal}`,
                     'The Order has been placed!',
                     'success'
                 )
