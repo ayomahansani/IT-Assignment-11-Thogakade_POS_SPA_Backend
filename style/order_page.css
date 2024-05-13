@@ -240,11 +240,11 @@
 }
 
 #order-section .selectItem {
-    margin-left: 15rem;
+    margin-left: 14rem;
 }
 
 #order-section .invoice {
-    margin-left: 13rem;
+    margin-left: 12rem;
 }
 
 #viewOrderDetailsModal .detailsOfOrders {
@@ -258,6 +258,7 @@
 }
 
 #order-section .total-input {
+    font-weight: 900;
     margin-bottom: 1.2em;
     border: none;
     background-color: #6e8f6e;

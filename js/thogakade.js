@@ -5,6 +5,8 @@ var orders = [];
 let addedItems = [];
 let tempItems = [];
 
+let sum = 0;
+
 var customerRecordIndex;
 var itemRecordIndex;
 var orderIndex;
@@ -942,11 +944,11 @@ function loadAddToCartTable() {
         // want to wrap => use ` mark
 
         let record = `<tr>
-            <td>${item.code}</td>    <!-- <td> = table data -->
-            <td>${item.name}</td>
-            <td>${item.price}</td>
-            <td>${item.qty}</td>
-            <td>${item.total}</td>
+            <td> ${item.code} </td>    <!-- <td> = table data -->
+            <td> ${item.name} </td>
+            <td> ${item.price} </td>
+            <td> ${item.qty} </td>
+            <td> ${item.price * item.qty} </td>
             <td> <button type="button" class="btn btn-danger" onclick='removeItem("${item.code}")'>Remove</button> </td>
         </tr>`;
 
@@ -967,6 +969,7 @@ $("#addBtn").on('click', function () {
     var nameOfItem = $("#itemName").val();
     var priceOfItem = Number.parseFloat($("#itemPrice").val());
     var qtyOfItem = Number.parseInt($("#quantity").val());
+    var itemTotal = priceOfItem * qtyOfItem;
 
 
     itemRecordIndex = items.findIndex(item => item.code === codeOfItem);
@@ -988,7 +991,7 @@ $("#addBtn").on('click', function () {
             name: nameOfItem,
             price: priceOfItem,
             qty: qtyOfItem,
-            total: priceOfItem * qtyOfItem
+            total: itemTotal
         }
 
         // push to the array
@@ -998,13 +1001,19 @@ $("#addBtn").on('click', function () {
         addedItems[existingItem].qty += qtyOfItem;
     }
 
-    // load the table
+    // load the add-to-cart table
     loadAddToCartTable();
 
     tempItems.push(items[itemRecordIndex]);
     items[itemRecordIndex].qty -= qtyOfItem;
     $("#itemQtyOnH").val(items[itemRecordIndex].qty);
 
+    // load the item table
+    loadItemTable();
+
+    sum += itemTotal;
+
+    $("#total").val(`Total: Rs. ${sum}`);
 
     /*if(orders.length !== 0 ){
 
