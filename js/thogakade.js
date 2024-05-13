@@ -1184,26 +1184,8 @@ $("#purchaseBtn").on('click', function () {
                 loadCustomerComboBoxValues(customers, "#customersIdComboBox");
 
 
-                // want to update item table's item qty
-
-                addedItems.map((item, index) => {
-
-                    var itemCode = item.code;
-                    var itemQty = item.qty;
-
-                    items.filter((item, index) => {
-
-                        if(item.code === itemCode){
-                            item.qty = item.qty - itemQty;
-                        }
-
-                    });
-
-                });
-
-                // load the item table again
+                // load the item table again, so we can see there was updated item table's item qty
                 loadItemTable();
-
 
                 // want to empty the addedItems[] array because order has done
                 addedItems = [];
@@ -1294,3 +1276,26 @@ function showErrorAlert(message){
     });
 }
 //-------------------------- The end - show error alert --------------------------
+
+
+
+// -------------------------- The start - when click view order history button --------------------------
+$("#viewBtn").on('click', function () {
+
+    $("#all-items-tbl-tbody").empty();
+
+    items.map((item, index) => {
+
+        // want to wrap => use ` mark
+
+        let record = `<tr>
+            <td>${item.name}</td>  <!-- <td> = table data -->
+        </tr>`;
+
+        $("#all-items-tbl-tbody").append(record);
+        $("#all-items-tbl-tbody").css("font-weight", 600);
+
+    });
+
+});
+// -------------------------- The end - when click view order history button --------------------------
