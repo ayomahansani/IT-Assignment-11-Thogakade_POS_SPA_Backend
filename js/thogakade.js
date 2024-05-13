@@ -949,7 +949,7 @@ function loadAddToCartTable() {
             <td> ${item.price} </td>
             <td> ${item.qty} </td>
             <td> ${item.price * item.qty} </td>
-            <td> <button type="button" class="btn btn-danger" onclick='removeItem("${item.code}")'>Remove</button> </td>
+            <td> <button type="button" class="btn btn-danger" onclick='removeItem("${item.code}", Number.parseInt(${item.qty}))'>Remove</button> </td>
         </tr>`;
 
         $("#add-to-cart-tbl-tbody").append(record);
@@ -1073,13 +1073,29 @@ $("#addBtn").on('click', function () {
 
 
 // -------------------------- The start - when click remove button of add-to-cart table --------------------------
-function removeItem(orderRecord) {
-    console.log(orderRecord);
+function removeItem(addedItemRecord, qty) {
+    console.log(addedItemRecord);
+    console.log(qty);
 
     var filt = addedItems.filter((item,index) => {
 
-        if(orderRecord === item.code) {
+        if(addedItemRecord === item.code) {
             addedItems.splice(index,1);
+
+            items.filter((item,index) => {
+
+                if(item.code === addedItemRecord) {
+                    item.qty += qty;
+                    loadItemComboBoxValues(items, "#itemsIdComboBox");
+
+                    $("#itemCode").val("");
+                    $("#itemName").val("");
+                    $("#itemPrice").val("");
+                    $("#itemQtyOnH").val("");
+                    $("#quantity").val("");
+
+                }
+            });
 
             // load the table
             loadAddToCartTable();
@@ -1125,6 +1141,7 @@ $("#cash").on('input', function () {
     // get total value and slice it 4 characters -> Extract the Sub Total value
     let total = Number.parseFloat($("#total").val().slice(4));
 
+
     if( discount > 0) {
 
         // calculate the balance
@@ -1156,14 +1173,15 @@ $("#purchaseBtn").on('click', function () {
 
     var orderId = $("#orderId").val();
     var orderDate = $("#orderDate").val();
-    var customerName = $("#cusName").val();
+    var customerId = $("#cusId").val();
     var orderTotal = Number.parseFloat($("#total").val().slice(4));
     var orderDiscount = Number.parseFloat($("#discount").val());
     var orderSubTotal = Number.parseFloat($("#subTotal").val().slice(4));
+    var cash = Number.parseFloat($("#cash").val());
 
     var chosenItems = addedItems;
 
-    let validated = checkValidation(orderId,orderDate,customerName,chosenItems,orderTotal,orderDiscount,orderSubTotal);
+    let validated = checkValidation(customerId,chosenItems,orderTotal,orderDiscount,orderSubTotal,cash);
 
 
 
@@ -1175,24 +1193,37 @@ $("#purchaseBtn").on('click', function () {
 
 
 //-------------------------- The start - check validations when place order --------------------------
-function checkValidation(orderId, date, customer, items, total, discount,subTotal) {
+function checkValidation(customer, items, total, discount, subTotal, cash) {
+
     if(!customer){
         showErrorAlert("Please select a customer to place order");
         return false;
     }
-    if(items.length == 0){
+
+    if(items.length === 0){
         showErrorAlert("Please select a item/items to place order");
         return false;
     }
-    if(!$("#cash").val()){
+
+    if(!cash){
         showErrorAlert("Please enter the cash amount");
         return false;
     }
-    if((Number.parseFloat($("#cash").val()) - total) < 0){
-        showErrorAlert("The cash is not enough to pay the order!!!");
-        return false;
+
+    if(!discount){
+        if((cash - total) < 0){
+            showErrorAlert("The cash is not enough to pay the order!!!");
+            return false;
+        }
+        return true;
+    } else {
+        if((cash - subTotal) < 0){
+            showErrorAlert("The cash is not enough to pay the order!!!");
+            return false;
+        }
+        return true;
     }
-    return true;
+
 }
 //-------------------------- The end - check validations when place order --------------------------
 
