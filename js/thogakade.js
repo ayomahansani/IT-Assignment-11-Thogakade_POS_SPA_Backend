@@ -1156,5 +1156,46 @@ $("#cash").on('input', function () {
 // -------------------------- The start - save order when click purchase button of order page --------------------------
 $("#purchaseBtn").on('click', function () {
 
+    sum = 0;
+
+    var orderId = $("#orderId").val();
+    var orderDate = $("#orderDate").val();
+    var customerName = $("#cusName").val();
+    var orderTotal = Number.parseFloat($("#total").val().slice(4));
+    var orderDiscount = Number.parseFloat($("#discount").val());
+    var orderSubTotal = Number.parseFloat($("#subTotal").val().slice(4));
+
+    var chosenItems = addedItems;
+
+    let validated = checkValidation(orderId,orderDate,customerName,orderTotal,orderDiscount,orderSubTotal);
+
+
+
+
+
 });
 // -------------------------- The end - save order when click purchase button of order page --------------------------
+
+
+
+//-------------------------- The start - check validations when place order --------------------------
+function checkValidation(orderId, date, customer, items, total, discount) {
+    if(!customer){
+        showErrorAlert("Please select a customer to place order");
+        return false;
+    }
+    if(items.length == 0){
+        showErrorAlert("Please select a item/items to place order");
+        return false;
+    }
+    if(!$("#cash").val()){
+        showErrorAlert("Please enter the cash amount");
+        return false;
+    }
+    if((Number.parseFloat($("#cash").val()) - total) < 0){
+        showErrorAlert("The cash is not enough to pay the order!!!");
+        return false;
+    }
+    return true;
+}
+//-------------------------- The end - check validations when place order --------------------------
