@@ -765,7 +765,6 @@ $("#item-search-modal-close").on('click', function () {
 // -------------------------- The start - when click order nav link want to load customer IDs --------------------------
 $("#nav-orders").on('click', function () {
     autoFillCurrentDate();
-    autoGenerateOrderId();
     loadCustomerComboBoxValues(customers, "#customersIdComboBox");
     loadItemComboBoxValues(items, "#itemsIdComboBox");
 });
@@ -1183,9 +1182,62 @@ $("#purchaseBtn").on('click', function () {
 
     let validated = checkValidation(customerId,chosenItems,orderTotal,orderDiscount,orderSubTotal,cash);
 
+    if(validated) {
+
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#1e7c1e',
+            cancelButtonColor: '#dda233',
+            confirmButtonText: 'Yes, Place Order!'
+
+        }).then((result) => {
+
+            if (result.isConfirmed) {
+
+                /*let order = new OrderModel(orderId, date, customer, items, discount, total);*/
+
+                // create an object - Object Literal
+                let order = {
+                    idOfOrder: orderId,
+                    dateOfOrder: orderDate,
+                    idOfCustomer: customerId,
+                    itemsOfOrder: chosenItems,
+                    totalOfOrder: orderTotal,
+                    discountOfOrder: orderDiscount,
+                    subTotalOfOrder:orderSubTotal
+                }
+
+                // push to the orders[] array
+                orders.push(order);
+
+                console.log(order);
 
 
+                $("#order-section form").trigger('reset');
 
+                loadItemComboBoxValues(items, "#itemsIdComboBox");
+                loadCustomerComboBoxValues(customers, "#customersIdComboBox");
+
+                loadIdDate();
+
+                addedItems = [];
+                loadAddItemData();
+
+                Swal.fire(
+                    `Rs: ${total}`,
+                    'The Order has been placed!',
+                    'success'
+                )
+
+            }
+        });
+    }
+
+    $("#subTotal").text('SubTotal: Rs.000.00');
+    $("#sum").text('Total: Rs.000.00');
 
 });
 // -------------------------- The end - save order when click purchase button of order page --------------------------
