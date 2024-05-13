@@ -1105,6 +1105,9 @@ $("#discount").on('input', function () {
 
     // calculate the discounted total
     let discountedTotal = subTotal - ( subTotal * discount / 100 );
+
+    // update the Sub Total with the discounted value
+    $("#subTotal").val(`Sub Total: Rs. ${discountedTotal.toFixed(2)}`);
 });
 
 // -------------------------- The end - when input discount, auto generated sub total --------------------------
