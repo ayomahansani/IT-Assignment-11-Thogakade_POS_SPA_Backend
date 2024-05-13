@@ -978,7 +978,11 @@ $("#addBtn").on('click', function () {
 
     // check the typed qty, equal or lower than qtyOnHand
     if( qtyOfItem > items[itemRecordIndex].qty || !qtyOfItem) {
-        showErrorAlert("Please enter a valid qty..Need to be lower than or equal to qty on hand");
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: "Please enter a valid qty..Need to be lower than or equal to qty on hand",
+        });
         return;
     }
 
@@ -1068,18 +1072,8 @@ $("#addBtn").on('click', function () {
     }*/
 
 });
+// -------------------------- The end - when click add to cart button --------------------------
 
-// -------------------------- The start - when click add to cart button --------------------------
-
-
-//showErrorAlert
-function showErrorAlert(message){
-    Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: message,
-    });
-}
 
 
 // -------------------------- The start - when click remove button of add-to-cart table --------------------------
@@ -1098,4 +1092,20 @@ function removeItem(orderRecord) {
 }
 // -------------------------- The start - when click remove button of add-to-cart table --------------------------
 
+
+
+// -------------------------- The start - when input discount, auto generated sub total --------------------------
+$("#discount").on('input', function () {
+
+    // get total value and slice it 11 characters -> Extract the Sub Total value
+    let subTotal = Number.parseFloat($("#total").text().slice(11));
+
+    // get the discount input value (default to 0 if not a valid number)
+    let discount = Number.parseFloat($("#discount").val()) || 0;
+
+    // calculate the discounted total
+    let discountedTotal = subTotal - ( subTotal * discount / 100 );
+});
+
+// -------------------------- The end - when input discount, auto generated sub total --------------------------
 
