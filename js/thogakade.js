@@ -972,18 +972,21 @@ $("#addBtn").on('click', function () {
     var itemTotal = priceOfItem * qtyOfItem;
 
 
+    // chosen item's index of items[] array
     itemRecordIndex = items.findIndex(item => item.code === codeOfItem);
     console.log(itemRecordIndex);
 
+    // check the typed qty, equal or lower than qtyOnHand
     if( qtyOfItem > items[itemRecordIndex].qty || !qtyOfItem) {
         showErrorAlert("Please enter a valid qty..Need to be lower than or equal to qty on hand");
         return;
     }
 
+    // check the chosen item, include to addedItems[] array and get index
     let existingItem = addedItems.findIndex(item => item.code === codeOfItem);
     console.log("index : " + existingItem);
 
-    if(existingItem < 0) {
+    if(existingItem < 0) {  // if addedItems[] array is empty, add a new object to array.
 
         // create an object - Object Literal
         let addedItem = {
@@ -997,7 +1000,7 @@ $("#addBtn").on('click', function () {
         // push to the array
         addedItems.push(addedItem);
 
-    } else {
+    } else {    // if addedItems[] array is not empty, want to update qty.
         addedItems[existingItem].qty += qtyOfItem;
     }
 
