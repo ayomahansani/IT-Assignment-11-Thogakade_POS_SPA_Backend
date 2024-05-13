@@ -1017,7 +1017,7 @@ $("#addBtn").on('click', function () {
 
     sum += itemTotal;   // update the total when add new items
 
-    $("#total").val(`Total: Rs. ${sum}`);
+    $("#total").val(`Rs. ${sum}`);
 
     /*if(orders.length !== 0 ){
 
@@ -1097,8 +1097,8 @@ function removeItem(orderRecord) {
 // -------------------------- The start - when input discount, auto generated sub total --------------------------
 $("#discount").on('input', function () {
 
-    // get total value and slice it 11 characters -> Extract the Sub Total value
-    let subTotal = Number.parseFloat($("#total").text().slice(11));
+    // get total value and slice it 4 characters -> Extract the Sub Total value
+    let subTotal = Number.parseFloat($("#total").val().slice(4));
 
     // get the discount input value (default to 0 if not a valid number)
     let discount = Number.parseFloat($("#discount").val()) || 0;
@@ -1107,8 +1107,46 @@ $("#discount").on('input', function () {
     let discountedTotal = subTotal - ( subTotal * discount / 100 );
 
     // update the Sub Total with the discounted value
-    $("#subTotal").val(`Sub Total: Rs. ${discountedTotal.toFixed(2)}`);
-});
+    $("#subTotal").val(`Rs. ${discountedTotal.toFixed(2)}`);
 
+});
 // -------------------------- The end - when input discount, auto generated sub total --------------------------
 
+
+
+// -------------------------- The start - when type cash, auto generated balance --------------------------
+$("#cash").on('input', function () {
+
+    // get cash value
+    let cashValue = Number.parseFloat($("#cash").val());
+
+    // get the discount input value (default to 0 if not a valid number)
+    let discount = Number.parseFloat($("#discount").val()) || 0;
+
+    // get sub total value and slice it 4 characters -> Extract the Sub Total value
+    let subTotal = Number.parseFloat($("#subTotal").val().slice(4));
+
+    // get total value and slice it 4 characters -> Extract the Sub Total value
+    let total = Number.parseFloat($("#total").val().slice(4));
+
+    if( discount > 0) {
+
+        // calculate the balance
+        let balance = (cashValue - subTotal) ;
+
+        // update the balance input
+        $("#balance").val(balance.toFixed(2));
+
+    } else {
+
+        // calculate the balance
+        let balance = (cashValue - total) ;
+
+        // update the balance input
+        $("#balance").val(balance.toFixed(2));
+
+    }
+
+
+});
+// -------------------------- The end - when type cash, auto generated balance --------------------------
