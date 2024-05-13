@@ -1324,3 +1324,24 @@ $("#viewBtn").on('click', function () {
 
 
 // -------------------------- The start - when click a row of order history table --------------------------
+$("#viewOrderDetailsModal tbody").on('click', 'tr', function () {
+
+    let selectedId = $(this).find("td:nth-child(1)").text();
+    console.log(selectedId);
+
+    let index = orders.findIndex(order => order.idOfOrder === selectedId);
+    console.log(index);
+
+    if(index === -1) return;
+
+    let details = "";
+
+    orders[index].itemsOfOrder.map((item) => {
+        details += item.code + " - " + item.name + "\n";
+    });
+
+    Swal.fire(details);
+
+});
+
+// -------------------------- The end - when click a row of order history table --------------------------
