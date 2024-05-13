@@ -1153,7 +1153,8 @@ $("#cash").on('input', function () {
 
 
 
-// -------------------------- The start - when click purchase button of order page --------------------------
+// -------------------------- The start - save order when click purchase button of order page --------------------------
+$("#purchaseBtn").on('click', function () {
 
-
-// -------------------------- The end - when click purchase button of order page --------------------------
+});
+// -------------------------- The end - save order when click purchase button of order page --------------------------
