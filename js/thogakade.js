@@ -1296,10 +1296,13 @@ function loadOrderHistoryTable() {
         // want to wrap => use ` mark
 
         let record = `<tr>
-            <td> ${item.code} </td>    <!-- <td> = table data -->
-            <td> ${item.name} </td>
-            <td> ${item.price} </td>
-            <td> ${item.qty} </td>
+            <td> ${item.idOfOrder} </td>    <!-- <td> = table data -->
+            <td> ${item.dateOfOrder} </td>
+            <td> ${item.idOfCustomer} </td>
+            <td> <i class="bi bi-eye-fill ml-3"></i> ${item.itemsOfOrder.length} </td>
+            <td> Rs: ${item.totalOfOrder} </td>
+            <td> ${item.discountOfOrder} % </td>
+            <td> Rs: ${item.subTotalOfOrder} </td>
         </tr>`;
 
         $("#order-history-tbl-tbody").append(record);
@@ -1317,3 +1320,7 @@ $("#viewBtn").on('click', function () {
     loadOrderHistoryTable();
 });
 // -------------------------- The end - when click view order history button --------------------------
+
+
+
+// -------------------------- The start - when click a row of order history table --------------------------
