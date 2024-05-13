@@ -978,11 +978,7 @@ $("#addBtn").on('click', function () {
 
     // check the typed qty, equal or lower than qtyOnHand
     if( qtyOfItem > items[itemRecordIndex].qty || !qtyOfItem) {
-        Swal.fire({
-            icon: 'error',
-            title: 'Oops...',
-            text: "Please enter a valid qty..Need to be lower than or equal to qty on hand",
-        });
+        showErrorAlert("Please enter a valid qty..Need to be lower than or equal to qty on hand");
         return;
     }
 
@@ -1167,7 +1163,7 @@ $("#purchaseBtn").on('click', function () {
 
     var chosenItems = addedItems;
 
-    let validated = checkValidation(orderId,orderDate,customerName,orderTotal,orderDiscount,orderSubTotal);
+    let validated = checkValidation(orderId,orderDate,customerName,chosenItems,orderTotal,orderDiscount,orderSubTotal);
 
 
 
@@ -1179,7 +1175,7 @@ $("#purchaseBtn").on('click', function () {
 
 
 //-------------------------- The start - check validations when place order --------------------------
-function checkValidation(orderId, date, customer, items, total, discount) {
+function checkValidation(orderId, date, customer, items, total, discount,subTotal) {
     if(!customer){
         showErrorAlert("Please select a customer to place order");
         return false;
@@ -1199,3 +1195,15 @@ function checkValidation(orderId, date, customer, items, total, discount) {
     return true;
 }
 //-------------------------- The end - check validations when place order --------------------------
+
+
+
+//-------------------------- The start - show error alert --------------------------
+function showErrorAlert(message){
+    Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: message,
+    });
+}
+//-------------------------- The end - show error alert --------------------------
