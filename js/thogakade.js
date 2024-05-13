@@ -1324,22 +1324,21 @@ $("#viewBtn").on('click', function () {
 
 
 // -------------------------- The start - when click a row of order history table --------------------------
-$("#viewOrderDetailsModal tbody").on('click', 'tr', function () {
+$("#order-history-tbl-tbody").on('click', 'tr', function () {
 
-    let selectedId = $(this).find("td:nth-child(1)").text();
-    console.log(selectedId);
+    let clickedIndex = $(this).index();
+    orderIndex = clickedIndex;    // assign current row index to recordIndex variable
 
-    let index = orders.findIndex(order => order.idOfOrder === selectedId);
-    console.log(index);
-
-    if(index === -1) return;
+    console.log("index: " + clickedIndex);
 
     let details = "";
 
-    orders[index].itemsOfOrder.map((item) => {
+    // get items 1 by 1 from an order
+    orders[orderIndex].itemsOfOrder.map((item) => {
         details += item.code + " - " + item.name + "\n";
     });
 
+    // show the items of an order
     Swal.fire(details);
 
 });
