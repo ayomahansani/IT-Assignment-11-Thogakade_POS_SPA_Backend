@@ -2,6 +2,8 @@
 var customers = [];
 var items = [];
 var orders = [];
+let addedItems = [];
+let tempItems = [];
 
 var customerRecordIndex;
 var itemRecordIndex;
@@ -935,7 +937,7 @@ function loadAddToCartTable() {
 
     $("#add-to-cart-tbl-tbody").empty();
 
-    orders.map((item, index) => {
+    addedItems.map((item, index) => {
 
         // want to wrap => use ` mark
 
@@ -963,11 +965,45 @@ $("#addBtn").on('click', function () {
 
     var codeOfItem = $("#itemCode").val();
     var nameOfItem = $("#itemName").val();
-    var priceOfItem = $("#itemPrice").val();
-    var qtyOnHOfItem = $("#itemQtyOnH").val();
+    var priceOfItem = Number.parseFloat($("#itemPrice").val());
+    var qtyOfItem = Number.parseInt($("#quantity").val());
 
-    var qtyOfItem = $("#quantity").val();
 
+    itemRecordIndex = items.findIndex(item => item.code === codeOfItem);
+    console.log(itemRecordIndex);
+
+    if( qtyOfItem > items[itemRecordIndex].qty || !qtyOfItem) {
+        showErrorAlert("Please enter a valid qty..Need to be lower than or equal to qty on hand");
+        return;
+    }
+
+    let existingItem = addedItems.findIndex(item => item.code === codeOfItem);
+    console.log("index : " + existingItem);
+
+    if(existingItem < 0) {
+
+        // create an object - Object Literal
+        let addedItem = {
+            code: codeOfItem,
+            name: nameOfItem,
+            price: priceOfItem,
+            qty: qtyOfItem,
+            total: priceOfItem * qtyOfItem
+        }
+
+        // push to the array
+        addedItems.push(addedItem);
+
+    } else {
+        addedItems[existingItem].qty += qtyOfItem;
+    }
+
+    // load the table
+    loadAddToCartTable();
+
+    tempItems.push(items[itemRecordIndex]);
+    items[itemRecordIndex].qty -= qtyOfItem;
+    $("#itemQtyOnH").val(items[itemRecordIndex].qty);
 
 
     /*if(orders.length !== 0 ){
@@ -1027,15 +1063,24 @@ $("#addBtn").on('click', function () {
 // -------------------------- The start - when click add to cart button --------------------------
 
 
+//showErrorAlert
+function showErrorAlert(message){
+    Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: message,
+    });
+}
+
 
 // -------------------------- The start - when click remove button of add-to-cart table --------------------------
 function removeItem(orderRecord) {
     console.log(orderRecord);
 
-    var filt = orders.filter((item,index) => {
+    var filt = addedItems.filter((item,index) => {
 
         if(orderRecord === item.code) {
-            orders.splice(index,1);
+            addedItems.splice(index,1);
 
             // load the table
             loadAddToCartTable();
