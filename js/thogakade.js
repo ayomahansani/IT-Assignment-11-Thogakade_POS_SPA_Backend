@@ -1150,3 +1150,10 @@ $("#cash").on('input', function () {
 
 });
 // -------------------------- The end - when type cash, auto generated balance --------------------------
+
+
+
+// -------------------------- The start - when click purchase button of order page --------------------------
+
+
+// -------------------------- The end - when click purchase button of order page --------------------------
