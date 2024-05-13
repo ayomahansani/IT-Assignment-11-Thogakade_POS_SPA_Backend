@@ -265,6 +265,7 @@
 }
 
 #order-section .sub-total-input {
+    font-weight: 900;
     margin-bottom: 1.2em;
     border: none;
     background-color: #92be92;

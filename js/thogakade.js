@@ -1007,14 +1007,11 @@ $("#addBtn").on('click', function () {
     // load the add-to-cart table
     loadAddToCartTable();
 
-    tempItems.push(items[itemRecordIndex]);
-    items[itemRecordIndex].qty -= qtyOfItem;
-    $("#itemQtyOnH").val(items[itemRecordIndex].qty);
+    tempItems.push(items[itemRecordIndex]);     // push the chosen item to the temporary array called tempItems[]
+    items[itemRecordIndex].qty -= qtyOfItem;    // update the qtyOnHand of that chosen item in the items[] array
+    $("#itemQtyOnH").val(items[itemRecordIndex].qty);   // update the qtyOnHand input of that chosen item in Select Item form
 
-    // load the item table
-    loadItemTable();
-
-    sum += itemTotal;
+    sum += itemTotal;   // update the total when add new items
 
     $("#total").val(`Total: Rs. ${sum}`);
 
