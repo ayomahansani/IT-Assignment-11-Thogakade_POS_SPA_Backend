@@ -799,15 +799,21 @@ function autoFillCurrentDate() {
 
 
 
+// ---------------- The start - when first time order page is loaded, want to generate order id  ----------------
+autoGenerateOrderId("");
+// --------------- The end - when first time order page is loaded, want to generate order id  ----------------
+
+
+
 // -------------------------- The start - generate order id automatically --------------------------
-function autoGenerateOrderId() {
+function autoGenerateOrderId(orderId) {
 
-    var currentOrderId = $("#orderId").val();
+    console.log("currentOrderId: " + orderId);
 
-    if(currentOrderId !== "") {
+    if(orderId !== "") {
         var split = [];
-        split = currentOrderId.split("O0");
-        var id = parseInt(split[1]);
+        split = orderId.split("O0");
+        var id = Number.parseInt(split[1]);
         id++;
         if(id < 10) {
             $("#orderId").val("O00" + id);
@@ -821,7 +827,7 @@ function autoGenerateOrderId() {
 }
 // -------------------------- The end - generate order id automatically --------------------------
 
-autoGenerateOrderId();
+
 
 // -------------------------- The start - load customer IDs to customer combo box --------------------------
 function loadCustomerComboBoxValues(customerArray, customerComboBoxId) {
@@ -1189,8 +1195,8 @@ $("#purchaseBtn").on('click', function () {
             text: "You won't be able to revert this!",
             icon: 'warning',
             showCancelButton: true,
-            confirmButtonColor: '#1e7c1e',
-            cancelButtonColor: '#dda233',
+            confirmButtonColor: '#2d852d',
+            cancelButtonColor: '#c09647',
             confirmButtonText: 'Yes, Place Order!'
 
         }).then((result) => {
@@ -1222,27 +1228,43 @@ $("#purchaseBtn").on('click', function () {
                 loadItemComboBoxValues(items, "#itemsIdComboBox");
                 loadCustomerComboBoxValues(customers, "#customersIdComboBox");
 
-                // want to generate next order id
-                autoGenerateOrderId();
-
                 // want to empty the addedItems[] array because order has done
                 addedItems = [];
 
-                // want to update item table's item qty
+                // want to remove all items from cart
                 loadAddToCartTable()
 
-                Swal.fire(
-                    `Rs: ${orderSubTotal}`,
-                    'The Order has been placed!',
-                    'success'
-                )
+                if(!orderDiscount) {
+                    Swal.fire(
+                        `Rs: ${orderTotal}`,
+                        'The Order has been placed!',
+                        'success'
+                    )
+                } else {
+                    Swal.fire(
+                        `Rs: ${orderSubTotal}`,
+                        'The Order has been placed!',
+                        'success'
+                    )
+                }
+
+                $("#subTotal").val("Rs.000.00");
+                $("#total").val("Rs.000.00");
+
+                // want to fill current date
+                autoFillCurrentDate();
+
+                // want to generate next order id
+                autoGenerateOrderId(orderId);
+
+            } else {
+
+                $("#total").val("Rs. " +  orderTotal);
+                $("#subTotal").val("Rs. " +  orderTotal);
 
             }
         });
     }
-
-    $("#subTotal").text('SubTotal: Rs.000.00');
-    $("#sum").text('Total: Rs.000.00');
 
 });
 // -------------------------- The end - save order when click purchase button of order page --------------------------
