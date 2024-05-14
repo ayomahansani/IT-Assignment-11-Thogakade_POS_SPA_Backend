@@ -465,7 +465,7 @@ $("#customer-delete").on('click', () => {
 //-------------------------- The start - check validations when place order --------------------------
 function checkCustomerValidation(id, name, address, phone) {
 
-    if(!/^C\d{3}$/.test(id)){
+    if(!/^C\d{3}$/.test(id)){ //check id
         showErrorAlert("Please enter a valid ID!")
         return false;
     }
