@@ -268,9 +268,9 @@ function loadCustomerTable() {
 
 
 
-// ---------------- The start - when first time order page is loaded, want to generate order id  ----------------
+// ---------------- The start - when first time order page is loaded, want to generate customer id  ----------------
 autoGenerateCustomerId();
-// --------------- The end - when first time order page is loaded, want to generate order id  ----------------
+// --------------- The end - when first time order page is loaded, want to generate customer id  ----------------
 
 
 
@@ -641,6 +641,39 @@ function loadItemTable() {
 
 
 
+// ---------------- The start - when first time order page is loaded, want to generate item id  ----------------
+autoGenerateItemId();
+// --------------- The end - when first time order page is loaded, want to generate item id  ----------------
+
+
+
+// -------------------------- The start - auto generate item id --------------------------
+function autoGenerateItemId() {
+
+    var itemLength = items.length;
+
+    if(itemLength !== 0 ) {
+
+        var currentItemCode = items[items.length-1].code;
+        var split = [];
+        split = currentItemCode.split("I0");
+        var id = parseInt(split[1]);
+        id++;
+        if(id < 10) {
+            $("#codeItem").val("I00" + id);
+        }else{
+            $("#codeItem").val("I0" + id);
+        }
+
+    } else {
+        $("#codeItem").val("I001");
+    }
+
+}
+// -------------------------- The end - auto generate item id --------------------------
+
+
+
 // -------------------------- The start - when click item save button --------------------------
 $("#item-save").on('click', () => {
 
@@ -656,25 +689,45 @@ $("#item-save").on('click', () => {
     console.log("price: " , priceOfItem);
     console.log("qty: " , qtyOfItem);
 
-    // create an object - Object Literal
-    let item = {
-        code: codeOfItem,
-        name: nameOfItem,
-        price: priceOfItem,
-        qty: qtyOfItem
+
+    let itemValidated = checkItemValidation(codeOfItem,nameOfItem,priceOfItem,qtyOfItem);
+
+
+    if(itemValidated) {
+
+        // create an object - Object Literal
+        let item = {
+            code: codeOfItem,
+            name: nameOfItem,
+            price: priceOfItem,
+            qty: qtyOfItem
+        }
+
+        // push to the array
+        items.push(item);
+
+        // load the table
+        loadItemTable();
+
+        // clean the inputs values
+        $("#codeItem").val("");
+        $("#nameItem").val("");
+        $("#priceItem").val("");
+        $("#qtyItem").val("");
+
+        // generate next customer id
+        autoGenerateItemId();
+
+        // show customer saved pop up
+        Swal.fire({
+            icon: 'success',
+            title: 'Item saved successfully!',
+            showConfirmButton: false,
+            timer: 1500
+        });
+
     }
 
-    // push to the array
-    items.push(item);
-
-    // load the table
-    loadItemTable();
-
-    // clean the inputs values
-    $("#codeItem").val("");
-    $("#nameItem").val("");
-    $("#priceItem").val("");
-    $("#qtyItem").val("");
 
 });
 // -------------------------- The end - when click item save button --------------------------
@@ -770,35 +823,6 @@ $("#item-tbl-tbody").on( 'click', 'tr', function () {
 
 });
 // -------------------------- The end - when click a item table row --------------------------
-
-
-
-// -------------------------- The start - auto generate item id --------------------------
-$("#newItemBtn").on('click', function () {
-
-    var itemLength = items.length;
-
-    if(itemLength !== 0 ) {
-
-        var currentItemCode = items[items.length-1].code;
-        var split = [];
-        split = currentItemCode.split("I0");
-        var id = parseInt(split[1]);
-        id++;
-        if(id < 10) {
-            $("#codeItem").val("I00" + id);
-        }else{
-            $("#codeItem").val("I0" + id);
-        }
-
-    } else {
-        $("#codeItem").val("I001");
-    }
-
-    // $("#priceItem").val("Rs: ");
-
-});
-// -------------------------- The end - auto generate item id --------------------------
 
 
 
