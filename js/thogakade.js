@@ -1579,7 +1579,7 @@ function showErrorAlert(message){
         title: 'Oops...',
         text: message,
         background: '#fff1e0',
-        width: '35em',
+        width: '38em',
         confirmButtonColor: '#6da959',
         // iconColor: '#ec3636',
     });
