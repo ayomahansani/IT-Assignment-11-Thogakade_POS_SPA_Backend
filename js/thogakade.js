@@ -898,24 +898,35 @@ function checkItemValidation(code, name, price, qty) {
             return false;
         }
     }
-    if(!/^I\d{3}$/.test(code)){ //check ID
-        showErrorAlert("Please enter a valid ID!")
+
+    if(!name){ //check name field is empty or not
+        showErrorAlert("Name field is required!");
         return false;
+    } else {
+        if(!/^[A-Za-z\d\s\-']{2,30}$/.test(name)){
+            showErrorAlert("Please enter a valid Name!  Pattern - 'Toffee / Lux Soap - 150g'")
+            return false;
+        }
     }
 
-    if(!name){ //check name
-        showErrorAlert("Please enter a valid name!");
+    if(!price){ //check price field is empty or not
+        showErrorAlert("Price field is required!");
         return false;
+    } else {
+        if(!/^\d+(\.\d{1,2})?$/.test(price)){
+            showErrorAlert("Please enter a valid Price! Pattern - 'Colombo / Colombo-10'")
+            return false;
+        }
     }
 
-    if(!/^\d+(\.\d{1,2})?$/.test(price)){ //check price
-        showErrorAlert("Please enter a price for item!");
+    if(!qty || qty === "0"){ //check qty field is empty or not
+        showErrorAlert("Contact field is required!");
         return false;
-    }
-
-    if(!qty || qty === "0"){ //check qty
-        showErrorAlert("Please enter a quantity");
-        return false;
+    } else {
+        if(!/^\d{1,10}$/.test(qty)){
+            showErrorAlert("Please enter a valid Phone Number! Pattern - '0756567234'")
+            return false;
+        }
     }
 
     return true;
