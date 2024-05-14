@@ -1,3 +1,4 @@
+
 // create arrays
 var customers = [];
 var items = [];
@@ -260,8 +261,6 @@ function loadCustomerTable() {
         $("#customer-tbl-tbody").append(record);
         $("#customer-tbl-tbody").css("font-weight", 600);
 
-        $("#customer-count").html(customers.length);
-
     });
 }
 // -------------------------- The end - customer table loading --------------------------
@@ -350,8 +349,12 @@ $("#customer-save").on('click', () => {
                 icon: 'success',
                 title: 'Customer saved successfully!',
                 showConfirmButton: false,
-                timer: 1500
+                timer: 1500,
+                iconColor: '#4dc94d'
             });
+
+            // update the home page's customer card
+            $("#customer-count").html(customers.length);
 
     }
 
@@ -404,7 +407,8 @@ $("#customer-update").on('click', () => {
             icon: 'success',
             title: 'Customer updated successfully!',
             showConfirmButton: false,
-            timer: 1500
+            timer: 1500,
+            iconColor: '#4dc94d'
         });
 
     }
@@ -426,8 +430,10 @@ $("#customer-delete").on('click', () => {
         text: "You won't be able to revert this!",
         icon: 'warning',
         showCancelButton: true,
-        confirmButtonColor: '#328532',
-        cancelButtonColor: '#c59c35',
+        confirmButtonColor: '#6da959',
+        cancelButtonColor: '#dcba65',
+        background: '#fff1e0',
+        width: '35em',
         confirmButtonText: 'Yes, delete customer!'
 
     }).then((result) => {
@@ -453,7 +459,8 @@ $("#customer-delete").on('click', () => {
                 icon: 'success',
                 title: 'Customer deleted successfully!',
                 showConfirmButton: false,
-                timer: 1500
+                timer: 1500,
+                iconColor: '#4dc94d'
             });
         }
     })
@@ -724,8 +731,12 @@ $("#item-save").on('click', () => {
             icon: 'success',
             title: 'Item saved successfully!',
             showConfirmButton: false,
-            timer: 1500
+            timer: 1500,
+            iconColor: '#4dc94d'
         });
+
+        // update the home page's item card
+        $("#item-count").html(items.length);
 
     }
 
@@ -777,7 +788,8 @@ $("#item-update").on('click', () => {
             icon: 'success',
             title: 'Item updated successfully!',
             showConfirmButton: false,
-            timer: 1500
+            timer: 1500,
+            iconColor: '#18a918'
         });
 
     }
@@ -800,8 +812,10 @@ $("#item-delete").on('click', () => {
         text: "You won't be able to revert this!",
         icon: 'warning',
         showCancelButton: true,
-        confirmButtonColor: '#328532',
-        cancelButtonColor: '#c59c35',
+        confirmButtonColor: '#6da959',
+        cancelButtonColor: '#dcba65',
+        background: '#fff1e0',
+        width: '35em',
         confirmButtonText: 'Yes, delete item!'
 
     }).then((result) => {
@@ -827,7 +841,8 @@ $("#item-delete").on('click', () => {
                 icon: 'success',
                 title: 'Item deleted successfully!',
                 showConfirmButton: false,
-                timer: 1500
+                timer: 1500,
+                iconColor: '#18a918'
             });
         }
     })
@@ -855,7 +870,7 @@ function checkItemValidation(id, name, price, qty) {
         return false;
     }
 
-    if(!qty || qty === 0){ //check qty
+    if(!qty || qty === "0"){ //check qty
         showErrorAlert("Please enter a quantity");
         return false;
     }
@@ -1281,6 +1296,8 @@ function removeItem(addedItemRecord, qty) {
                     $("#itemQtyOnH").val("");
                     $("#quantity").val("");
 
+                    sum = 0;
+                    $("#total").val(`Rs. ${sum}`);
                 }
             });
 
@@ -1368,7 +1385,7 @@ $("#purchaseBtn").on('click', function () {
 
     var chosenItems = addedItems;
 
-    let orderValidated = checkValidation(customerId,chosenItems,orderTotal,orderDiscount,orderSubTotal,cash);
+    let orderValidated = checkOrderValidation(customerId,chosenItems,orderTotal,orderDiscount,orderSubTotal,cash);
 
     if(orderValidated) {
 
@@ -1377,8 +1394,10 @@ $("#purchaseBtn").on('click', function () {
             text: "You won't be able to revert this!",
             icon: 'warning',
             showCancelButton: true,
-            confirmButtonColor: '#328532',
-            cancelButtonColor: '#c59c35',
+            confirmButtonColor: '#6da959',
+            cancelButtonColor: '#dcba65',
+            background: '#fff1e0',
+            width: '35em',
             confirmButtonText: 'Yes, Place Order!'
 
         }).then((result) => {
@@ -1428,17 +1447,25 @@ $("#purchaseBtn").on('click', function () {
 
                 // order save pop up
                 if(!orderDiscount) {
-                    Swal.fire(
-                        `Rs: ${orderTotal}`,
-                        'The Order has been placed!',
-                        'success'
-                    )
+                    Swal.fire({
+                        icon: 'success',
+                        title: `Rs: ${orderTotal}`,
+                        text: 'The Order has been placed!',
+                        background: '#fff1e0',
+                        width: '35em',
+                        confirmButtonColor: '#eac237',
+                        iconColor: '#18a918',
+                    });
                 } else {
-                    Swal.fire(
-                        `Rs: ${orderSubTotal}`,
-                        'The Order has been placed!',
-                        'success'
-                    )
+                    Swal.fire({
+                        icon: 'success',
+                        title: `Rs: ${orderSubTotal}`,
+                        text: 'The Order has been placed!',
+                        background: '#fff1e0',
+                        width: '35em',
+                        confirmButtonColor: '#eac237',
+                        iconColor: '#18a918',
+                    });
                 }
 
                 // finally want to fill total inputs like follow
@@ -1458,20 +1485,20 @@ $("#purchaseBtn").on('click', function () {
 
 
 //-------------------------- The start - check validations when place order --------------------------
-function checkValidation(customer, items, total, discount, subTotal, cash) {
+function checkOrderValidation(customer, items, total, discount, subTotal, cash) {
 
     if(!customer){
-        showErrorAlert("Please select a customer to place order");
+        showErrorAlert("Please select a customer to place order!");
         return false;
     }
 
     if(items.length === 0){
-        showErrorAlert("Please select a item/items to place order");
+        showErrorAlert("Please select and add to cart a item / items to place order!");
         return false;
     }
 
     if(!cash){
-        showErrorAlert("Please enter the cash amount");
+        showErrorAlert("Please enter the cash amount!");
         return false;
     }
 
@@ -1500,6 +1527,10 @@ function showErrorAlert(message){
         icon: 'error',
         title: 'Oops...',
         text: message,
+        background: '#fff1e0',
+        width: '35em',
+        confirmButtonColor: '#6da959',
+        // iconColor: '#ec3636',
     });
 }
 //-------------------------- The end - show error alert --------------------------
@@ -1569,5 +1600,4 @@ $("#order-history-tbl-tbody").on('click', 'tr', function () {
     Swal.fire(details);
 
 });
-
 // -------------------------- The end - when click a row of order history table --------------------------
