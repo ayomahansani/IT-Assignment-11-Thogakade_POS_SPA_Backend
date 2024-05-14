@@ -1203,7 +1203,7 @@ function loadAddToCartTable() {
             <td> ${item.price} </td>
             <td> ${item.qty} </td>
             <td> ${item.price * item.qty} </td>
-            <td> <button type="button" class="btn btn-danger" onclick='removeItem("${item.code}", Number.parseInt(${item.qty}))'>Remove</button> </td>
+            <td> <button type="button" class="btn btn-danger" onclick='removeItem("${item.code}", Number.parseInt(${item.qty}), Number.parseFloat(${item.price}))'>Remove</button> </td>
         </tr>`;
 
         $("#add-to-cart-tbl-tbody").append(record);
@@ -1282,9 +1282,12 @@ $("#addBtn").on('click', function () {
 
 
 // -------------------------- The start - when click remove button of add-to-cart table --------------------------
-function removeItem(addedItemRecord, qty) {
+function removeItem(addedItemRecord, qty, unitPrice) {
     console.log(addedItemRecord);
     console.log(qty);
+    console.log(unitPrice);
+    var total = unitPrice * qty ;
+
 
     var filt = addedItems.filter((item,index) => {
 
@@ -1303,7 +1306,7 @@ function removeItem(addedItemRecord, qty) {
                     $("#itemQtyOnH").val("");
                     $("#quantity").val("");
 
-                    sum = 0;
+                    sum -= total;
                     $("#total").val(`Rs. ${sum}`);
                 }
             });
