@@ -1596,15 +1596,22 @@ $("#order-history-tbl-tbody").on('click', 'tr', function () {
 
     console.log("index: " + clickedIndex);
 
-    let details = "";
+    let details = "/  ";
 
-    // get items 1 by 1 from an order
+    // get items 1 by 1 from an order and show them
     orders[orderIndex].itemsOfOrder.map((item) => {
-        details += item.code + " - " + item.name + "\n";
+        details += " " + item.code + "  -  " + item.name + "  -  " + item.qty + "  /  ";
     });
 
     // show the items of an order
-    Swal.fire(details);
+    Swal.fire({
+        title: 'Item Details',
+        text: details,
+        background: '#fff1e0',
+        width: '35em',
+        confirmButtonColor: '#eac237',
+        color: '#167216'
+    });
 
 });
 // -------------------------- The end - when click a row of order history table --------------------------
