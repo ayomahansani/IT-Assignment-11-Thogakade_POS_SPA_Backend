@@ -419,16 +419,43 @@ $("#customer-update").on('click', () => {
 // -------------------------- The start - when click customer delete button --------------------------
 $("#customer-delete").on('click', () => {
 
-    customers.splice(customerRecordIndex, 1);
+    Swal.fire({
 
-    // load the table
-    loadCustomerTable();
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#328532',
+        cancelButtonColor: '#c59c35',
+        confirmButtonText: 'Yes, delete customer!'
 
-    // clean the inputs values
-    $("#customerId").val("");
-    $("#customerName").val("");
-    $("#customerAddress").val("");
-    $("#customerPhone").val("");
+    }).then((result) => {
+
+        if (result.isConfirmed) {
+
+            customers.splice(customerRecordIndex, 1);
+
+            // load the table
+            loadCustomerTable();
+
+            // clean the inputs values
+            $("#customerId").val("");
+            $("#customerName").val("");
+            $("#customerAddress").val("");
+            $("#customerPhone").val("");
+
+            // generate next customer id
+            autoGenerateCustomerId();
+
+            // show customer saved pop up
+            Swal.fire({
+                icon: 'success',
+                title: 'Customer deleted successfully!',
+                showConfirmButton: false,
+                timer: 1500
+            });
+        }
+    })
 
 });
 // -------------------------- The end - when click customer delete button --------------------------
@@ -1223,8 +1250,8 @@ $("#purchaseBtn").on('click', function () {
             text: "You won't be able to revert this!",
             icon: 'warning',
             showCancelButton: true,
-            confirmButtonColor: '#1a791a',
-            cancelButtonColor: '#FFD700FF',
+            confirmButtonColor: '#328532',
+            cancelButtonColor: '#c59c35',
             confirmButtonText: 'Yes, Place Order!'
 
         }).then((result) => {
