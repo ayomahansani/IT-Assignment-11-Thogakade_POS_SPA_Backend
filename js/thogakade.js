@@ -378,6 +378,7 @@ $("#customer-update").on('click', () => {
 
     let customerValidated = checkCustomerValidation(idOfCustomer,nameOfCustomer,addressOfCustomer,phoneOfCustomer);
 
+
     if(customerValidated) {
 
         // assign new values to relevant customer object's values
@@ -398,7 +399,7 @@ $("#customer-update").on('click', () => {
         // generate next customer id
         autoGenerateCustomerId();
 
-        // show customer saved pop up
+        // show customer updated pop up
         Swal.fire({
             icon: 'success',
             title: 'Customer updated successfully!',
@@ -715,10 +716,10 @@ $("#item-save").on('click', () => {
         $("#priceItem").val("");
         $("#qtyItem").val("");
 
-        // generate next customer id
+        // generate next item id
         autoGenerateItemId();
 
-        // show customer saved pop up
+        // show item saved pop up
         Swal.fire({
             icon: 'success',
             title: 'Item saved successfully!',
@@ -747,20 +748,39 @@ $("#item-update").on('click', () => {
     // get current item object relevant to clicked row, using itemRecordIndex
     let itemObj = items[itemRecordIndex];
 
-    // assign new values to relevant item object's values
-    itemObj.code = codeOfItem;
-    itemObj.name = nameOfItem;
-    itemObj.price = priceOfItem;
-    itemObj.qty = qtyOfItem;
 
-    // load the table
-    loadItemTable();
+    let itemValidated = checkItemValidation(codeOfItem,nameOfItem,priceOfItem,qtyOfItem);
 
-    // clean the inputs values
-    $("#codeItem").val("");
-    $("#nameItem").val("");
-    $("#priceItem").val("");
-    $("#qtyItem").val("");
+
+    if(itemValidated) {
+
+        // assign new values to relevant item object's values
+        itemObj.code = codeOfItem;
+        itemObj.name = nameOfItem;
+        itemObj.price = priceOfItem;
+        itemObj.qty = qtyOfItem;
+
+        // load the table
+        loadItemTable();
+
+        // clean the inputs values
+        $("#codeItem").val("");
+        $("#nameItem").val("");
+        $("#priceItem").val("");
+        $("#qtyItem").val("");
+
+        // generate next item id
+        autoGenerateItemId();
+
+        // show item updated pop up
+        Swal.fire({
+            icon: 'success',
+            title: 'Item updated successfully!',
+            showConfirmButton: false,
+            timer: 1500
+        });
+
+    }
 
 
     // ********** special **********
