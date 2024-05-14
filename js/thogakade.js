@@ -556,31 +556,43 @@ $("#customer-search-btn").on('click', function () {
 
     var customerDetail = $("#searchCustomer").val();
 
-    for (let i=0; i<customers.length; i++) {
+        for (let i=0; i<customers.length; i++) {
 
-        if(customers[i].id === customerDetail || customers[i].name === customerDetail){
-            $("#searchedCustomerId").val(customers[i].id);
-            $("#searchedCustomerName").val(customers[i].name);
-            $("#searchedCustomerAddress").val(customers[i].address);
-            $("#searchedCustomerPhone").val(customers[i].phone);
+            if(customers[i].id === customerDetail || customers[i].name === customerDetail){
+                $("#searchedCustomerId").val(customers[i].id);
+                $("#searchedCustomerName").val(customers[i].name);
+                $("#searchedCustomerAddress").val(customers[i].address);
+                $("#searchedCustomerPhone").val(customers[i].phone);
 
-            $("#customerDetailsModalLabel").html("Customer Details");
+                $("#customerDetailsModalLabel").html("Customer Details");
 
-            return;
+                return;
+            }
+
+            else {
+
+                if(customerDetail !== "") {
+
+                    $("#customerDetailsModalLabel").html("Can't find customer! Try again...");
+
+                    $("#searchedCustomerId").val("No Customer");
+                    $("#searchedCustomerName").val("No Customer");
+                    $("#searchedCustomerAddress").val("No Customer");
+                    $("#searchedCustomerPhone").val("No customer");
+
+                } else {
+
+                    $("#customerDetailsModalLabel").html("Please enter customer id or name...");
+
+                    $("#searchedCustomerId").val("");
+                    $("#searchedCustomerName").val("");
+                    $("#searchedCustomerAddress").val("");
+                    $("#searchedCustomerPhone").val("");
+                }
+
+            }
+
         }
-
-        else {
-
-            $("#customerDetailsModalLabel").html("Can't find customer! Try again...");
-
-            $("#searchedCustomerId").val("No Customer");
-            $("#searchedCustomerName").val("No Customer");
-            $("#searchedCustomerAddress").val("No Customer");
-            $("#searchedCustomerPhone").val("No customer");
-        }
-
-    }
-
 });
 // -------------------------- The end - when click customer search button --------------------------
 
