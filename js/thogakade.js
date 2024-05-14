@@ -353,7 +353,7 @@ $("#customer-save").on('click', () => {
                 timer: 1500
             });
 
-        }
+    }
 
 
 });
@@ -375,20 +375,40 @@ $("#customer-update").on('click', () => {
     // get current customer object relevant to clicked row, using customerRecordIndex
     let customerObj = customers[customerRecordIndex];
 
-    // assign new values to relevant customer object's values
-    customerObj.id = idOfCustomer;
-    customerObj.name = nameOfCustomer;
-    customerObj.address = addressOfCustomer;
-    customerObj.phone = phoneOfCustomer;
 
-    // load the table
-    loadCustomerTable();
+    let customerValidated = checkCustomerValidation(idOfCustomer,nameOfCustomer,addressOfCustomer,phoneOfCustomer);
 
-    // clean the inputs values
-    $("#customerId").val("");
-    $("#customerName").val("");
-    $("#customerAddress").val("");
-    $("#customerPhone").val("");
+    if(customerValidated) {
+
+        // assign new values to relevant customer object's values
+        customerObj.id = idOfCustomer;
+        customerObj.name = nameOfCustomer;
+        customerObj.address = addressOfCustomer;
+        customerObj.phone = phoneOfCustomer;
+
+        // load the table
+        loadCustomerTable();
+
+        // clean the inputs values
+        $("#customerId").val("");
+        $("#customerName").val("");
+        $("#customerAddress").val("");
+        $("#customerPhone").val("");
+
+        // generate next customer id
+        autoGenerateCustomerId();
+
+        // show customer saved pop up
+        Swal.fire({
+            icon: 'success',
+            title: 'Customer updated successfully!',
+            showConfirmButton: false,
+            timer: 1500
+        });
+
+    }
+
+
 
 
     // ********** special **********
