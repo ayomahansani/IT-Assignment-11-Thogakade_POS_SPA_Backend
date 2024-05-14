@@ -945,12 +945,26 @@ $("#item-search-btn").on('click', function () {
 
         else {
 
-            $("#itemDetailsModalLabel").html("Can't find item! Try again...");
+            if(itemDetail !== "") {
 
-            $("#searchedItemCode").val("No Item");
-            $("#searchedItemName").val("No Item");
-            $("#searchedItemPrice").val("No Item");
-            $("#searchedItemQty").val("No Item");
+                $("#itemDetailsModalLabel").html("Can't find item! Try again...");
+
+                $("#searchedItemCode").val("No Item");
+                $("#searchedItemName").val("No Item");
+                $("#searchedItemPrice").val("No Item");
+                $("#searchedItemQty").val("No Item");
+
+            } else {
+
+                $("#itemDetailsModalLabel").html("Please enter item code or name...");
+
+                $("#searchedItemCode").val("");
+                $("#searchedItemName").val("");
+                $("#searchedItemPrice").val("");
+                $("#searchedItemQty").val("");
+
+            }
+
         }
 
     }
