@@ -655,14 +655,12 @@ function loadItemTable() {
         let record = `<tr>
             <td class="item-code-value">${item.code}</td>    <!-- <td> = table data -->
             <td class="item-name-value">${item.name}</td>
-            <td class="item-price-value">${item.price}</td>
+            <td class="item-price-value"> Rs. ${item.price}</td>
             <td class="item-qty-value">${item.qty}</td>
         </tr>`;
 
         $("#item-tbl-tbody").append(record);
         $("#item-tbl-tbody").css("font-weight", 600);
-
-        $("#item-count").html(items.length);
 
     });
 }
@@ -936,7 +934,7 @@ function checkItemValidation(code, name, price, qty) {
 
 
 
-// -------------------------- The start - when click a item table row --------------------------
+// -------------------------- The start - when click an item table row --------------------------
 $("#item-tbl-tbody").on( 'click', 'tr', function () {
 
     let index = $(this).index();
@@ -946,7 +944,7 @@ $("#item-tbl-tbody").on( 'click', 'tr', function () {
 
     let code = $(this).find(".item-code-value").text();
     let name = $(this).find(".item-name-value").text();
-    let price = $(this).find(".item-price-value").text();
+    let price = $(this).find(".item-price-value").text().slice(5);
     let qty = $(this).find(".item-qty-value").text();
 
     $("#codeItem").val(code);
@@ -955,7 +953,7 @@ $("#item-tbl-tbody").on( 'click', 'tr', function () {
     $("#qtyItem").val(qty);
 
 });
-// -------------------------- The end - when click a item table row --------------------------
+// -------------------------- The end - when click an item table row --------------------------
 
 
 
@@ -1242,7 +1240,7 @@ function loadAddToCartTable() {
             <td> ${item.code} </td>    <!-- <td> = table data -->
             <td> ${item.name} </td>
             <td> ${item.price} </td>
-            <td> ${item.qty} </td>
+            <td> Rs. ${item.qty} </td>
             <td> ${item.price * item.qty} </td>
             <td> <button type="button" class="btn btn-danger" onclick='removeItem("${item.code}", Number.parseInt(${item.qty}), Number.parseFloat(${item.price}))'>Remove</button> </td>
         </tr>`;
