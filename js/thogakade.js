@@ -913,8 +913,8 @@ function checkItemValidation(code, name, price, qty) {
         showErrorAlert("Price field is required!");
         return false;
     } else {
-        if(!/^\d+(\.\d{1,2})?$/.test(price)){
-            showErrorAlert("Please enter a valid Price! Pattern - 'Colombo / Colombo-10'")
+        if(!/^(?:\d+(?:\.\d{1,2})?|\.\d{1,2})$/.test(price)){
+            showErrorAlert("Please enter a valid Price! Pattern - '560 / 560.25'")
             return false;
         }
     }
@@ -924,7 +924,7 @@ function checkItemValidation(code, name, price, qty) {
         return false;
     } else {
         if(!/^\d{1,10}$/.test(qty)){
-            showErrorAlert("Please enter a valid Phone Number! Pattern - '0756567234'")
+            showErrorAlert("Please enter a valid Quantity! Pattern - '10'")
             return false;
         }
     }
