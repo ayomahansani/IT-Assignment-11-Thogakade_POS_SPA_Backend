@@ -873,10 +873,32 @@ $("#item-delete").on('click', () => {
 
 
 
-//-------------------------- The start - check item validations --------------------------
-function checkItemValidation(id, name, price, qty) {
+// -------------------------- The start - when click item clear button --------------------------
+$("#item-clear").on('click', () => {
 
-    if(!/^I\d{3}$/.test(id)){ //check ID
+    // clean the inputs values
+    $("#nameItem").val("");
+    $("#priceItem").val("");
+    $("#qtyItem").val("");
+
+});
+// -------------------------- The end - when click item clear button --------------------------
+
+
+
+//-------------------------- The start - check item validations --------------------------
+function checkItemValidation(code, name, price, qty) {
+
+    if(!code){    //check code field is empty or not
+        showErrorAlert("Code field is required!")
+        return false;
+    } else {
+        if(!/^I\d{3,10}$/.test(code)){
+            showErrorAlert("Please enter a valid Code!  Pattern - 'I000'")
+            return false;
+        }
+    }
+    if(!/^I\d{3}$/.test(code)){ //check ID
         showErrorAlert("Please enter a valid ID!")
         return false;
     }
@@ -900,19 +922,6 @@ function checkItemValidation(id, name, price, qty) {
 
 }
 //-------------------------- The end - check item validations --------------------------
-
-
-
-// -------------------------- The start - when click item clear button --------------------------
-$("#item-clear").on('click', () => {
-
-    // clean the inputs values
-    $("#nameItem").val("");
-    $("#priceItem").val("");
-    $("#qtyItem").val("");
-
-});
-// -------------------------- The end - when click item clear button --------------------------
 
 
 
