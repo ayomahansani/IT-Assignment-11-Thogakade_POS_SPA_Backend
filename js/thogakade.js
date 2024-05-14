@@ -470,6 +470,19 @@ $("#customer-delete").on('click', () => {
 
 
 
+// -------------------------- The start - when click customer clear button --------------------------
+$("#customer-clear").on('click', () => {
+
+    // clean the inputs values
+    $("#customerName").val("");
+    $("#customerAddress").val("");
+    $("#customerPhone").val("");
+
+});
+// -------------------------- The end - when click customer clear button --------------------------
+
+
+
 //-------------------------- The start - check customer validations --------------------------
 function checkCustomerValidation(id, name, address, phone) {
 
@@ -518,19 +531,6 @@ function checkCustomerValidation(id, name, address, phone) {
 
 }
 //-------------------------- The end - check customer validations --------------------------
-
-
-
-// -------------------------- The start - when click customer clear button --------------------------
-$("#customer-clear").on('click', () => {
-
-    // clean the inputs values
-    $("#customerName").val("");
-    $("#customerAddress").val("");
-    $("#customerPhone").val("");
-
-});
-// -------------------------- The end - when click customer clear button --------------------------
 
 
 
