@@ -1239,8 +1239,8 @@ function loadAddToCartTable() {
         let record = `<tr>
             <td> ${item.code} </td>    <!-- <td> = table data -->
             <td> ${item.name} </td>
-            <td> ${item.price} </td>
-            <td> Rs: ${item.qty} </td>
+            <td> Rs: ${item.price} </td>
+            <td> ${item.qty} </td>
             <td> ${item.price * item.qty} </td>
             <td> <button type="button" class="btn btn-danger" onclick='removeItem("${item.code}", Number.parseInt(${item.qty}), Number.parseFloat(${item.price}))'>Remove</button> </td>
         </tr>`;
@@ -1272,7 +1272,7 @@ $("#addBtn").on('click', function () {
         console.log(itemRecordIndex);
 
         // check the typed qty, equal or lower than qtyOnHand
-        if( qtyOfItem > items[itemRecordIndex].qty || !qtyOfItem || !/^\d{1,10}$/.test(qtyOfItem) ) {
+        if( !/^\d{1,10}$/.test($("#quantity").val()) || qtyOfItem > items[itemRecordIndex].qty || !qtyOfItem ) {
             showErrorAlert("Please enter a valid qty..Need to be lower than or equal to qty on hand");
             return;
         }
@@ -1308,7 +1308,7 @@ $("#addBtn").on('click', function () {
 
         sum += itemTotal;   // update the total when add new items
 
-        $("#total").val(`Rs. ${sum}`);
+        $("#total").val(`Rs: ${sum}`);
 
     } else {
         showErrorAlert("Please select an item / items to add to cart!");
@@ -1346,7 +1346,7 @@ function removeItem(addedItemRecord, qty, unitPrice) {
                     $("#quantity").val("");
 
                     sum -= total;
-                    $("#total").val(`Rs. ${sum}`);
+                    $("#total").val(`Rs: ${sum}`);
                 }
             });
 
@@ -1372,7 +1372,7 @@ $("#discount").on('input', function () {
     let discountedTotal = subTotal - ( subTotal * discount / 100 );
 
     // update the Sub Total with the discounted value
-    $("#subTotal").val(`Rs. ${discountedTotal.toFixed(2)}`);
+    $("#subTotal").val(`Rs: ${discountedTotal.toFixed(2)}`);
 
 });
 // -------------------------- The end - when input discount, auto generated sub total --------------------------
@@ -1549,11 +1549,6 @@ function checkOrderValidation(customer, chosenItems, total, discount, subTotal, 
     if(!cash){
         showErrorAlert("Please enter the cash amount!");
         return false;
-    } else {
-        if(!/^(?:\d+(?:\.\d{1,2})?|\.\d{1,2})$/.test(cash)){
-            showErrorAlert("Please enter a valid Cash! Pattern - '560 / 560.25'");
-            return false;
-        }
     }
 
     if(!discount  || discount === 0 ){
@@ -1563,14 +1558,9 @@ function checkOrderValidation(customer, chosenItems, total, discount, subTotal, 
         }
         return true;
     } else {
-        if(!/^\d{1,2}$/.test(discount)){
-            showErrorAlert("Please enter a valid Discount! Pattern - '5'");
+        if((cash - subTotal) < 0){
+            showErrorAlert("The cash is not enough to pay the order!!!");
             return false;
-        } else {
-            if((cash - subTotal) < 0){
-                showErrorAlert("The cash is not enough to pay the order!!!");
-                return false;
-            }
         }
 
         return true;
