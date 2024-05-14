@@ -268,6 +268,39 @@ function loadCustomerTable() {
 
 
 
+// ---------------- The start - when first time order page is loaded, want to generate order id  ----------------
+autoGenerateCustomerId();
+// --------------- The end - when first time order page is loaded, want to generate order id  ----------------
+
+
+
+// -------------------------- The start - auto generate customer id --------------------------
+function autoGenerateCustomerId() {
+
+    var customerLength = customers.length;
+
+    if(customerLength !== 0 ) {
+
+        var currentCustomerId = customers[customers.length-1].id;
+        var split = [];
+        split = currentCustomerId.split("C0");
+        var id = parseInt(split[1]);
+        id++;
+        if(id < 10) {
+            $("#customerId").val("C00" + id);
+        }else{
+            $("#customerId").val("C0" + id);
+        }
+
+    } else {
+        $("#customerId").val("C001");
+    }
+
+}
+// -------------------------- The end - auto generate customer id --------------------------
+
+
+
 // -------------------------- The start - when click customer save button --------------------------
 $("#customer-save").on('click', () => {
 
@@ -283,25 +316,45 @@ $("#customer-save").on('click', () => {
     console.log("address: " , addressOfCustomer);
     console.log("phone: " , phoneOfCustomer);
 
-    // create an object - Object Literal
-    let customer = {
-        id: idOfCustomer,
-        name: nameOfCustomer,
-        address: addressOfCustomer,
-        phone: phoneOfCustomer
-    }
 
-    // push to the array
-    customers.push(customer);
+    let customerValidated = checkCustomerValidation(idOfCustomer,nameOfCustomer,addressOfCustomer,phoneOfCustomer);
 
-    // load the table
-    loadCustomerTable();
 
-    // clean the inputs values
-    $("#customerId").val("");
-    $("#customerName").val("");
-    $("#customerAddress").val("");
-    $("#customerPhone").val("");
+    if(customerValidated) {
+
+            // create an object - Object Literal
+            let customer = {
+                id: idOfCustomer,
+                name: nameOfCustomer,
+                address: addressOfCustomer,
+                phone: phoneOfCustomer
+            }
+
+            // push to the array
+            customers.push(customer);
+
+            // load the table
+            loadCustomerTable();
+
+            // clean the inputs values
+            $("#customerId").val("");
+            $("#customerName").val("");
+            $("#customerAddress").val("");
+            $("#customerPhone").val("");
+
+            // generate next customer id
+            autoGenerateCustomerId();
+
+            // show customer saved pop up
+            Swal.fire({
+                icon: 'success',
+                title: 'Customer saved successfully!',
+                showConfirmButton: false,
+                timer: 1500
+            });
+
+        }
+
 
 });
 // -------------------------- The end - when click customer save button --------------------------
@@ -365,6 +418,36 @@ $("#customer-delete").on('click', () => {
 
 
 
+//-------------------------- The start - check validations when place order --------------------------
+function checkCustomerValidation(id, name, address, phone) {
+
+    if(!/^C\d{3}$/.test(id)){
+        showErrorAlert("Please enter a valid ID!")
+        return false;
+    }
+
+    if(!name){ //check name
+        showErrorAlert("Please enter a valid name!");
+        return false;
+    }
+
+    if(!address){ //check address
+        showErrorAlert("Please enter a valid address!");
+        return false;
+    }
+
+    if(!phone){ //check address
+        showErrorAlert("Please enter a valid Contact!");
+        return false;
+    }
+
+    return true;
+
+}
+//-------------------------- The end - check validations when place order --------------------------
+
+
+
 // -------------------------- The start - when click customer clear button --------------------------
 $("#customer-clear").on('click', () => {
 
@@ -398,33 +481,6 @@ $("#customer-tbl-tbody").on( 'click', 'tr', function () {
 
 });
 // -------------------------- The end - when click a customer table row --------------------------
-
-
-
-// -------------------------- The start - auto generate customer id --------------------------
-$("#newCusBtn").on('click', function () {
-
-    var customerLength = customers.length;
-
-    if(customerLength !== 0 ) {
-
-        var currentCustomerId = customers[customers.length-1].id;
-        var split = [];
-        split = currentCustomerId.split("C0");
-        var id = parseInt(split[1]);
-        id++;
-        if(id < 10) {
-            $("#customerId").val("C00" + id);
-        }else{
-            $("#customerId").val("C0" + id);
-        }
-
-    } else {
-        $("#customerId").val("C001");
-    }
-
-});
-// -------------------------- The end - auto generate customer id --------------------------
 
 
 
@@ -1141,9 +1197,9 @@ $("#purchaseBtn").on('click', function () {
 
     var chosenItems = addedItems;
 
-    let validated = checkValidation(customerId,chosenItems,orderTotal,orderDiscount,orderSubTotal,cash);
+    let orderValidated = checkValidation(customerId,chosenItems,orderTotal,orderDiscount,orderSubTotal,cash);
 
-    if(validated) {
+    if(orderValidated) {
 
         Swal.fire({
             title: 'Are you sure?',
