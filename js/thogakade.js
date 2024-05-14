@@ -920,7 +920,7 @@ function checkItemValidation(code, name, price, qty) {
     }
 
     if(!qty || qty === "0"){ //check qty field is empty or not
-        showErrorAlert("Contact field is required!");
+        showErrorAlert("Quantity field is required!");
         return false;
     } else {
         if(!/^\d{1,10}$/.test(qty)){
