@@ -473,6 +473,11 @@ $("#customer-delete").on('click', () => {
 //-------------------------- The start - check customer validations --------------------------
 function checkCustomerValidation(id, name, address, phone) {
 
+    if(!id){
+        showErrorAlert("ID field is required!")
+        return false;
+    }
+
     if(!/^C\d{3}$/.test(id)){ //check id
         showErrorAlert("Please enter a valid ID!")
         return false;
