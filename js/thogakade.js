@@ -408,9 +408,6 @@ $("#customer-update").on('click', () => {
 
     }
 
-
-
-
     // ********** special **********
     // the clicked table's row index must equal to the customer object's index of array
 
