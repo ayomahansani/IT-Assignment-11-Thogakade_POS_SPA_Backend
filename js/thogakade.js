@@ -789,7 +789,7 @@ $("#item-update").on('click', () => {
             title: 'Item updated successfully!',
             showConfirmButton: false,
             timer: 1500,
-            iconColor: '#18a918'
+            iconColor: '#4dc94d'
         });
 
     }
@@ -842,7 +842,7 @@ $("#item-delete").on('click', () => {
                 title: 'Item deleted successfully!',
                 showConfirmButton: false,
                 timer: 1500,
-                iconColor: '#18a918'
+                iconColor: '#4dc94d'
             });
         }
     })
@@ -1226,48 +1226,55 @@ $("#addBtn").on('click', function () {
     var itemTotal = priceOfItem * qtyOfItem;
 
 
-    // chosen item's index of items[] array
-    itemRecordIndex = items.findIndex(item => item.code === codeOfItem);
-    console.log(itemRecordIndex);
+    if(codeOfItem !== "") {
 
-    // check the typed qty, equal or lower than qtyOnHand
-    if( qtyOfItem > items[itemRecordIndex].qty || !qtyOfItem) {
-        showErrorAlert("Please enter a valid qty..Need to be lower than or equal to qty on hand");
-        return;
-    }
+        // chosen item's index of items[] array
+        itemRecordIndex = items.findIndex(item => item.code === codeOfItem);
+        console.log(itemRecordIndex);
 
-    // check the chosen item, include to addedItems[] array and get index
-    let existingItem = addedItems.findIndex(item => item.code === codeOfItem);
-    console.log("index : " + existingItem);
-
-    if(existingItem < 0) {  // if addedItems[] array is empty, add a new object to array.
-
-        // create an object - Object Literal
-        let addedItem = {
-            code: codeOfItem,
-            name: nameOfItem,
-            price: priceOfItem,
-            qty: qtyOfItem,
-            total: itemTotal
+        // check the typed qty, equal or lower than qtyOnHand
+        if( qtyOfItem > items[itemRecordIndex].qty || !qtyOfItem) {
+            showErrorAlert("Please enter a valid qty..Need to be lower than or equal to qty on hand");
+            return;
         }
 
-        // push to the array
-        addedItems.push(addedItem);
+        // check the chosen item, include to addedItems[] array and get index
+        let existingItem = addedItems.findIndex(item => item.code === codeOfItem);
+        console.log("index : " + existingItem);
 
-    } else {    // if addedItems[] array is not empty, want to update qty.
-        addedItems[existingItem].qty += qtyOfItem;
+        if(existingItem < 0) {  // if addedItems[] array is empty, add a new object to array.
+
+            // create an object - Object Literal
+            let addedItem = {
+                code: codeOfItem,
+                name: nameOfItem,
+                price: priceOfItem,
+                qty: qtyOfItem,
+                total: itemTotal
+            }
+
+            // push to the array
+            addedItems.push(addedItem);
+
+        } else {    // if addedItems[] array is not empty, want to update qty.
+            addedItems[existingItem].qty += qtyOfItem;
+        }
+
+        // load the add-to-cart table
+        loadAddToCartTable();
+
+        tempItems.push(items[itemRecordIndex]);     // push the chosen item to the temporary array called tempItems[]
+        items[itemRecordIndex].qty -= qtyOfItem;    // update the qtyOnHand of that chosen item in the items[] array
+        $("#itemQtyOnH").val(items[itemRecordIndex].qty);   // update the qtyOnHand input of that chosen item in Select Item form
+
+        sum += itemTotal;   // update the total when add new items
+
+        $("#total").val(`Rs. ${sum}`);
+
+    } else {
+        showErrorAlert("Please select a item / items to add to cart!");
     }
 
-    // load the add-to-cart table
-    loadAddToCartTable();
-
-    tempItems.push(items[itemRecordIndex]);     // push the chosen item to the temporary array called tempItems[]
-    items[itemRecordIndex].qty -= qtyOfItem;    // update the qtyOnHand of that chosen item in the items[] array
-    $("#itemQtyOnH").val(items[itemRecordIndex].qty);   // update the qtyOnHand input of that chosen item in Select Item form
-
-    sum += itemTotal;   // update the total when add new items
-
-    $("#total").val(`Rs. ${sum}`);
 
 });
 // -------------------------- The end - when click add to cart button --------------------------
@@ -1454,7 +1461,7 @@ $("#purchaseBtn").on('click', function () {
                         background: '#fff1e0',
                         width: '35em',
                         confirmButtonColor: '#eac237',
-                        iconColor: '#18a918',
+                        iconColor: '#4dc94d'
                     });
                 } else {
                     Swal.fire({
@@ -1464,7 +1471,7 @@ $("#purchaseBtn").on('click', function () {
                         background: '#fff1e0',
                         width: '35em',
                         confirmButtonColor: '#eac237',
-                        iconColor: '#18a918',
+                        iconColor: '#4dc94d'
                     });
                 }
 
