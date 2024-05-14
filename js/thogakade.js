@@ -462,7 +462,7 @@ $("#customer-delete").on('click', () => {
 
 
 
-//-------------------------- The start - check validations when place order --------------------------
+//-------------------------- The start - check customer validations --------------------------
 function checkCustomerValidation(id, name, address, phone) {
 
     if(!/^C\d{3}$/.test(id)){ //check id
@@ -488,7 +488,7 @@ function checkCustomerValidation(id, name, address, phone) {
     return true;
 
 }
-//-------------------------- The end - check validations when place order --------------------------
+//-------------------------- The end - check customer validations --------------------------
 
 
 
@@ -787,6 +787,36 @@ $("#item-delete").on('click', () => {
 
 });
 // -------------------------- The end - when click item delete button --------------------------
+
+
+
+//-------------------------- The start - check item validations --------------------------
+function checkItemValidation(id, name, price, qty) {
+
+    if(!/^I\d{3}$/.test(id)){ //check ID
+        showErrorAlert("Please enter a valid ID!")
+        return false;
+    }
+
+    if(!name){ //check name
+        showErrorAlert("Please enter a valid name!");
+        return false;
+    }
+
+    if(!/^\d+(\.\d{1,2})?$/.test(price)){ //check price
+        showErrorAlert("Please enter a price for item!");
+        return false;
+    }
+
+    if(!qty || qty === 0){ //check qty
+        showErrorAlert("Please enter a quantity");
+        return false;
+    }
+
+    return true;
+
+}
+//-------------------------- The end - check item validations --------------------------
 
 
 
