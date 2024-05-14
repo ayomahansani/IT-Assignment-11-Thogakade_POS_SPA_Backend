@@ -794,16 +794,43 @@ $("#item-update").on('click', () => {
 // -------------------------- The start - when click item delete button --------------------------
 $("#item-delete").on('click', () => {
 
-    items.splice(itemRecordIndex, 1);
+    Swal.fire({
 
-    // load the table
-    loadItemTable();
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#328532',
+        cancelButtonColor: '#c59c35',
+        confirmButtonText: 'Yes, delete item!'
 
-    // clean the inputs values
-    $("#codeItem").val("");
-    $("#nameItem").val("");
-    $("#priceItem").val("");
-    $("#qtyItem").val("");
+    }).then((result) => {
+
+        if (result.isConfirmed) {
+
+            items.splice(itemRecordIndex, 1);
+
+            // load the table
+            loadItemTable();
+
+            // clean the inputs values
+            $("#codeItem").val("");
+            $("#nameItem").val("");
+            $("#priceItem").val("");
+            $("#qtyItem").val("");
+
+            // generate next item id
+            autoGenerateItemId();
+
+            // show item deleted pop up
+            Swal.fire({
+                icon: 'success',
+                title: 'Item deleted successfully!',
+                showConfirmButton: false,
+                timer: 1500
+            });
+        }
+    })
 
 });
 // -------------------------- The end - when click item delete button --------------------------
