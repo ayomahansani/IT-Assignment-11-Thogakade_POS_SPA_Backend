@@ -473,28 +473,47 @@ $("#customer-delete").on('click', () => {
 //-------------------------- The start - check customer validations --------------------------
 function checkCustomerValidation(id, name, address, phone) {
 
-    if(!id){
+    if(!id){    //check id field is empty or not
         showErrorAlert("ID field is required!")
         return false;
+    } else {
+        if(id.length < 4) {
+            showErrorAlert("ID must include at least 4 characters!")
+            return false;
+        }
+        if(!/^C\d{3}$/.test(id)){ //check id
+            showErrorAlert("Please enter a valid ID!  Pattern - 'C000'")
+            return false;
+        }
+
     }
 
-    if(!/^C\d{3}$/.test(id)){ //check id
-        showErrorAlert("Please enter a valid ID!")
+    if(!name){ //check name field is empty or not
+        showErrorAlert("Name field is required!");
         return false;
+    } else {
+        if(name.length < 2) {
+            showErrorAlert("Name must include more than one character!")
+            return false;
+        }
+        if(!isNaN(name)) {
+            showErrorAlert("Name must include Alphabets only..Numbers are not allowed!");
+            return false;
+        }
     }
 
-    if(!name){ //check name
-        showErrorAlert("Please enter a valid name!");
+    if(!address){ //check address field is empty or not
+        showErrorAlert("Address field is required!");
         return false;
+    } else {
+        if(address.length < 2) {
+            showErrorAlert("Address must include more than one character!")
+            return false;
+        }
     }
 
-    if(!address){ //check address
-        showErrorAlert("Please enter a valid address!");
-        return false;
-    }
-
-    if(!phone){ //check address
-        showErrorAlert("Please enter a valid Contact!");
+    if(!phone){ //check contact field is empty or not
+        showErrorAlert("Contact field is required!");
         return false;
     }
 
