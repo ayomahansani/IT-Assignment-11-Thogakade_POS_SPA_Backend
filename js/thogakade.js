@@ -477,37 +477,29 @@ function checkCustomerValidation(id, name, address, phone) {
         showErrorAlert("ID field is required!")
         return false;
     } else {
-        if(id.length < 4) {
-            showErrorAlert("ID must include at least 4 characters!")
-            return false;
-        }
-        if(!/^C\d{3}$/.test(id)){ //check id
+        if(!/^C\d{3,10}$/.test(id)){
             showErrorAlert("Please enter a valid ID!  Pattern - 'C000'")
             return false;
         }
-
     }
 
     if(!name){ //check name field is empty or not
         showErrorAlert("Name field is required!");
         return false;
     } else {
-        if(name.length < 2) {
-            showErrorAlert("Name must include more than one character!")
+        if(!/^[A-Za-z ]{2,40}$/.test(name)){
+            showErrorAlert("Please enter a valid Name!  Pattern - 'Shenu / Shenu Mathew'")
             return false;
         }
-        if(!isNaN(name)) {
-            showErrorAlert("Name must include Alphabets only..Numbers are not allowed!");
-            return false;
-        }
+
     }
 
     if(!address){ //check address field is empty or not
         showErrorAlert("Address field is required!");
         return false;
     } else {
-        if(address.length < 2) {
-            showErrorAlert("Address must include more than one character!")
+        if(!/^[A-Za-z\d\s\-']{2,50}$/.test(address)){
+            showErrorAlert("Please enter a valid Address! Pattern - 'Colombo / Colombo-10'")
             return false;
         }
     }
@@ -515,6 +507,11 @@ function checkCustomerValidation(id, name, address, phone) {
     if(!phone){ //check contact field is empty or not
         showErrorAlert("Contact field is required!");
         return false;
+    } else {
+        if(!/^(?:077|075|072|076|071)\d{7}$/.test(phone)){
+            showErrorAlert("Please enter a valid Phone Number! Pattern - '0756567234'")
+            return false;
+        }
     }
 
     return true;
