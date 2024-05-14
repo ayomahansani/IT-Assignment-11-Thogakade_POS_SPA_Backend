@@ -655,7 +655,7 @@ function loadItemTable() {
         let record = `<tr>
             <td class="item-code-value">${item.code}</td>    <!-- <td> = table data -->
             <td class="item-name-value">${item.name}</td>
-            <td class="item-price-value"> Rs. ${item.price}</td>
+            <td class="item-price-value"> Rs: ${item.price}</td>
             <td class="item-qty-value">${item.qty}</td>
         </tr>`;
 
@@ -1087,8 +1087,8 @@ autoGenerateOrderId("");
 
 
 // ---------------- The start - when first time order page is loaded, want to fill total inputs ----------------
-$("#subTotal").val("Rs.000.00");
-$("#total").val("Rs.000.00");
+$("#subTotal").val("Rs:000.00");
+$("#total").val("Rs:000.00");
 // ---------------- The end - when first time order page is loaded, want to fill total inputs ----------------
 
 
@@ -1240,7 +1240,7 @@ function loadAddToCartTable() {
             <td> ${item.code} </td>    <!-- <td> = table data -->
             <td> ${item.name} </td>
             <td> ${item.price} </td>
-            <td> Rs. ${item.qty} </td>
+            <td> Rs: ${item.qty} </td>
             <td> ${item.price * item.qty} </td>
             <td> <button type="button" class="btn btn-danger" onclick='removeItem("${item.code}", Number.parseInt(${item.qty}), Number.parseFloat(${item.price}))'>Remove</button> </td>
         </tr>`;
@@ -1272,7 +1272,7 @@ $("#addBtn").on('click', function () {
         console.log(itemRecordIndex);
 
         // check the typed qty, equal or lower than qtyOnHand
-        if( qtyOfItem > items[itemRecordIndex].qty || !qtyOfItem) {
+        if( qtyOfItem > items[itemRecordIndex].qty || !qtyOfItem || !/^\d{1,10}$/.test(qtyOfItem) ) {
             showErrorAlert("Please enter a valid qty..Need to be lower than or equal to qty on hand");
             return;
         }
@@ -1311,7 +1311,7 @@ $("#addBtn").on('click', function () {
         $("#total").val(`Rs. ${sum}`);
 
     } else {
-        showErrorAlert("Please select a item / items to add to cart!");
+        showErrorAlert("Please select an item / items to add to cart!");
     }
 
 
@@ -1518,8 +1518,8 @@ $("#purchaseBtn").on('click', function () {
                 }
 
                 // finally want to fill total inputs like follow
-                $("#subTotal").val("Rs.000.00");
-                $("#total").val("Rs.000.00");
+                $("#subTotal").val("Rs:000.00");
+                $("#total").val("Rs:000.00");
 
                 // update the home page's order card
                 $("#orders-count").html(orders.length);
@@ -1534,34 +1534,45 @@ $("#purchaseBtn").on('click', function () {
 
 
 //-------------------------- The start - check validations when place order --------------------------
-function checkOrderValidation(customer, items, total, discount, subTotal, cash) {
+function checkOrderValidation(customer, chosenItems, total, discount, subTotal, cash) {
 
     if(!customer){
         showErrorAlert("Please select a customer to place order!");
         return false;
     }
 
-    if(items.length === 0){
-        showErrorAlert("Please select and add to cart a item / items to place order!");
+    if(chosenItems.length === 0){
+        showErrorAlert("Please select and add to cart an item / items to place order!");
         return false;
     }
 
     if(!cash){
         showErrorAlert("Please enter the cash amount!");
         return false;
+    } else {
+        if(!/^(?:\d+(?:\.\d{1,2})?|\.\d{1,2})$/.test(cash)){
+            showErrorAlert("Please enter a valid Cash! Pattern - '560 / 560.25'");
+            return false;
+        }
     }
 
-    if(!discount){
+    if(!discount  || discount === 0 ){
         if((cash - total) < 0){
             showErrorAlert("The cash is not enough to pay the order!!!");
             return false;
         }
         return true;
     } else {
-        if((cash - subTotal) < 0){
-            showErrorAlert("The cash is not enough to pay the order!!!");
+        if(!/^\d{1,2}$/.test(discount)){
+            showErrorAlert("Please enter a valid Discount! Pattern - '5'");
             return false;
+        } else {
+            if((cash - subTotal) < 0){
+                showErrorAlert("The cash is not enough to pay the order!!!");
+                return false;
+            }
         }
+
         return true;
     }
 
