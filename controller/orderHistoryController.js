@@ -41,15 +41,14 @@ $("#viewBtn").on('click', function () {
 // -------------------------- The start - when click a row of order history table --------------------------
 $("#order-history-tbl-tbody").on('click', 'tr', function () {
 
-    let clickedIndex = $(this).index();
-    orderIndex = clickedIndex;    // assign current row index to recordIndex variable
+    let orderRecordIndex = $(this).index(); // assign current row index to recordIndex variable
 
-    console.log("index: " + clickedIndex);
+    console.log("index: " + orderRecordIndex);
 
     let details = "/  ";
 
     // get items 1 by 1 from an order and show them
-    orders[orderIndex].itemsOfOrder.map((item) => {
+    orders[orderRecordIndex].itemsOfOrder.map((item) => {
         details += " " + item.code + "  -  " + item.name + "  -  " + item.qty + "  /  ";
     });
 

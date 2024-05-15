@@ -2,7 +2,8 @@ import {orders} from "../db/db.js";
 import {customers} from "../db/db.js";
 import {items} from "../db/db.js";
 
-
+import {OrderModel} from "../model/orderModel.js";
+import {ItemModel} from "../model/itemModel.js";
 
 // create temporary arrays
 let addedItems = [];
