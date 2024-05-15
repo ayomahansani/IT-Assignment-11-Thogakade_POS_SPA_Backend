@@ -1,3 +1,9 @@
+import {autoFillCurrentDate} from "./orderController.js";
+import {loadCustomerComboBoxValues} from "./orderController.js";
+import {loadItemComboBoxValues} from "./orderController.js";
+
+import {customers, items} from "../db/db.js";
+
 
 // -------------------------- The start - when click navbar and some buttons --------------------------
 
@@ -57,6 +63,12 @@ $('#nav-items').on("click", function () {
 $('#nav-orders').on("click", function () {
     displayNonSections();
     $('#order-section').css({display: 'block'});
+
+    // ---- when click order nav link want to load customer IDs, item codes and autofill current date ----
+    autoFillCurrentDate();
+    loadCustomerComboBoxValues(customers, "#customersIdComboBox");
+    loadItemComboBoxValues(items, "#itemsIdComboBox");
+
 });
 /* end orders nav management */
 

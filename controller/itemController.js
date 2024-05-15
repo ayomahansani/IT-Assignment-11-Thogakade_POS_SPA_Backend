@@ -3,6 +3,7 @@ import {ItemModel} from "../model/itemModel.js";
 
 var itemRecordIndex;
 
+
 // -------------------------- The start - item table loading --------------------------
 function loadItemTable() {
 

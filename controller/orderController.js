@@ -1,13 +1,11 @@
 import {orders} from "../db/db.js";
 import {customers} from "../db/db.js";
 import {items} from "../db/db.js";
+import {addedItems} from "../db/db.js";
+import {tempItems} from "../db/db.js";
 
 import {OrderModel} from "../model/orderModel.js";
 import {ItemModel} from "../model/itemModel.js";
-
-// create temporary arrays
-let addedItems = [];
-let tempItems = [];
 
 let sum = 0;
 
@@ -16,23 +14,18 @@ var itemRecordIndex;
 var orderIndex;
 
 
-/* =================================================================================================== */
-/* ========================================== ORDERS PAGE ========================================== */
-/* =================================================================================================== */
-
-
 // -------------------------- The start - when click order nav link want to load customer IDs --------------------------
-$("#nav-orders").on('click', function () {
+/*$("#nav-orders").on('click', function () {
     autoFillCurrentDate();
     loadCustomerComboBoxValues(customers, "#customersIdComboBox");
     loadItemComboBoxValues(items, "#itemsIdComboBox");
-});
+});*/
 // -------------------------- The end - when click order nav link want to load customer IDs --------------------------
 
 
 
 // -------------------------- The start - fill current date --------------------------
-function autoFillCurrentDate() {
+export function autoFillCurrentDate() {
 
     var d = new Date();
 
@@ -96,7 +89,7 @@ function autoGenerateOrderId(orderId) {
 
 
 // -------------------------- The start - load customer IDs to customer combo box --------------------------
-function loadCustomerComboBoxValues(customerArray, customerComboBoxId) {
+export function loadCustomerComboBoxValues(customerArray, customerComboBoxId) {
 
     $(customerComboBoxId).empty();
 
@@ -120,7 +113,7 @@ function loadCustomerComboBoxValues(customerArray, customerComboBoxId) {
 
 
 // -------------------------- The start - load item IDs to item combo box --------------------------
-function loadItemComboBoxValues(itemArray, itemComboBoxId) {
+export function loadItemComboBoxValues(itemArray, itemComboBoxId) {
 
     $(itemComboBoxId).empty();
 
@@ -262,13 +255,18 @@ $("#addBtn").on('click', function () {
         if(existingItem < 0) {  // if addedItems[] array is empty, add a new object to array.
 
             // create an object - Object Literal
-            let addedItem = {
+            /*let addedItem = {
                 code: codeOfItem,
                 name: nameOfItem,
                 price: priceOfItem,
                 qty: qtyOfItem,
                 total: itemTotal
-            }
+            }*/
+
+
+            // create an object - Class Syntax
+
+
 
             // push to the array
             addedItems.push(addedItem);
