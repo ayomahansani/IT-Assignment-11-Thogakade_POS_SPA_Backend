@@ -1,3 +1,9 @@
+import {orders} from "../db/db.js";
+import {customers} from "../db/db.js";
+import {items} from "../db/db.js";
+
+
+
 // create temporary arrays
 let addedItems = [];
 let tempItems = [];
