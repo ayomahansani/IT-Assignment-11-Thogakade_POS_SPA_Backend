@@ -1,27 +1,20 @@
 import {orders} from "../db/db.js";
 import {customers} from "../db/db.js";
 import {items} from "../db/db.js";
-import {addedItems} from "../db/db.js";
-import {tempItems} from "../db/db.js";
 
 import {OrderModel} from "../model/orderModel.js";
 import {ItemModel} from "../model/itemModel.js";
 
+import {loadItemTable} from "./itemController.js";
+import {showErrorAlert} from "./customerController.js";
+
+// create temporary arrays
+let addedItems = [];
+let tempItems = [];
+
+
 let sum = 0;
-
-var customerRecordIndex;
 var itemRecordIndex;
-var orderIndex;
-
-
-// -------------------------- The start - when click order nav link want to load customer IDs --------------------------
-/*$("#nav-orders").on('click', function () {
-    autoFillCurrentDate();
-    loadCustomerComboBoxValues(customers, "#customersIdComboBox");
-    loadItemComboBoxValues(items, "#itemsIdComboBox");
-});*/
-// -------------------------- The end - when click order nav link want to load customer IDs --------------------------
-
 
 
 // -------------------------- The start - fill current date --------------------------
@@ -265,7 +258,7 @@ $("#addBtn").on('click', function () {
 
 
             // create an object - Class Syntax
-
+            let addedItem = new ItemModel(codeOfItem,nameOfItem,priceOfItem,qtyOfItem,itemTotal);
 
 
             // push to the array
@@ -432,7 +425,7 @@ $("#purchaseBtn").on('click', function () {
                 /*let order = new OrderModel(orderId, date, customer, items, discount, total);*/
 
                 // create an object - Object Literal
-                let order = {
+                /*let order = {
                     idOfOrder: orderId,
                     dateOfOrder: orderDate,
                     idOfCustomer: customerId,
@@ -440,7 +433,12 @@ $("#purchaseBtn").on('click', function () {
                     totalOfOrder: orderTotal,
                     discountOfOrder: orderDiscount,
                     subTotalOfOrder:orderSubTotal
-                }
+                }*/
+
+
+                // create an object - Class Syntax
+                let order = new OrderModel(orderId,orderDate,customerId,chosenItems,orderTotal,orderDiscount,orderSubTotal);
+
 
                 // push to the orders[] array
                 orders.push(order);
@@ -547,18 +545,6 @@ function checkOrderValidation(customer, chosenItems, total, discount, subTotal, 
 
 
 
-//-------------------------- The start - show error alert --------------------------
-function showErrorAlert(message){
-    Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: message,
-        background: '#fff1e0',
-        width: '38em',
-        confirmButtonColor: '#6da959',
-        // iconColor: '#ec3636',
-    });
-}
-//-------------------------- The end - show error alert --------------------------
+
 
 

@@ -1,11 +1,13 @@
 import {items} from "../db/db.js";
 import {ItemModel} from "../model/itemModel.js";
 
+import {showErrorAlert} from "./customerController.js";
+
 var itemRecordIndex;
 
 
 // -------------------------- The start - item table loading --------------------------
-function loadItemTable() {
+export function loadItemTable() {
 
     $("#item-tbl-tbody").empty();
 

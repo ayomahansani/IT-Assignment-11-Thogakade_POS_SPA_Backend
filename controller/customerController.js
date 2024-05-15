@@ -403,3 +403,19 @@ $("#customer-search-modal-close").on('click', function () {
 });
 // -------------------------- The end - clear the customer search bar's value --------------------------
 
+
+
+
+//-------------------------- The start - show error alert --------------------------
+export function showErrorAlert(message){
+    Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: message,
+        background: '#fff1e0',
+        width: '38em',
+        confirmButtonColor: '#6da959',
+        // iconColor: '#ec3636',
+    });
+}
+//-------------------------- The end - show error alert --------------------------
