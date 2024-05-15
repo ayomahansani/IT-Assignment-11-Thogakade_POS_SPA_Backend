@@ -14,10 +14,12 @@ const displayNonSections = () => {
 
 
 
+
 /* start when first time loaded index.html */
 displayNonSections();
 $('#home-section').css({display: 'block'});
 /* end when first time loaded index.html */
+
 
 
 
@@ -30,12 +32,14 @@ $('#nav-home').on("click", function () {
 
 
 
+
 /* start customers nav management */
 $('#nav-customers').on("click", function () {
     displayNonSections();
     $('#customer-section').css({display: 'block'});
 });
 /* end customers nav management */
+
 
 
 
@@ -48,12 +52,14 @@ $('#nav-items').on("click", function () {
 
 
 
+
 /* start orders nav management */
 $('#nav-orders').on("click", function () {
     displayNonSections();
     $('#order-section').css({display: 'block'});
 });
 /* end orders nav management */
+
 
 
 
@@ -67,6 +73,7 @@ $('#btn-login').on("click", function () {
 
 
 
+
 /* start register nav management */
 $('#btn-register').on("click", function () {
     displayNonSections();
@@ -77,6 +84,7 @@ $('#btn-register').on("click", function () {
 
 
 
+
 /* start logout nav management */
 $('#btn-logout').on("click", function () {
     displayNonSections();
@@ -84,6 +92,7 @@ $('#btn-logout').on("click", function () {
     $('#navbar-section').css({display: 'none'});
 });
 /* end logout nav management */
+
 
 
 
@@ -100,12 +109,14 @@ $('#go-home-page').on("click", function () {
 
 
 
+
 /* when click login page's register button */
 $('#go-register-page').on("click", function () {
     displayNonSections();
     $('#register-section').css({display: 'block'});
 });
 /* end when click login page's register button */
+
 
 
 
@@ -122,12 +133,14 @@ $('#go-home-page-2').on("click", function () {
 
 
 
+
 /* when click register page's login button */
 $('#go-login-page').on("click", function () {
     displayNonSections();
     $('#login-section').css({display: 'block'});
 });
 /* end when click login page's register button */
+
 
 
 
@@ -143,6 +156,7 @@ $('#go-customer-page').on("click", function () {
 
 
 
+
 /* when click home page's item card's more button */
 $('#go-item-page').on("click", function () {
     displayNonSections();
@@ -155,6 +169,7 @@ $('#go-item-page').on("click", function () {
 
 
 
+
 /* when click home page's order card's more button */
 $('#go-orders-page').on("click", function () {
     displayNonSections();
@@ -164,6 +179,7 @@ $('#go-orders-page').on("click", function () {
     $('ul li:nth-child(4) span').addClass('active');
 });
 /* end when click home page's customer card's more button */
+
 
 
 

@@ -95,6 +95,7 @@ $("#customer-save").on('click', () => {
         // create an object - Class Syntax
         let customer = new CustomerModel(idOfCustomer,nameOfCustomer,addressOfCustomer,phoneOfCustomer);
 
+
         // push to the array
         customers.push(customer);
 

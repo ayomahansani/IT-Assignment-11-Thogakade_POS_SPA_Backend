@@ -83,12 +83,17 @@ $("#item-save").on('click', () => {
     if(itemValidated) {
 
         // create an object - Object Literal
-        let item = {
+        /*let item = {
             code: codeOfItem,
             name: nameOfItem,
             price: priceOfItem,
             qty: qtyOfItem
-        }
+        }*/
+
+
+        // create an object - Class Syntax
+        let item = new ItemModel(codeOfItem,nameOfItem,priceOfItem,qtyOfItem);
+
 
         // push to the array
         items.push(item);
@@ -372,10 +377,10 @@ $("#item-search-btn").on('click', function () {
 
                 $("#itemDetailsModalLabel").html("Please enter item code or name...");
 
-                $("#searchedItemCode").val("");
-                $("#searchedItemName").val("");
-                $("#searchedItemPrice").val("");
-                $("#searchedItemQty").val("");
+                $("#searchedItemCode").val("Search Item");
+                $("#searchedItemName").val("Search Item");
+                $("#searchedItemPrice").val("Search Item");
+                $("#searchedItemQty").val("Search Item");
 
             }
 
