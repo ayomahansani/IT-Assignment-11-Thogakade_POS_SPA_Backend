@@ -1,6 +1,6 @@
 import {items} from "../db/db.js";
 
-
+var itemRecordIndex;
 
 // -------------------------- The start - item table loading --------------------------
 function loadItemTable() {

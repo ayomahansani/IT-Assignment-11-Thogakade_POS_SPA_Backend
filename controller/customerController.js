@@ -1,5 +1,6 @@
 import {customers} from "../db/db.js";
 
+var customerRecordIndex;
 
 // -------------------------- The start - customer table loading --------------------------
 function loadCustomerTable() {
