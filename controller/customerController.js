@@ -3,6 +3,7 @@ import {CustomerModel} from "../model/customerModel.js";
 
 var customerRecordIndex;
 
+
 // -------------------------- The start - customer table loading --------------------------
 function loadCustomerTable() {
 
@@ -379,10 +380,10 @@ $("#customer-search-btn").on('click', function () {
 
                 $("#customerDetailsModalLabel").html("Please enter customer id or name...");
 
-                $("#searchedCustomerId").val("");
-                $("#searchedCustomerName").val("");
-                $("#searchedCustomerAddress").val("");
-                $("#searchedCustomerPhone").val("");
+                $("#searchedCustomerId").val("Search Customer");
+                $("#searchedCustomerName").val("Search Customer");
+                $("#searchedCustomerAddress").val("Search Customer");
+                $("#searchedCustomerPhone").val("Search Customer");
             }
 
         }
