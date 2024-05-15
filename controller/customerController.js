@@ -83,12 +83,16 @@ $("#customer-save").on('click', () => {
     if(customerValidated) {
 
         // create an object - Object Literal
-        let customer = {
+        /*let customer = {
             id: idOfCustomer,
             name: nameOfCustomer,
             address: addressOfCustomer,
             phone: phoneOfCustomer
-        }
+        }*/
+
+
+        // create an object - Class Syntax
+        let customer = new CustomerModel(idOfCustomer,nameOfCustomer,addressOfCustomer,phoneOfCustomer);
 
         // push to the array
         customers.push(customer);
@@ -113,6 +117,7 @@ $("#customer-save").on('click', () => {
             timer: 1500,
             iconColor: '#4dc94d'
         });
+
 
         // update the home page's customer card
         $("#customer-count").html(customers.length);
