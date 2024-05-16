@@ -1,5 +1,9 @@
+// import array
 import {customers} from "../db/db.js";
+
+// import class
 import {CustomerModel} from "../model/customerModel.js";
+
 
 var customerRecordIndex;
 
@@ -29,9 +33,11 @@ function loadCustomerTable() {
 
 
 
+
 // ---------------- The start - when first time order page is loaded, want to generate customer id  ----------------
 autoGenerateCustomerId();
 // --------------- The end - when first time order page is loaded, want to generate customer id  ----------------
+
 
 
 
@@ -59,6 +65,7 @@ function autoGenerateCustomerId() {
 
 }
 // -------------------------- The end - auto generate customer id --------------------------
+
 
 
 
@@ -132,6 +139,7 @@ $("#customer-save").on('click', () => {
 
 
 
+
 // -------------------------- The start - when click customer update button --------------------------
 $("#customer-update").on('click', () => {
 
@@ -189,6 +197,7 @@ $("#customer-update").on('click', () => {
 
 
 
+
 // -------------------------- The start - when click customer delete button --------------------------
 $("#customer-delete").on('click', () => {
 
@@ -238,6 +247,7 @@ $("#customer-delete").on('click', () => {
 
 
 
+
 // -------------------------- The start - when click customer clear button --------------------------
 $("#customer-clear").on('click', () => {
 
@@ -248,6 +258,7 @@ $("#customer-clear").on('click', () => {
 
 });
 // -------------------------- The end - when click customer clear button --------------------------
+
 
 
 
@@ -302,6 +313,7 @@ function checkCustomerValidation(id, name, address, phone) {
 
 
 
+
 // -------------------------- The start - when click a customer table row --------------------------
 $("#customer-tbl-tbody").on( 'click', 'tr', function () {
 
@@ -325,6 +337,7 @@ $("#customer-tbl-tbody").on( 'click', 'tr', function () {
 
 
 
+
 // -------------------------- The start - when click view all customers button --------------------------
 $("#viewAllCus").on('click', function () {
 
@@ -345,6 +358,7 @@ $("#viewAllCus").on('click', function () {
 
 });
 // -------------------------- The end - when click view all customers button --------------------------
+
 
 
 
@@ -392,6 +406,7 @@ $("#customer-search-btn").on('click', function () {
     }
 });
 // -------------------------- The end - when click customer search button --------------------------
+
 
 
 

@@ -1,3 +1,4 @@
+// import array
 import {orders} from "../db/db.js";
 
 var orderRecordIndex;
@@ -32,11 +33,13 @@ function loadOrderHistoryTable() {
 
 
 
+
 // -------------------------- The start - when click view order history button --------------------------
 $("#viewBtn").on('click', function () {
     loadOrderHistoryTable();
 });
 // -------------------------- The end - when click view order history button --------------------------
+
 
 
 

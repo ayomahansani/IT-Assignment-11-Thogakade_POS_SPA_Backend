@@ -1,10 +1,13 @@
+// import arrays
 import {orders} from "../db/db.js";
 import {customers} from "../db/db.js";
 import {items} from "../db/db.js";
 
+// import classes
 import {OrderModel} from "../model/orderModel.js";
 import {ItemModel} from "../model/itemModel.js";
 
+// import methods
 import {loadItemTable} from "./itemController.js";
 import {showErrorAlert} from "./customerController.js";
 
@@ -45,9 +48,11 @@ export function autoFillCurrentDate() {
 
 
 
+
 // ---------------- The start - when first time order page is loaded, want to generate order id  ----------------
 autoGenerateOrderId("");
 // --------------- The end - when first time order page is loaded, want to generate order id  ----------------
+
 
 
 
@@ -55,6 +60,7 @@ autoGenerateOrderId("");
 $("#subTotal").val("Rs:000.00");
 $("#total").val("Rs:000.00");
 // ---------------- The end - when first time order page is loaded, want to fill total inputs ----------------
+
 
 
 
@@ -82,6 +88,7 @@ function autoGenerateOrderId(orderId) {
 
 
 
+
 // -------------------------- The start - load customer IDs to customer combo box --------------------------
 export function loadCustomerComboBoxValues(customerArray, customerComboBoxId) {
 
@@ -106,6 +113,7 @@ export function loadCustomerComboBoxValues(customerArray, customerComboBoxId) {
 
 
 
+
 // -------------------------- The start - load item IDs to item combo box --------------------------
 export function loadItemComboBoxValues(itemArray, itemComboBoxId) {
 
@@ -127,6 +135,7 @@ export function loadItemComboBoxValues(itemArray, itemComboBoxId) {
 
 }
 // -------------------------- The end - load item IDs to item combo box --------------------------
+
 
 
 
@@ -161,6 +170,7 @@ $("#customersIdComboBox").change(function () {
 
 
 
+
 // ---------------- The start - when select a customer dropdown value , autofilled other inputs ----------------
 $("#itemsIdComboBox").change(function () {
 
@@ -189,6 +199,7 @@ $("#itemsIdComboBox").change(function () {
 
 });
 // ---------------- The end - when select a customer dropdown value , autofilled other inputs ----------------
+
 
 
 
@@ -221,6 +232,9 @@ function loadAddToCartTable() {
 // -------------------------- The end - add-to-cart table loading --------------------------
 
 
+
+
+// -------------------------- The start - when click remove button want to call removeItem() function --------------------------
 $("#table-add-to-cart").on('click', function (event) {
 
     if (event.target.classList.contains('item-remove-button')) {
@@ -228,9 +242,13 @@ $("#table-add-to-cart").on('click', function (event) {
         const code = row.querySelector('td:nth-child(1)').textContent.trim();
         const qty = parseInt(row.querySelector('td:nth-child(4)').textContent.trim());
         const price = parseFloat(row.querySelector('td:nth-child(3)').textContent.replace('Rs:', '').trim());
+
+        // call the function
         removeItem(code, qty, price);
     }
 });
+// -------------------------- The end - when click remove button want to call removeItem() function --------------------------
+
 
 
 
@@ -270,6 +288,7 @@ function removeItem(addedItemRecord, qty, unitPrice) {
     });
 }
 // -------------------------- The start - when click remove button of add-to-cart table --------------------------
+
 
 
 
@@ -343,6 +362,7 @@ $("#addBtn").on('click', function () {
 
 
 
+
 // -------------------------- The start - when input discount, auto generated sub total --------------------------
 $("#discount").on('input', function () {
 
@@ -360,6 +380,7 @@ $("#discount").on('input', function () {
 
 });
 // -------------------------- The end - when input discount, auto generated sub total --------------------------
+
 
 
 
@@ -400,6 +421,7 @@ $("#cash").on('input', function () {
 
 });
 // -------------------------- The end - when type cash, auto generated balance --------------------------
+
 
 
 
@@ -522,6 +544,7 @@ $("#purchaseBtn").on('click', function () {
 
 
 
+
 //-------------------------- The start - check validations when place order --------------------------
 function checkOrderValidation(customer, chosenItems, total, discount, subTotal, cash) {
 
@@ -561,5 +584,5 @@ function checkOrderValidation(customer, chosenItems, total, discount, subTotal, 
 
 
 
-
+// before applying MVC , can use this code ... But after applying MVC , can't use inline onclick function
 // <td> <button type="button" class="btn btn-danger" onclick='removeItem("${item.code}", Number.parseInt(${item.qty}), Number.parseFloat(${item.price}))'>Remove</button> </td>

@@ -1,7 +1,9 @@
+// import methods
 import {autoFillCurrentDate} from "./orderController.js";
 import {loadCustomerComboBoxValues} from "./orderController.js";
 import {loadItemComboBoxValues} from "./orderController.js";
 
+// import arrays
 import {customers, items} from "../db/db.js";
 
 

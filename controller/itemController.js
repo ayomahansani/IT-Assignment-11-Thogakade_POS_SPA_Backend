@@ -1,7 +1,12 @@
+// import array
 import {items} from "../db/db.js";
+
+// import class
 import {ItemModel} from "../model/itemModel.js";
 
+// import method
 import {showErrorAlert} from "./customerController.js";
+
 
 var itemRecordIndex;
 
@@ -31,9 +36,11 @@ export function loadItemTable() {
 
 
 
+
 // ---------------- The start - when first time order page is loaded, want to generate item id  ----------------
 autoGenerateItemId();
 // --------------- The end - when first time order page is loaded, want to generate item id  ----------------
+
 
 
 
@@ -61,6 +68,7 @@ function autoGenerateItemId() {
 
 }
 // -------------------------- The end - auto generate item id --------------------------
+
 
 
 
@@ -133,6 +141,7 @@ $("#item-save").on('click', () => {
 
 
 
+
 // -------------------------- The start - when click item update button --------------------------
 $("#item-update").on('click', () => {
 
@@ -190,6 +199,7 @@ $("#item-update").on('click', () => {
 
 
 
+
 // -------------------------- The start - when click item delete button --------------------------
 $("#item-delete").on('click', () => {
 
@@ -239,6 +249,7 @@ $("#item-delete").on('click', () => {
 
 
 
+
 // -------------------------- The start - when click item clear button --------------------------
 $("#item-clear").on('click', () => {
 
@@ -249,6 +260,7 @@ $("#item-clear").on('click', () => {
 
 });
 // -------------------------- The end - when click item clear button --------------------------
+
 
 
 
@@ -302,6 +314,7 @@ function checkItemValidation(code, name, price, qty) {
 
 
 
+
 // -------------------------- The start - when click an item table row --------------------------
 $("#item-tbl-tbody").on( 'click', 'tr', function () {
 
@@ -325,6 +338,7 @@ $("#item-tbl-tbody").on( 'click', 'tr', function () {
 
 
 
+
 // -------------------------- The start - when click view all item button --------------------------
 $("#viewAllItem").on('click', function () {
 
@@ -345,6 +359,7 @@ $("#viewAllItem").on('click', function () {
 
 });
 // -------------------------- The end - when click view all item button --------------------------
+
 
 
 // -------------------------- The start - when click item search button --------------------------
@@ -393,6 +408,7 @@ $("#item-search-btn").on('click', function () {
 
 });
 // -------------------------- The end - when click item search button --------------------------
+
 
 
 
