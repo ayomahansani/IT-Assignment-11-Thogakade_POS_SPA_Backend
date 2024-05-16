@@ -15,6 +15,7 @@ let tempItems = [];
 
 let sum = 0;
 var itemRecordIndex;
+var addedItemIndex;
 
 
 // -------------------------- The start - fill current date --------------------------
@@ -198,6 +199,8 @@ function loadAddToCartTable() {
 
     addedItems.map((item, index) => {
 
+        addedItemIndex = index;
+
         // want to wrap => use ` mark
 
         let record = `<tr>
@@ -206,7 +209,7 @@ function loadAddToCartTable() {
             <td> Rs: ${item.price} </td>
             <td> ${item.qty} </td>
             <td> ${item.price * item.qty} </td>
-            <td> <button type="button" class="btn btn-danger" onclick='removeItem("${item.code}", Number.parseInt(${item.qty}), Number.parseFloat(${item.price}))'>Remove</button> </td>
+            <td> <button type="button" class="btn btn-danger item-remove-button">Remove</button> </td>
         </tr>`;
 
         $("#add-to-cart-tbl-tbody").append(record);
@@ -216,6 +219,57 @@ function loadAddToCartTable() {
     });
 }
 // -------------------------- The end - add-to-cart table loading --------------------------
+
+
+$("#table-add-to-cart").on('click', function (event) {
+
+    if (event.target.classList.contains('item-remove-button')) {
+        const row = event.target.closest('tr');
+        const code = row.querySelector('td:nth-child(1)').textContent.trim();
+        const qty = parseInt(row.querySelector('td:nth-child(4)').textContent.trim());
+        const price = parseFloat(row.querySelector('td:nth-child(3)').textContent.replace('Rs:', '').trim());
+        removeItem(code, qty, price);
+    }
+});
+
+
+
+// -------------------------- The start - when click remove button of add-to-cart table --------------------------
+function removeItem(addedItemRecord, qty, unitPrice) {
+    console.log(addedItemRecord);
+    console.log(qty);
+    console.log(unitPrice);
+    var total = unitPrice * qty ;
+
+
+    var filt = addedItems.filter((item,index) => {
+
+        if(addedItemRecord === item.code) {
+            addedItems.splice(index,1);
+
+            items.filter((item,index) => {
+
+                if(item.code === addedItemRecord) {
+                    item.qty += qty;
+                    loadItemComboBoxValues(items, "#itemsIdComboBox");
+
+                    $("#itemCode").val("");
+                    $("#itemName").val("");
+                    $("#itemPrice").val("");
+                    $("#itemQtyOnH").val("");
+                    $("#quantity").val("");
+
+                    sum -= total;
+                    $("#total").val(`Rs: ${sum}`);
+                }
+            });
+
+            // load the table
+            loadAddToCartTable();
+        }
+    });
+}
+// -------------------------- The start - when click remove button of add-to-cart table --------------------------
 
 
 
@@ -286,45 +340,6 @@ $("#addBtn").on('click', function () {
 
 });
 // -------------------------- The end - when click add to cart button --------------------------
-
-
-
-// -------------------------- The start - when click remove button of add-to-cart table --------------------------
-function removeItem(addedItemRecord, qty, unitPrice) {
-    console.log(addedItemRecord);
-    console.log(qty);
-    console.log(unitPrice);
-    var total = unitPrice * qty ;
-
-
-    var filt = addedItems.filter((item,index) => {
-
-        if(addedItemRecord === item.code) {
-            addedItems.splice(index,1);
-
-            items.filter((item,index) => {
-
-                if(item.code === addedItemRecord) {
-                    item.qty += qty;
-                    loadItemComboBoxValues(items, "#itemsIdComboBox");
-
-                    $("#itemCode").val("");
-                    $("#itemName").val("");
-                    $("#itemPrice").val("");
-                    $("#itemQtyOnH").val("");
-                    $("#quantity").val("");
-
-                    sum -= total;
-                    $("#total").val(`Rs: ${sum}`);
-                }
-            });
-
-            // load the table
-            loadAddToCartTable();
-        }
-    });
-}
-// -------------------------- The start - when click remove button of add-to-cart table --------------------------
 
 
 
@@ -547,4 +562,4 @@ function checkOrderValidation(customer, chosenItems, total, discount, subTotal, 
 
 
 
-
+// <td> <button type="button" class="btn btn-danger" onclick='removeItem("${item.code}", Number.parseInt(${item.qty}), Number.parseFloat(${item.price}))'>Remove</button> </td>

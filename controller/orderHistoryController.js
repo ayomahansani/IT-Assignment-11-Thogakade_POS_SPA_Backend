@@ -1,5 +1,7 @@
 import {orders} from "../db/db.js";
 
+var orderRecordIndex;
+
 
 // -------------------------- The start - order history table loading --------------------------
 function loadOrderHistoryTable() {
@@ -41,9 +43,10 @@ $("#viewBtn").on('click', function () {
 // -------------------------- The start - when click a row of order history table --------------------------
 $("#order-history-tbl-tbody").on('click', 'tr', function () {
 
-    let orderRecordIndex = $(this).index(); // assign current row index to recordIndex variable
+    let index = $(this).index();
+    orderRecordIndex = index;  // assign current row index to recordIndex variable
 
-    console.log("index: " + orderRecordIndex);
+    console.log("index: " + index);
 
     let details = "/  ";
 
