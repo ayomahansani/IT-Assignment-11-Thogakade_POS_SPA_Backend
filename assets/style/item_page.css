@@ -163,6 +163,12 @@
     color: gold;
 }
 
+#itemDetailsModal .disabled-input {
+    margin-bottom: 1.2em;
+    border: none;
+    background-color: #e7cbab;
+}
+
 #item-section .item-table {
     position: absolute;
     height: 52%;

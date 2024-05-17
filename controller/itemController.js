@@ -278,10 +278,6 @@ $("#item-delete").on('click', () => {
         showErrorAlert("First you need to add items ! Then you can delete...");
     }
 
-
-
-
-
 });
 // -------------------------- The end - when click item delete button --------------------------
 
@@ -405,42 +401,58 @@ $("#item-search-btn").on('click', function () {
 
     var itemDetail = $("#searchItem").val();
 
-    for (let i=0; i<items.length; i++) {
+    if (items.length !== 0) {
 
-        if(items[i].code === itemDetail || items[i].name === itemDetail){
-            $("#searchedItemCode").val(items[i].code);
-            $("#searchedItemName").val(items[i].name);
-            $("#searchedItemPrice").val(items[i].price);
-            $("#searchedItemQty").val(items[i].qty);
+        for (let i=0; i<items.length; i++) {
 
-            $("#itemDetailsModalLabel").html("Item Details");
+            if (items[i].code === itemDetail || items[i].name === itemDetail) {
 
-            return;
-        }
+                $("#searchedItemCode").val(items[i].code);
+                $("#searchedItemName").val(items[i].name);
+                $("#searchedItemPrice").val(items[i].price);
+                $("#searchedItemQty").val(items[i].qty);
 
-        else {
+                $("#itemDetailsModalLabel").html("Item Details");
 
-            if(itemDetail !== "") {
-
-                $("#itemDetailsModalLabel").html("Can't find item! Try again...");
-
-                $("#searchedItemCode").val("No Item");
-                $("#searchedItemName").val("No Item");
-                $("#searchedItemPrice").val("No Item");
-                $("#searchedItemQty").val("No Item");
-
-            } else {
-
-                $("#itemDetailsModalLabel").html("Please enter item code or name...");
-
-                $("#searchedItemCode").val("Search Item");
-                $("#searchedItemName").val("Search Item");
-                $("#searchedItemPrice").val("Search Item");
-                $("#searchedItemQty").val("Search Item");
-
+                return;
             }
 
         }
+
+        if(itemDetail !== "") {
+
+            showErrorAlert("Can't find item ! Try again...");
+
+            $("#searchedItemCode").val("");
+            $("#searchedItemName").val("");
+            $("#searchedItemPrice").val("");
+            $("#searchedItemQty").val("");
+
+            $("#itemDetailsModalLabel").html("Item Details");
+
+        } else {
+
+            showErrorAlert("Please enter item code or name to search !");
+
+            $("#searchedItemCode").val("");
+            $("#searchedItemName").val("");
+            $("#searchedItemPrice").val("");
+            $("#searchedItemQty").val("");
+
+            $("#itemDetailsModalLabel").html("Item Details");
+
+        }
+
+    } else {
+
+        showErrorAlert("First you need to add items ! Then you can search...");
+
+        $("#searchedItemCode").val("");
+        $("#searchedItemName").val("");
+        $("#searchedItemPrice").val("");
+        $("#searchedItemQty").val("");
+
+        $("#itemDetailsModalLabel").html("Item Details");
 
     }
 
