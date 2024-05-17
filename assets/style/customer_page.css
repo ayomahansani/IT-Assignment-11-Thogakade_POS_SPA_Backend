@@ -163,6 +163,12 @@ input:hover{
     color: gold;
 }
 
+#customerDetailsModal .disabled-input {
+    margin-bottom: 1.2em;
+    border: none;
+    background-color: #e7cbab;
+}
+
 .customer-table {
     position: absolute;
     height: 52%;
