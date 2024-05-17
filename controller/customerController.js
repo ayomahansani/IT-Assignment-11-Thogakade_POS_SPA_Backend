@@ -150,44 +150,55 @@ $("#customer-update").on('click', () => {
     var addressOfCustomer = $("#customerAddress").val();        // customer address value
     var phoneOfCustomer = $("#customerPhone").val();        // customer phone value
 
+    customers.map((item) => {
 
-    // get current customer object relevant to clicked row, using customerRecordIndex
-    let customerObj = customers[customerRecordIndex];
+        if(item.id === idOfCustomer) {
+
+            // get current customer object relevant to clicked row, using customerRecordIndex
+            let customerObj = customers[customerRecordIndex];
 
 
-    let customerValidated = checkCustomerValidation(idOfCustomer,nameOfCustomer,addressOfCustomer,phoneOfCustomer);
+            let customerValidated = checkCustomerValidation(idOfCustomer,nameOfCustomer,addressOfCustomer,phoneOfCustomer);
 
 
-    if(customerValidated) {
+            if(customerValidated) {
 
-        // assign new values to relevant customer object's values
-        customerObj.id = idOfCustomer;
-        customerObj.name = nameOfCustomer;
-        customerObj.address = addressOfCustomer;
-        customerObj.phone = phoneOfCustomer;
+                // assign new values to relevant customer object's values
+                customerObj.id = idOfCustomer;
+                customerObj.name = nameOfCustomer;
+                customerObj.address = addressOfCustomer;
+                customerObj.phone = phoneOfCustomer;
 
-        // load the table
-        loadCustomerTable();
+                // load the table
+                loadCustomerTable();
 
-        // clean the inputs values
-        $("#customerId").val("");
-        $("#customerName").val("");
-        $("#customerAddress").val("");
-        $("#customerPhone").val("");
+                // clean the inputs values
+                $("#customerId").val("");
+                $("#customerName").val("");
+                $("#customerAddress").val("");
+                $("#customerPhone").val("");
 
-        // generate next customer id
-        autoGenerateCustomerId();
+                // generate next customer id
+                autoGenerateCustomerId();
 
-        // show customer updated pop up
-        Swal.fire({
-            icon: 'success',
-            title: 'Customer updated successfully!',
-            showConfirmButton: false,
-            timer: 1500,
-            iconColor: '#4dc94d'
-        });
+                // show customer updated pop up
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Customer updated successfully!',
+                    showConfirmButton: false,
+                    timer: 1500,
+                    iconColor: '#4dc94d'
+                });
 
-    }
+            }
+
+        } else {
+            showErrorAlert("Customer not found ! Please try again...")
+        }
+
+    });
+
+
 
     // ********** special **********
     // the clicked table's row index must equal to the customer object's index of array
@@ -201,46 +212,59 @@ $("#customer-update").on('click', () => {
 // -------------------------- The start - when click customer delete button --------------------------
 $("#customer-delete").on('click', () => {
 
-    Swal.fire({
+    var cusId = $("#customerId").val();
 
-        title: 'Are you sure?',
-        text: "You won't be able to revert this!",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#6da959',
-        cancelButtonColor: '#dcba65',
-        background: '#fff1e0',
-        width: '35em',
-        confirmButtonText: 'Yes, delete customer!'
+    customers.map((item) => {
 
-    }).then((result) => {
+        if(item.id === cusId){
 
-        if (result.isConfirmed) {
-
-            customers.splice(customerRecordIndex, 1);
-
-            // load the table
-            loadCustomerTable();
-
-            // clean the inputs values
-            $("#customerId").val("");
-            $("#customerName").val("");
-            $("#customerAddress").val("");
-            $("#customerPhone").val("");
-
-            // generate next customer id
-            autoGenerateCustomerId();
-
-            // show customer saved pop up
             Swal.fire({
-                icon: 'success',
-                title: 'Customer deleted successfully!',
-                showConfirmButton: false,
-                timer: 1500,
-                iconColor: '#4dc94d'
+
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#6da959',
+                cancelButtonColor: '#dcba65',
+                background: '#fff1e0',
+                width: '35em',
+                confirmButtonText: 'Yes, delete customer!'
+
+            }).then((result) => {
+
+                if (result.isConfirmed) {
+
+                    customers.splice(customerRecordIndex, 1);
+
+                    // load the table
+                    loadCustomerTable();
+
+                    // clean the inputs values
+                    $("#customerId").val("");
+                    $("#customerName").val("");
+                    $("#customerAddress").val("");
+                    $("#customerPhone").val("");
+
+                    // generate next customer id
+                    autoGenerateCustomerId();
+
+                    // show customer deleted pop up
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Customer deleted successfully!',
+                        showConfirmButton: false,
+                        timer: 1500,
+                        iconColor: '#4dc94d'
+                    });
+
+                }
             });
+
+        } else {
+            showErrorAlert("Customer not found ! Please try again...");
         }
-    })
+
+    });
 
 });
 // -------------------------- The end - when click customer delete button --------------------------
