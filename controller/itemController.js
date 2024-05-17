@@ -152,44 +152,53 @@ $("#item-update").on('click', () => {
     var qtyOfItem = $("#qtyItem").val();        // item qty value
 
 
-    // get current item object relevant to clicked row, using itemRecordIndex
-    let itemObj = items[itemRecordIndex];
+    items.map((item) => {
+
+        if (item.code === codeOfItem) {
+
+            // get current item object relevant to clicked row, using itemRecordIndex
+            let itemObj = items[itemRecordIndex];
 
 
-    let itemValidated = checkItemValidation(codeOfItem,nameOfItem,priceOfItem,qtyOfItem);
+            let itemValidated = checkItemValidation(codeOfItem,nameOfItem,priceOfItem,qtyOfItem);
 
 
-    if(itemValidated) {
+            if(itemValidated) {
 
-        // assign new values to relevant item object's values
-        itemObj.code = codeOfItem;
-        itemObj.name = nameOfItem;
-        itemObj.price = priceOfItem;
-        itemObj.qty = qtyOfItem;
+                // assign new values to relevant item object's values
+                itemObj.code = codeOfItem;
+                itemObj.name = nameOfItem;
+                itemObj.price = priceOfItem;
+                itemObj.qty = qtyOfItem;
 
-        // load the table
-        loadItemTable();
+                // load the table
+                loadItemTable();
 
-        // clean the inputs values
-        $("#codeItem").val("");
-        $("#nameItem").val("");
-        $("#priceItem").val("");
-        $("#qtyItem").val("");
+                // clean the inputs values
+                $("#codeItem").val("");
+                $("#nameItem").val("");
+                $("#priceItem").val("");
+                $("#qtyItem").val("");
 
-        // generate next item id
-        autoGenerateItemId();
+                // generate next item id
+                autoGenerateItemId();
 
-        // show item updated pop up
-        Swal.fire({
-            icon: 'success',
-            title: 'Item updated successfully!',
-            showConfirmButton: false,
-            timer: 1500,
-            iconColor: '#4dc94d'
-        });
+                // show item updated pop up
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Item updated successfully!',
+                    showConfirmButton: false,
+                    timer: 1500,
+                    iconColor: '#4dc94d'
+                });
 
-    }
+            }
 
+        } else {
+            showErrorAlert("Item not found ! Please try again...")
+        }
+
+    });
 
     // ********** special **********
     // the clicked table's row index must equal to the customer object's index of array
@@ -203,46 +212,60 @@ $("#item-update").on('click', () => {
 // -------------------------- The start - when click item delete button --------------------------
 $("#item-delete").on('click', () => {
 
-    Swal.fire({
 
-        title: 'Are you sure?',
-        text: "You won't be able to revert this!",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#6da959',
-        cancelButtonColor: '#dcba65',
-        background: '#fff1e0',
-        width: '35em',
-        confirmButtonText: 'Yes, delete item!'
+    var itemCode = $("#codeItem").val();
 
-    }).then((result) => {
+    items.map((item) => {
 
-        if (result.isConfirmed) {
+        if (item.code === itemCode) {
 
-            items.splice(itemRecordIndex, 1);
-
-            // load the table
-            loadItemTable();
-
-            // clean the inputs values
-            $("#codeItem").val("");
-            $("#nameItem").val("");
-            $("#priceItem").val("");
-            $("#qtyItem").val("");
-
-            // generate next item id
-            autoGenerateItemId();
-
-            // show item deleted pop up
             Swal.fire({
-                icon: 'success',
-                title: 'Item deleted successfully!',
-                showConfirmButton: false,
-                timer: 1500,
-                iconColor: '#4dc94d'
-            });
+
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#6da959',
+                cancelButtonColor: '#dcba65',
+                background: '#fff1e0',
+                width: '35em',
+                confirmButtonText: 'Yes, delete item!'
+
+            }).then((result) => {
+
+                if (result.isConfirmed) {
+
+                    items.splice(itemRecordIndex, 1);
+
+                    // load the table
+                    loadItemTable();
+
+                    // clean the inputs values
+                    $("#codeItem").val("");
+                    $("#nameItem").val("");
+                    $("#priceItem").val("");
+                    $("#qtyItem").val("");
+
+                    // generate next item id
+                    autoGenerateItemId();
+
+                    // show item deleted pop up
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Item deleted successfully!',
+                        showConfirmButton: false,
+                        timer: 1500,
+                        iconColor: '#4dc94d'
+                    });
+                }
+            })
+
+        } else {
+            showErrorAlert("Item not found ! Please try again...");
         }
-    })
+    });
+
+
 
 });
 // -------------------------- The end - when click item delete button --------------------------

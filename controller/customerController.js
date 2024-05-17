@@ -212,6 +212,7 @@ $("#customer-update").on('click', () => {
 // -------------------------- The start - when click customer delete button --------------------------
 $("#customer-delete").on('click', () => {
 
+
     var cusId = $("#customerId").val();
 
     customers.map((item) => {
