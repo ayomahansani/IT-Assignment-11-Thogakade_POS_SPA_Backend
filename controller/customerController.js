@@ -90,52 +90,70 @@ $("#customer-save").on('click', () => {
 
     if(customerValidated) {
 
-        // create an object - Object Literal
-        /*let customer = {
-            id: idOfCustomer,
-            name: nameOfCustomer,
-            address: addressOfCustomer,
-            phone: phoneOfCustomer
-        }*/
+        // Check for duplicate customer IDs
+        if (isDuplicateCustomerId(idOfCustomer)) {
+
+            // Show error message for duplicate customer ID
+            showErrorAlert("Customer ID already exists. Please enter a different ID.");
+
+        } else {
+
+            // create an object - Object Literal
+            /*let customer = {
+                id: idOfCustomer,
+                name: nameOfCustomer,
+                address: addressOfCustomer,
+                phone: phoneOfCustomer
+            }*/
 
 
-        // create an object - Class Syntax
-        let customer = new CustomerModel(idOfCustomer,nameOfCustomer,addressOfCustomer,phoneOfCustomer);
+            // create an object - Class Syntax
+            let customer = new CustomerModel(idOfCustomer,nameOfCustomer,addressOfCustomer,phoneOfCustomer);
 
 
-        // push to the array
-        customers.push(customer);
+            // push to the array
+            customers.push(customer);
 
-        // load the table
-        loadCustomerTable();
+            // load the table
+            loadCustomerTable();
 
-        // clean the inputs values
-        $("#customerId").val("");
-        $("#customerName").val("");
-        $("#customerAddress").val("");
-        $("#customerPhone").val("");
+            // clean the inputs values
+            $("#customerId").val("");
+            $("#customerName").val("");
+            $("#customerAddress").val("");
+            $("#customerPhone").val("");
 
-        // generate next customer id
-        autoGenerateCustomerId();
+            // generate next customer id
+            autoGenerateCustomerId();
 
-        // show customer saved pop up
-        Swal.fire({
-            icon: 'success',
-            title: 'Customer saved successfully!',
-            showConfirmButton: false,
-            timer: 1500,
-            iconColor: '#4dc94d'
-        });
+            // show customer saved pop up
+            Swal.fire({
+                icon: 'success',
+                title: 'Customer saved successfully!',
+                showConfirmButton: false,
+                timer: 1500,
+                iconColor: '#4dc94d'
+            });
 
 
-        // update the home page's customer card
-        $("#customer-count").html(customers.length);
+            // update the home page's customer card
+            $("#customer-count").html(customers.length);
+
+        }
 
     }
 
-
 });
 // -------------------------- The end - when click customer save button --------------------------
+
+
+
+
+// -------------------------- The start - function to check for duplicate customer IDs --------------------------
+function isDuplicateCustomerId(id) {
+    return customers.some(customer => customer.id === id);
+}
+// -------------------------- The end - function to check for duplicate customer IDs --------------------------
 
 
 
@@ -309,6 +327,7 @@ function checkCustomerValidation(id, name, address, phone) {
             showErrorAlert("Please enter a valid ID!  Pattern - 'C000'")
             return false;
         }
+
     }
 
     if(!name){ //check name field is empty or not
