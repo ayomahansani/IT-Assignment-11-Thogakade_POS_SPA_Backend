@@ -285,6 +285,14 @@
     opacity: 0.7;
 }
 
+.add-to-cart-scrollable {
+    position: absolute;
+    height: 70%;
+    width: 95.25%;
+    overflow: scroll;
+    /*background-color: white;*/
+}
+
 
 
 /*------------------------------------------*/
