@@ -93,51 +93,69 @@ $("#item-save").on('click', () => {
 
     if(itemValidated) {
 
-        // create an object - Object Literal
-        /*let item = {
-            code: codeOfItem,
-            name: nameOfItem,
-            price: priceOfItem,
-            qty: qtyOfItem
-        }*/
+        // Check for duplicate item Codes
+        if (isDuplicateItemCode(codeOfItem)) {
+
+            // Show error message for duplicate item code
+            showErrorAlert("Item code already exists. Please enter a different ID.");
+
+        } else {
+
+            // create an object - Object Literal
+            /*let item = {
+                code: codeOfItem,
+                name: nameOfItem,
+                price: priceOfItem,
+                qty: qtyOfItem
+            }*/
 
 
-        // create an object - Class Syntax
-        let item = new ItemModel(codeOfItem,nameOfItem,priceOfItem,qtyOfItem);
+            // create an object - Class Syntax
+            let item = new ItemModel(codeOfItem,nameOfItem,priceOfItem,qtyOfItem);
 
 
-        // push to the array
-        items.push(item);
+            // push to the array
+            items.push(item);
 
-        // load the table
-        loadItemTable();
+            // load the table
+            loadItemTable();
 
-        // clean the inputs values
-        $("#codeItem").val("");
-        $("#nameItem").val("");
-        $("#priceItem").val("");
-        $("#qtyItem").val("");
+            // clean the inputs values
+            $("#codeItem").val("");
+            $("#nameItem").val("");
+            $("#priceItem").val("");
+            $("#qtyItem").val("");
 
-        // generate next item id
-        autoGenerateItemId();
+            // generate next item id
+            autoGenerateItemId();
 
-        // show item saved pop up
-        Swal.fire({
-            icon: 'success',
-            title: 'Item saved successfully!',
-            showConfirmButton: false,
-            timer: 1500,
-            iconColor: '#4dc94d'
-        });
+            // show item saved pop up
+            Swal.fire({
+                icon: 'success',
+                title: 'Item saved successfully!',
+                showConfirmButton: false,
+                timer: 1500,
+                iconColor: '#4dc94d'
+            });
 
-        // update the home page's item card
-        $("#item-count").html(items.length);
+            // update the home page's item card
+            $("#item-count").html(items.length);
+
+        }
 
     }
 
-
 });
 // -------------------------- The end - when click item save button --------------------------
+
+
+
+
+// -------------------------- The start - function to check for duplicate item codes --------------------------
+function isDuplicateItemCode(code) {
+    return items.some(item => item.code === code);
+}
+// -------------------------- The end - function to check for duplicate item codes --------------------------
 
 
 
