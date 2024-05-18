@@ -12,7 +12,7 @@ import {loadItemTable} from "./itemController.js";
 import {showErrorAlert} from "./customerController.js";
 
 // create temporary arrays
-let addedItems = [];
+export let addedItems = [];
 let tempItems = [];
 
 
