@@ -1841,7 +1841,7 @@
 
     #order-section .form_div {
         margin: 1rem;
-        width: 28em;
+        width: 26em;
         background-color: burlywood;
         position: relative;
         box-shadow: 4px 4px 7px rgba(0, 0, 0, 0.4);
@@ -1966,11 +1966,11 @@
     #order-section .add-to-cart-table {
         position: absolute;
         height: 18%;
-        width: 92%;
+        width: 93%;
         border-radius: 15px;
         margin: 1vw;
         margin-top: 2vw;
-        margin-left: 2.5vw;
+        margin-left: 1.8vw;
         padding: 2em 2em 2em 0.7em ;
         box-shadow: 3px 3px 8px black;
         background-color: burlywood;
