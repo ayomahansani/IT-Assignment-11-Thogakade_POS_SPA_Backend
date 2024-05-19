@@ -65,7 +65,7 @@ $("#total").val("Rs:000.00");
 
 
 // -------------------------- The start - generate order id automatically --------------------------
-function autoGenerateOrderId(orderId) {
+export function autoGenerateOrderId(orderId) {
 
     console.log("currentOrderId: " + orderId);
 

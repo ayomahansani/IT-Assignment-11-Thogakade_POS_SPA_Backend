@@ -2,6 +2,7 @@
 import {orders} from "../db/db.js";
 import {items} from "../db/db.js";
 import {loadItemTable} from "./itemController.js";
+import {autoGenerateOrderId} from "./orderController.js";
 
 var orderRecordIndex;
 
@@ -23,6 +24,7 @@ function loadOrderHistoryTable() {
         </tr>`;
         $("#order-history-tbl-tbody").append(record);
         $("#order-history-tbl-tbody").css("font-weight", 600);
+        $(".order-cancel-button").css("font-weight", 600);
     });
 }
 
@@ -36,7 +38,8 @@ $("#table-order-history").on('click', function (event) {
     if (event.target.classList.contains('order-cancel-button')) {
         const row = event.target.closest('tr');
         const orderId = row.querySelector('td:nth-child(1)').textContent.trim();
-        const orderedItems = JSON.parse(row.querySelector('.items-of-order').textContent.trim());
+        let orderedItems = [];
+        orderedItems = JSON.parse(row.querySelector('.items-of-order').textContent.trim());
 
         // Call the function
         cancelOrder(orderId, orderedItems);
@@ -49,6 +52,7 @@ $("#table-order-history").on('click', function (event) {
 
 // -------------------------- The start - when click remove button of order history table --------------------------
 function cancelOrder(orderId, orderedItems) {
+
     console.log(orderId);
     console.log(orderedItems);
 
@@ -74,12 +78,16 @@ function cancelOrder(orderId, orderedItems) {
 
             // Iterate through the ordered items to update the 'items' array
             orderedItems.forEach(orderedItem => {
-                let itemIndex = items.findIndex(item => item.code === orderedItem.code);
+
+                let itemIndex = items.findIndex(item => item.code === orderedItem._code);
+                console.log("itemIndex" + itemIndex);
 
                 // Check if the item exists in the 'items' array
                 if (itemIndex !== -1) {
+
                     // Increment the quantity of the item in the 'items' array
-                    items[itemIndex].qty += orderedItem.qty;
+                    items[itemIndex].qty += orderedItem._qty;
+
                 }
             });
 
@@ -89,7 +97,15 @@ function cancelOrder(orderId, orderedItems) {
 
             // Load the item table
             loadItemTable();
+
+            if(orders.length === 0){
+                autoGenerateOrderId("");
+            } else {
+                let lastOrderId = orders[orders.length - 1].idOfOrder;
+                autoGenerateOrderId(lastOrderId);
+            }
         }
+
     });
 }
 // -------------------------- The start - when click remove button of order history table --------------------------
