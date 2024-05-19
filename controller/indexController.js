@@ -10,7 +10,7 @@ import {customers, items} from "../db/db.js";
 // -------------------------- The start - when click navbar and some buttons --------------------------
 
 
-const displayNonSections = () => {
+export const displayNonSections = () => {
     $('#home-section').css({display: 'none'});
     $('#customer-section').css({display: 'none'});
     $('#item-section').css({display: 'none'});
@@ -111,14 +111,14 @@ $('#btn-logout').on("click", function () {
 
 
 /* when click login page's login button */
-$('#go-home-page').on("click", function () {
+/*$('#go-home-page').on("click", function () {
     displayNonSections();
     $('#home-section').css({display: 'block'});
     $('#navbar-section').css({display: 'block'});
 
     $('ul span.active').removeClass('active');
     $('ul li:nth-child(1) span').addClass('active');
-});
+});*/
 /* end when click login page's login button */
 
 
@@ -135,14 +135,14 @@ $('#go-register-page').on("click", function () {
 
 
 /* when click register page's register button */
-$('#go-home-page-2').on("click", function () {
+/*$('#go-home-page-2').on("click", function () {
     displayNonSections();
     $('#home-section').css({display: 'block'});
     $('#navbar-section').css({display: 'block'});
 
     $('ul span.active').removeClass('active');
     $('ul li:nth-child(1) span').addClass('active');
-});
+});*/
 /* when click register page's register button */
 
 
