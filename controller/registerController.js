@@ -87,36 +87,20 @@ function isDuplicateUsername(username) {
 $('#go-home-page').on("click", function () {
 
     // get values from inputs
-    var firstName = $("#fn").val();      // user first name value
-    var lastName = $("#ln").val();      // user last name value
-    var username = $("#email1").val();        // user email value
-    var password = $("#pw1").val();        // user password value
+    var username = $("#email").val();        // user email value
+    var password = $("#pw").val();        // user password value
 
 
-    let userCredentialValidated = checkUserCredentialValidated(firstName, lastName, username, password);
+    let loginCredentialValidated = checkLoginCredentialValidated(username, password);
 
 
-    if(userCredentialValidated) {
+    if(loginCredentialValidated) {
 
-        if(isDuplicateUsername(username)) {
-
-            // Show error message for duplicate customer ID
-            showErrorAlert("This username is already registered !. Please try again...");
-
-        } else {
-
-            // create an object - Class Syntax
-            let user = new RegisterModel(firstName, lastName, username, password);
-
-
-            // push to the array
-            user_credentials.push(user);
+        if(checkLogin(username, password)) {
 
             // clear the inputs
-            $("#fn").val("");
-            $("#ln").val("");
-            $("#email1").val("");
-            $("#pw1").val("");
+            $("#email").val("");
+            $("#pw").val("");
 
 
             displayNonSections();
@@ -136,12 +120,28 @@ $('#go-home-page').on("click", function () {
                 iconColor: '#4dc94d'
             });
 
+
+        } else {
+
+            // Show error message for duplicate customer ID
+            showErrorAlert("Don't match credentials !. Please try again...");
+
         }
 
     }
 
 });
 // -------------------------- The end - when click login page's login button  --------------------------
+
+
+
+
+// -------------------------- The start - function to check for duplicate usernames --------------------------
+function checkLogin(username, password) {
+
+    return user_credentials.some(user => user.username === username && user.password === password);
+}
+// -------------------------- The end - function to check for duplicate usernames --------------------------
 
 
 
@@ -182,7 +182,7 @@ function checkUserCredentialValidated(firstName, lastName, username, password) {
     }
 
     if(!password){ //check password field is empty or not
-        showErrorAlert("Password field field is required!");
+        showErrorAlert("Password field is required!");
         return false;
     } else {
         if(!/^.{4,}$/.test(password)){
@@ -195,6 +195,37 @@ function checkUserCredentialValidated(firstName, lastName, username, password) {
 
 }
 //-------------------------- The end - check user credential validations --------------------------
+
+
+
+
+//-------------------------- The start - check login credential validations --------------------------
+function checkLoginCredentialValidated(username, password) {
+
+    if(!username){ //check username field is empty or not
+        showErrorAlert("Username field is required!");
+        return false;
+    } else {
+        if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(username)){
+            showErrorAlert("Please enter a valid Email! Pattern - 'shawn345@gmail.com'")
+            return false;
+        }
+    }
+
+    if(!password){ //check password field is empty or not
+        showErrorAlert("Password field is required!");
+        return false;
+    } else {
+        if(!/^.{4,}$/.test(password)){
+            showErrorAlert("Please enter a valid Password! Pattern - 'Ko*56m()'")
+            return false;
+        }
+    }
+
+    return true;
+
+}
+//-------------------------- The end - check login credential validations --------------------------
 
 
 
