@@ -260,6 +260,19 @@
         left: 5%;
     }
 
+    #item-section .item-table {
+        position: absolute;
+        height: 52%;
+        width: 96.5%;
+        border-radius: 15px;
+        margin: 1vw;
+        margin-top: 2vw;
+        padding: 2em 2em 2em 1.6em ;
+        box-shadow: 3px 3px 8px black;
+        background-color: burlywood;
+        opacity: 0.7;
+    }
+
 }
 
 /*------------------------------------------*/
@@ -359,6 +372,19 @@
     #item-section .item-page-photo {
         margin-top: 1.7rem;
         margin-left: 0;
+    }
+
+    #item-section .item-table {
+        position: absolute;
+        height: 52%;
+        width: 96.5%;
+        border-radius: 15px;
+        margin: 1vw;
+        margin-top: 2vw;
+        padding: 2em 2em 2em 1.4em ;
+        box-shadow: 3px 3px 8px black;
+        background-color: burlywood;
+        opacity: 0.7;
     }
 
 }
@@ -465,6 +491,19 @@
         width: 7%;
     }
 
+    #item-section .item-table {
+        position: absolute;
+        height: 52%;
+        width: 96.5%;
+        border-radius: 15px;
+        margin: 1vw;
+        margin-top: 2vw;
+        padding: 2em 2em 2em 1.2em ;
+        box-shadow: 3px 3px 8px black;
+        background-color: burlywood;
+        opacity: 0.7;
+    }
+
 }
 
 /*------------------------------------------*/
@@ -511,6 +550,19 @@
         margin-left: 0;
         position: absolute;
         width: 7%;
+    }
+
+    #item-section .item-table {
+        position: absolute;
+        height: 52%;
+        width: 96.5%;
+        border-radius: 15px;
+        margin: 1vw;
+        margin-top: 2vw;
+        padding: 2em 2em 2em 1.1em ;
+        box-shadow: 3px 3px 8px black;
+        background-color: burlywood;
+        opacity: 0.7;
     }
 
 }
@@ -588,12 +640,12 @@
 
     #item-section .item-table {
         position: absolute;
-        height: 46%;
-        width: 95.5%;
+        height: 52%;
+        width: 96.5%;
         border-radius: 15px;
         margin: 1vw;
         margin-top: 2vw;
-        padding: 2em 2em 2em 2em ;
+        padding: 2em 2em 2em 1.1em ;
         box-shadow: 3px 3px 8px black;
         background-color: burlywood;
         opacity: 0.7;
@@ -711,12 +763,12 @@
 
     #item-section .item-table {
         position: absolute;
-        height: 46%;
-        width: 95.5%;
+        height: 52%;
+        width: 96.5%;
         border-radius: 15px;
         margin: 1vw;
         margin-top: 2vw;
-        padding: 2em 2em 2em 2em ;
+        padding: 2em 2em 2em 0.9em ;
         box-shadow: 3px 3px 8px black;
         background-color: burlywood;
         opacity: 0.7;
@@ -828,12 +880,12 @@
 
     #item-section .item-table {
         position: absolute;
-        height: 46%;
-        width: 95.5%;
+        height: 52%;
+        width: 96.5%;
         border-radius: 15px;
         margin: 1vw;
         margin-top: 2vw;
-        padding: 2em 2em 2em 2em ;
+        padding: 2em 2em 2em 0.9em ;
         box-shadow: 3px 3px 8px black;
         background-color: burlywood;
         opacity: 0.7;
@@ -945,12 +997,12 @@
 
     #item-section .item-table {
         position: absolute;
-        height: 46%;
-        width: 95.5%;
+        height: 52%;
+        width: 95%;
         border-radius: 15px;
         margin: 1vw;
         margin-top: 2vw;
-        padding: 2em 2em 2em 2em ;
+        padding: 2em 2em 2em 0.9em ;
         box-shadow: 3px 3px 8px black;
         background-color: burlywood;
         opacity: 0.7;
@@ -1078,12 +1130,12 @@
 
     #item-section .item-table {
         position: absolute;
-        height: 48%;
+        height: 52%;
         width: 95%;
         border-radius: 15px;
         margin: 1vw;
-        margin-top: 3vw;
-        padding: 2em 1em 2em 1em ;
+        margin-top: 2vw;
+        padding: 2em 2em 2em 0.9em ;
         box-shadow: 3px 3px 8px black;
         background-color: burlywood;
         opacity: 0.7;
@@ -1231,12 +1283,12 @@
 
     #item-section .item-table {
         position: absolute;
-        height: 48%;
+        height: 52%;
         width: 95%;
         border-radius: 15px;
         margin: 1vw;
-        margin-top: 3vw;
-        padding: 2em 0 2em 0 ;
+        margin-top: 2vw;
+        padding: 2em 2em 2em 0.7em ;
         box-shadow: 3px 3px 8px black;
         background-color: burlywood;
         opacity: 0.7;
