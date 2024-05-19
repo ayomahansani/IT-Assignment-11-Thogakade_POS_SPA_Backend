@@ -29,7 +29,7 @@ $('#go-home-page-2').on("click", function () {
         if(isDuplicateUsername(username)) {
 
             // Show error message for duplicate customer ID
-            showErrorAlert("You are already registered !. Please login...");
+            showErrorAlert("This username is already registered !. Please try again...");
 
         } else {
 
@@ -83,7 +83,70 @@ function isDuplicateUsername(username) {
 
 
 
-//-------------------------- The start - check customer validations --------------------------
+// -------------------------- The start - when click login page's login button  --------------------------
+$('#go-home-page').on("click", function () {
+
+    // get values from inputs
+    var firstName = $("#fn").val();      // user first name value
+    var lastName = $("#ln").val();      // user last name value
+    var username = $("#email1").val();        // user email value
+    var password = $("#pw1").val();        // user password value
+
+
+    let userCredentialValidated = checkUserCredentialValidated(firstName, lastName, username, password);
+
+
+    if(userCredentialValidated) {
+
+        if(isDuplicateUsername(username)) {
+
+            // Show error message for duplicate customer ID
+            showErrorAlert("This username is already registered !. Please try again...");
+
+        } else {
+
+            // create an object - Class Syntax
+            let user = new RegisterModel(firstName, lastName, username, password);
+
+
+            // push to the array
+            user_credentials.push(user);
+
+            // clear the inputs
+            $("#fn").val("");
+            $("#ln").val("");
+            $("#email1").val("");
+            $("#pw1").val("");
+
+
+            displayNonSections();
+            $('#home-section').css({display: 'block'});
+            $('#navbar-section').css({display: 'block'});
+
+            $('ul span.active').removeClass('active');
+            $('ul li:nth-child(1) span').addClass('active');
+
+
+            // show user register pop up
+            Swal.fire({
+                icon: 'success',
+                title: 'Login successfully!',
+                showConfirmButton: false,
+                timer: 1500,
+                iconColor: '#4dc94d'
+            });
+
+        }
+
+    }
+
+});
+// -------------------------- The end - when click login page's login button  --------------------------
+
+
+
+
+//-------------------------- The start - check user credential validations --------------------------
 function checkUserCredentialValidated(firstName, lastName, username, password) {
 
     if(!firstName){    //check first name field is empty or not
@@ -131,7 +194,7 @@ function checkUserCredentialValidated(firstName, lastName, username, password) {
     return true;
 
 }
-//-------------------------- The end - check customer validations --------------------------
+//-------------------------- The end - check user credential validations --------------------------
 
 
 
