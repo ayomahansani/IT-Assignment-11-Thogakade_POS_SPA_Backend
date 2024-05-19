@@ -7,3 +7,4 @@ export var items = [];
 
 export var orders = [];
 
+export var user_credentials = [];
