@@ -262,6 +262,7 @@
     margin-bottom: 1.2em;
     border: none;
     background-color: #e59035;
+    color: black;
 }
 
 #order-section .sub-total-input {
@@ -269,6 +270,7 @@
     margin-bottom: 1.2em;
     border: none;
     background-color: #92be92;
+    color: black;
 }
 
 #order-section .add-to-cart-table {
